@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoVentas Martínez | Venta de Carros</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: #ffffff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1549924231-f129b911e442') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .hero h1 {
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .cars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .car-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .car-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .car-card div {
+      padding: 15px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #000000;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #808080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>AutoVentas Martínez</h2>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#inventario">Inventario</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h1>Tu próximo carro te está esperando</h1>
+  </section>
+
+  <section class="section" id="inventario">
+    <h2>Inventario Destacado</h2>
+    <div class="cars">
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d" alt="Carro 1">
+        <div>
+          <h3>Toyota Camry 2020</h3>
+          <p>Excelente condición · Bajo millaje</p>
+          <a class="btn" href="#contacto">Más información</a>
+        </div>
+      </div>
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1517949908114-71669a64d885" alt="Carro 2">
+        <div>
+          <h3>Honda Accord 2019</h3>
+          <p>Financiamiento disponible</p>
+          <a class="btn" href="#contacto">Más información</a>
+        </div>
+      </div>
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="Carro 3">
+        <div>
+          <h3>Nissan Altima 2021</h3>
+          <p>Listo para entrega inmediata</p>
+          <a class="btn" href="#contacto">Más información</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>En AutoVentas Martínez nos especializamos en la venta de carros confiables, inspeccionados y listos para la carretera. Nuestro compromiso es ofrecer un servicio honesto, precios competitivos y una experiencia clara para cada cliente.</p>
+  </section>
+
+  <section class="section" id="contacto">
+    <h2>Contacto</h2>
+    <p><strong>Teléfono:</strong> (XXX) XXX-XXXX</p>
+    <p><strong>Email:</strong> info@autoventas.com</p>
+    <p><strong>Ubicación:</strong> Tu ciudad, Estado</p>
+    <a class="btn" href="https://wa.me/1XXXXXXXXXX" target="_blank">Escríbenos por WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>© 2025 AutoVentas Martínez · Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
