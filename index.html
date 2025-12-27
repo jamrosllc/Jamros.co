@@ -1,145 +1,426 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <h1>JAMROS LLC — AHORA SÍ CAMBIÓ</h1>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      color: #ffffff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1549924231-f129b911e442') center/cover no-repeat;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-    }
-    .hero h1 {
-      background-color: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    .cars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .car-card {
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    .car-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .car-card div {
-      padding: 15px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #000000;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    footer {
-      background-color: #808080;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
-</head>
-<body>
+:root{
+  --bg:#07090f;
+  --panel:#0d1120;
+  --panel2:#0a0e1a;
+  --text:#e9ecf6;
+  --muted:#a7b0c6;
+  --line:rgba(255,255,255,.08);
+  --accent:#57a3ff;
+  --accent2:#8b5cff;
+  --shadow: 0 20px 70px rgba(0,0,0,.55);
+}
 
-  <header>
-    <h2>AutoVentas Martínez</h2>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#inventario">Inventario</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  background: radial-gradient(1200px 800px at 20% 0%, rgba(87,163,255,.16), transparent 55%),
+              radial-gradient(900px 600px at 90% 15%, rgba(139,92,255,.14), transparent 50%),
+              var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-  <section class="hero" id="inicio">
-    <h1>Tu próximo carro te está esperando</h1>
-  </section>
+a{ color:inherit; text-decoration:none; }
+.container{ width:min(1100px, 92vw); margin:0 auto; }
 
-  <section class="section" id="inventario">
-    <h2>Inventario Destacado</h2>
-    <div class="cars">
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d" alt="Carro 1">
-        <div>
-          <h3>Toyota Camry 2020</h3>
-          <p>Excelente condición · Bajo millaje</p>
-          <a class="btn" href="#contacto">Más información</a>
-        </div>
-      </div>
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1517949908114-71669a64d885" alt="Carro 2">
-        <div>
-          <h3>Honda Accord 2019</h3>
-          <p>Financiamiento disponible</p>
-          <a class="btn" href="#contacto">Más información</a>
-        </div>
-      </div>
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="Carro 3">
-        <div>
-          <h3>Nissan Altima 2021</h3>
-          <p>Listo para entrega inmediata</p>
-          <a class="btn" href="#contacto">Más información</a>
-        </div>
-      </div>
-    </div>
-  </section>
+.muted{ color:var(--muted); }
+.center{ display:flex; justify-content:center; margin-top:18px; }
 
-  <section class="section" id="nosotros">
-    <h2>Sobre Nosotros</h2>
-    <p>En AutoVentas Martínez nos especializamos en la venta de carros confiables, inspeccionados y listos para la carretera. Nuestro compromiso es ofrecer un servicio honesto, precios competitivos y una experiencia clara para cada cliente.</p>
-  </section>
+/* TOPBAR */
+.topbar{
+  border-bottom:1px solid var(--line);
+  background: rgba(10,14,26,.55);
+  backdrop-filter: blur(10px);
+}
+.topbar__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 0;
+  gap:16px;
+}
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background: rgba(255,255,255,.04);
+  font-size:13px;
+}
+.toplink{ font-size:13px; color:var(--muted); margin-left:14px; }
+.toplink:hover{ color:var(--text); }
 
-  <section class="section" id="contacto">
-    <h2>Contacto</h2>
-    <p><strong>Teléfono:</strong> (XXX) XXX-XXXX</p>
-    <p><strong>Email:</strong> info@autoventas.com</p>
-    <p><strong>Ubicación:</strong> Tu ciudad, Estado</p>
-    <a class="btn" href="https://wa.me/1XXXXXXXXXX" target="_blank">Escríbenos por WhatsApp</a>
-  </section>
+/* NAV */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background: rgba(7,9,15,.55);
+  backdrop-filter: blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0;
+  gap:14px;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand__logo{
+  width:40px; height:40px; border-radius:14px;
+  background: linear-gradient(135deg, rgba(87,163,255,.95), rgba(139,92,255,.95));
+  display:grid; place-items:center;
+  font-weight:900;
+  box-shadow: 0 12px 40px rgba(87,163,255,.22);
+}
+.brand__name{ font-weight:800; letter-spacing:.2px; }
+.brand__tag{ font-size:12px; color:var(--muted); }
 
-  <footer>
-    <p>© 2025 AutoVentas Martínez · Todos los derechos reservados</p>
-  </footer>
+.menu{ display:flex; align-items:center; gap:18px; }
+.menu a{ color:var(--muted); font-size:14px; }
+.menu a:hover{ color:var(--text); }
 
-</body>
-</html>
+.burger{
+  display:none;
+  width:42px; height:40px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  border-radius:12px;
+  cursor:pointer;
+}
+.burger span{ display:block; height:2px; margin:6px 10px; background: var(--text); opacity:.9; }
+
+.mobile{
+  display:none;
+  border-top:1px solid var(--line);
+  padding:12px 0;
+}
+.mobile a{ display:block; padding:10px 0; color:var(--muted); }
+.mobile a:hover{ color:var(--text); }
+
+/* BUTTONS */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 16px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  font-weight:700;
+  gap:10px;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); }
+.btn--primary{
+  border-color: rgba(87,163,255,.35);
+  background: linear-gradient(135deg, rgba(87,163,255,.22), rgba(139,92,255,.18));
+  box-shadow: 0 18px 60px rgba(87,163,255,.14);
+}
+.btn--ghost{ background: transparent; }
+.btn--sm{ padding:9px 12px; border-radius:12px; font-size:13px; }
+.arrow{ opacity:.9; }
+
+/* HERO */
+.hero{ position:relative; padding:56px 0 26px; }
+.hero__inner{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap:26px;
+  align-items:center;
+}
+.hero__bg{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.grid{
+  position:absolute; inset:-40%;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 90px 90px;
+  transform: rotate(8deg);
+  opacity:.15;
+  mask-image: radial-gradient(circle at 30% 10%, black 0%, transparent 60%);
+}
+.glow{
+  position:absolute; width:520px; height:520px; border-radius:999px;
+  filter: blur(45px);
+  opacity:.35;
+  animation: float 7s ease-in-out infinite;
+}
+.glow--1{ left:-120px; top:-180px; background: rgba(87,163,255,.55); }
+.glow--2{ right:-120px; top:-140px; background: rgba(139,92,255,.55); animation-delay: .8s; }
+.glow--3{ right:40%; bottom:-260px; background: rgba(255,255,255,.18); animation-delay: 1.6s; }
+
+@keyframes float{
+  0%,100%{ transform: translate3d(0,0,0); }
+  50%{ transform: translate3d(0,18px,0); }
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+h1{
+  font-size: clamp(32px, 4vw, 46px);
+  line-height:1.06;
+  margin:0 0 14px;
+  letter-spacing:-.5px;
+}
+.accent{
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.lead{ font-size:16px; line-height:1.6; margin:0 0 18px; color:var(--muted); }
+
+.hero__cta{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+
+.stats{
+  display:flex; gap:14px; flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  padding-top:14px;
+}
+.stat{
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background: rgba(255,255,255,.03);
+  min-width: 160px;
+}
+.stat__num{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-.3px;
+}
+.stat__lbl{ font-size:12px; color:var(--muted); margin-top:4px; }
+
+/* 3D CARD */
+.hero__card{ display:flex; flex-direction:column; gap:12px; }
+.card3d{
+  position:relative;
+  border-radius:22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: var(--shadow);
+  transform-style: preserve-3d;
+  overflow:hidden;
+}
+.card3d__shine{
+  position:absolute; inset:-40%;
+  background: radial-gradient(circle at var(--mx, 30%) var(--my, 30%),
+    rgba(255,255,255,.20), transparent 45%);
+  opacity:.0;
+  transition: opacity .2s ease;
+}
+.card3d:hover .card3d__shine{ opacity:.9; }
+.card3d__content{ padding:18px; transform: translateZ(30px); }
+
+.badge{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.carTitle{ font-weight:900; font-size:18px; margin-bottom:8px; }
+.carMeta{ display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:13px; }
+.priceRow{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
+.price{ font-size:26px; font-weight:950; letter-spacing:-.5px; }
+.chip{
+  font-size:12px;
+  color:var(--muted);
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+}
+
+.miniActions{ display:flex; gap:10px; margin-top:14px; }
+.miniBtn{
+  padding:10px 12px;
+  border-radius:14px;
+  font-weight:800;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  transition: transform .15s ease, background .15s ease;
+}
+.miniBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+.miniBtn--ghost{ background: transparent; }
+
+.fakeCar{
+  margin-top:14px;
+  border-radius:18px;
+  border:1px dashed rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  padding:16px;
+}
+.fakeCar__line{
+  height:10px; border-radius:999px;
+  background: rgba(255,255,255,.08);
+  margin-bottom:10px;
+}
+.fakeCar__line:last-child{ width:65%; margin-bottom:0; }
+
+.trust{ display:flex; gap:10px; flex-wrap:wrap; }
+.trust__item{
+  padding:8px 10px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* SECTIONS */
+.section{ padding:44px 0; }
+.section--alt{ background: rgba(255,255,255,.02); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+
+.sectionHead{ margin-bottom:18px; }
+.sectionHead h2{ margin:0 0 6px; font-size:26px; letter-spacing:-.2px; }
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+.carCard{
+  border-radius:22px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  overflow:hidden;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.carCard:hover{ transform: translateY(-3px); border-color: rgba(87,163,255,.26); }
+.carCard__img{ height:160px; background: rgba(255,255,255,.06); }
+.carCard__body{ padding:14px; }
+.carCard__body h3{ margin:0 0 6px; }
+.carCard__foot{ display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
+.priceSm{ font-weight:950; letter-spacing:-.2px; }
+
+/* Skeleton placeholder */
+.skeleton{
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.10), rgba(255,255,255,.05));
+  background-size: 220% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+@keyframes shimmer{
+  0%{ background-position: 200% 0; }
+  100%{ background-position: -200% 0; }
+}
+
+/* FEATURES */
+.grid3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+.feature{
+  border-radius:22px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  padding:16px;
+}
+.icon{
+  width:44px; height:44px;
+  border-radius:16px;
+  display:grid; place-items:center;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  margin-bottom:10px;
+}
+
+/* STEPS */
+.steps{ list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.step{
+  display:flex; gap:12px;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  padding:14px;
+}
+.step__n{
+  width:34px; height:34px; border-radius:14px;
+  display:grid; place-items:center;
+  font-weight:950;
+  background: rgba(87,163,255,.16);
+  border:1px solid rgba(87,163,255,.25);
+}
+
+/* QUOTES */
+.quotes{ display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
+.quote{
+  margin:0;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  padding:16px;
+}
+.quote p{ margin:0 0 10px; color: var(--text); }
+.quote figcaption{ color:var(--muted); font-size:13px; }
+
+/* CTA + FORM */
+.ctaBox{
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+  padding:18px;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:16px;
+}
+.contactRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.form{
+  border-radius:22px;
+  border:1px solid var(--line);
+  background: rgba(0,0,0,.18);
+  padding:14px;
+  display:grid;
+  gap:10px;
+}
+label{ display:grid; gap:6px; font-size:13px; color:var(--muted); }
+input{
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  outline:none;
+}
+input:focus{ border-color: rgba(87,163,255,.45); }
+
+.footer{
+  display:flex; justify-content:space-between; gap:12px;
+  padding:18px 0 0;
+  border-top:1px solid var(--line);
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+/* REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+  transition-delay: var(--d, 0ms);
+}
+.reveal.in{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 920px){
+  .hero__inner{ grid-template-columns: 1fr; }
+  .cards{ grid-template-columns: 1fr; }
+  .grid3{ grid-template-columns: 1fr; }
+  .quotes{ grid-template-columns: 1fr; }
+  .ctaBox{ grid-template-columns: 1fr; }
+  .menu{ display:none; }
+  .burger{ display:block; }
+  .mobile.open{ display:block; }
+}
