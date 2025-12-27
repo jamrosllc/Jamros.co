@@ -1,426 +1,320 @@
-:root{
-  --bg:#07090f;
-  --panel:#0d1120;
-  --panel2:#0a0e1a;
-  --text:#e9ecf6;
-  --muted:#a7b0c6;
-  --line:rgba(255,255,255,.08);
-  --accent:#57a3ff;
-  --accent2:#8b5cff;
-  --shadow: 0 20px 70px rgba(0,0,0,.55);
-}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamros LLC | Autos Usados</title>
+  <meta name="description" content="Jamros LLC - Venta de carros usados. Financiamiento, trade-in y entrega rápida." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-*{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; }
-body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-  background: radial-gradient(1200px 800px at 20% 0%, rgba(87,163,255,.16), transparent 55%),
-              radial-gradient(900px 600px at 90% 15%, rgba(139,92,255,.14), transparent 50%),
-              var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+<body>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="pill">📍 Missouri</span>
+        <span class="muted">Inventario real • Trato rápido</span>
+      </div>
+      <div class="topbar__right">
+        <a class="toplink" href="#inventario">Ver inventario</a>
+        <a class="toplink" href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </div>
 
-a{ color:inherit; text-decoration:none; }
-.container{ width:min(1100px, 92vw); margin:0 auto; }
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <div class="brand">
+        <div class="brand__logo">J</div>
+        <div class="brand__text">
+          <div class="brand__name">Jamros LLC</div>
+          <div class="brand__tag">Autos usados • Compra/venta</div>
+        </div>
+      </div>
 
-.muted{ color:var(--muted); }
-.center{ display:flex; justify-content:center; margin-top:18px; }
+      <nav class="menu">
+        <a href="#inventario">Inventario</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo funciona</a>
+        <a href="#testimonios">Reseñas</a>
+        <a href="#contacto" class="btn btn--sm">Cotizar</a>
+      </nav>
 
-/* TOPBAR */
-.topbar{
-  border-bottom:1px solid var(--line);
-  background: rgba(10,14,26,.55);
-  backdrop-filter: blur(10px);
-}
-.topbar__inner{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 0;
-  gap:16px;
-}
-.pill{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:6px 10px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background: rgba(255,255,255,.04);
-  font-size:13px;
-}
-.toplink{ font-size:13px; color:var(--muted); margin-left:14px; }
-.toplink:hover{ color:var(--text); }
+      <button class="burger" id="burger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-/* NAV */
-.nav{
-  position:sticky; top:0; z-index:50;
-  background: rgba(7,9,15,.55);
-  backdrop-filter: blur(14px);
-  border-bottom:1px solid var(--line);
-}
-.nav__inner{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 0;
-  gap:14px;
-}
-.brand{ display:flex; align-items:center; gap:12px; }
-.brand__logo{
-  width:40px; height:40px; border-radius:14px;
-  background: linear-gradient(135deg, rgba(87,163,255,.95), rgba(139,92,255,.95));
-  display:grid; place-items:center;
-  font-weight:900;
-  box-shadow: 0 12px 40px rgba(87,163,255,.22);
-}
-.brand__name{ font-weight:800; letter-spacing:.2px; }
-.brand__tag{ font-size:12px; color:var(--muted); }
+    <div class="mobile" id="mobile">
+      <a href="#inventario">Inventario</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#testimonios">Reseñas</a>
+      <a href="#contacto" class="btn">Cotizar</a>
+    </div>
+  </header>
 
-.menu{ display:flex; align-items:center; gap:18px; }
-.menu a{ color:var(--muted); font-size:14px; }
-.menu a:hover{ color:var(--text); }
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="glow glow--1"></div>
+      <div class="glow glow--2"></div>
+      <div class="glow glow--3"></div>
+      <div class="grid"></div>
+    </div>
 
-.burger{
-  display:none;
-  width:42px; height:40px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.04);
-  border-radius:12px;
-  cursor:pointer;
-}
-.burger span{ display:block; height:2px; margin:6px 10px; background: var(--text); opacity:.9; }
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <div class="kicker reveal">🚗 Jamros LLC</div>
+        <h1 class="reveal" style="--d: 80ms">
+          Compra tu próximo auto <span class="accent">con confianza</span>
+          <br />y con un look profesional desde el primer clic.
+        </h1>
+        <p class="lead reveal" style="--d: 140ms">
+          Autos usados seleccionados, verificados y listos para entregar.
+          Financiamiento, trade-in y asesoría clara.
+        </p>
 
-.mobile{
-  display:none;
-  border-top:1px solid var(--line);
-  padding:12px 0;
-}
-.mobile a{ display:block; padding:10px 0; color:var(--muted); }
-.mobile a:hover{ color:var(--text); }
+        <div class="hero__cta reveal" style="--d: 200ms">
+          <a class="btn btn--primary" href="#inventario">
+            Ver inventario <span class="arrow">→</span>
+          </a>
+          <a class="btn btn--ghost" href="#contacto">Hablar por WhatsApp</a>
+        </div>
 
-/* BUTTONS */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:12px 16px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.04);
-  color:var(--text);
-  font-weight:700;
-  gap:10px;
-  transition: transform .15s ease, background .15s ease, border-color .15s ease;
-}
-.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); }
-.btn--primary{
-  border-color: rgba(87,163,255,.35);
-  background: linear-gradient(135deg, rgba(87,163,255,.22), rgba(139,92,255,.18));
-  box-shadow: 0 18px 60px rgba(87,163,255,.14);
-}
-.btn--ghost{ background: transparent; }
-.btn--sm{ padding:9px 12px; border-radius:12px; font-size:13px; }
-.arrow{ opacity:.9; }
+        <div class="stats reveal" style="--d: 260ms">
+          <div class="stat">
+            <div class="stat__num" data-count="120">0</div>
+            <div class="stat__lbl">Autos vendidos</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-count="24">0</div>
+            <div class="stat__lbl">Horas para respuesta</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-count="4.9">0</div>
+            <div class="stat__lbl">Calificación promedio</div>
+          </div>
+        </div>
+      </div>
 
-/* HERO */
-.hero{ position:relative; padding:56px 0 26px; }
-.hero__inner{
-  display:grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap:26px;
-  align-items:center;
-}
-.hero__bg{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-.grid{
-  position:absolute; inset:-40%;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 90px 90px;
-  transform: rotate(8deg);
-  opacity:.15;
-  mask-image: radial-gradient(circle at 30% 10%, black 0%, transparent 60%);
-}
-.glow{
-  position:absolute; width:520px; height:520px; border-radius:999px;
-  filter: blur(45px);
-  opacity:.35;
-  animation: float 7s ease-in-out infinite;
-}
-.glow--1{ left:-120px; top:-180px; background: rgba(87,163,255,.55); }
-.glow--2{ right:-120px; top:-140px; background: rgba(139,92,255,.55); animation-delay: .8s; }
-.glow--3{ right:40%; bottom:-260px; background: rgba(255,255,255,.18); animation-delay: 1.6s; }
+      <!-- HERO CARD (movimiento) -->
+      <div class="hero__card reveal" style="--d: 120ms">
+        <div class="card3d" id="card3d">
+          <div class="card3d__shine"></div>
+          <div class="card3d__content">
+            <div class="badge">🔥 Oferta destacada</div>
+            <div class="carTitle">Toyota Corolla 2022 • Clean</div>
+            <div class="carMeta">
+              <span>✔ 52k mi</span>
+              <span>✔ Title limpio</span>
+              <span>✔ Garantía opcional</span>
+            </div>
+            <div class="priceRow">
+              <div class="price">$16,900</div>
+              <div class="chip">Financiamiento disponible</div>
+            </div>
+            <div class="miniActions">
+              <a class="miniBtn" href="#contacto">Cotizar</a>
+              <a class="miniBtn miniBtn--ghost" href="#inventario">Ver más</a>
+            </div>
+            <div class="fakeCar">
+              <div class="fakeCar__line"></div>
+              <div class="fakeCar__line"></div>
+              <div class="fakeCar__line"></div>
+            </div>
+          </div>
+        </div>
 
-@keyframes float{
-  0%,100%{ transform: translate3d(0,0,0); }
-  50%{ transform: translate3d(0,18px,0); }
-}
+        <div class="trust">
+          <div class="trust__item">✅ Verificación</div>
+          <div class="trust__item">✅ Papeles claros</div>
+          <div class="trust__item">✅ Trato rápido</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-.kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  font-weight:800;
-  color:var(--muted);
-  margin-bottom:10px;
-}
-h1{
-  font-size: clamp(32px, 4vw, 46px);
-  line-height:1.06;
-  margin:0 0 14px;
-  letter-spacing:-.5px;
-}
-.accent{
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.lead{ font-size:16px; line-height:1.6; margin:0 0 18px; color:var(--muted); }
+  <!-- INVENTARIO -->
+  <section class="section" id="inventario">
+    <div class="container">
+      <div class="sectionHead">
+        <h2 class="reveal">Inventario destacado</h2>
+        <p class="muted reveal" style="--d: 80ms">
+          Reemplaza estos autos por los tuyos (modelo, millas, precio y foto).
+        </p>
+      </div>
 
-.hero__cta{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+      <div class="cards">
+        <article class="carCard reveal">
+          <div class="carCard__img skeleton"></div>
+          <div class="carCard__body">
+            <h3>Honda Civic 2021</h3>
+            <p class="muted">45k mi • Clean title • Automático</p>
+            <div class="carCard__foot">
+              <div class="priceSm">$15,800</div>
+              <a class="btn btn--sm btn--ghost" href="#contacto">Preguntar</a>
+            </div>
+          </div>
+        </article>
 
-.stats{
-  display:flex; gap:14px; flex-wrap:wrap;
-  border-top:1px solid var(--line);
-  padding-top:14px;
-}
-.stat{
-  padding:10px 12px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background: rgba(255,255,255,.03);
-  min-width: 160px;
-}
-.stat__num{
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:-.3px;
-}
-.stat__lbl{ font-size:12px; color:var(--muted); margin-top:4px; }
+        <article class="carCard reveal" style="--d: 90ms">
+          <div class="carCard__img skeleton"></div>
+          <div class="carCard__body">
+            <h3>Toyota Camry 2020</h3>
+            <p class="muted">60k mi • 1 dueño • Excelente estado</p>
+            <div class="carCard__foot">
+              <div class="priceSm">$17,900</div>
+              <a class="btn btn--sm btn--ghost" href="#contacto">Preguntar</a>
+            </div>
+          </div>
+        </article>
 
-/* 3D CARD */
-.hero__card{ display:flex; flex-direction:column; gap:12px; }
-.card3d{
-  position:relative;
-  border-radius:22px;
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow: var(--shadow);
-  transform-style: preserve-3d;
-  overflow:hidden;
-}
-.card3d__shine{
-  position:absolute; inset:-40%;
-  background: radial-gradient(circle at var(--mx, 30%) var(--my, 30%),
-    rgba(255,255,255,.20), transparent 45%);
-  opacity:.0;
-  transition: opacity .2s ease;
-}
-.card3d:hover .card3d__shine{ opacity:.9; }
-.card3d__content{ padding:18px; transform: translateZ(30px); }
+        <article class="carCard reveal" style="--d: 140ms">
+          <div class="carCard__img skeleton"></div>
+          <div class="carCard__body">
+            <h3>Hyundai Elantra 2022</h3>
+            <p class="muted">35k mi • Económico • Bluetooth</p>
+            <div class="carCard__foot">
+              <div class="priceSm">$16,400</div>
+              <a class="btn btn--sm btn--ghost" href="#contacto">Preguntar</a>
+            </div>
+          </div>
+        </article>
+      </div>
 
-.badge{
-  display:inline-flex;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:10px;
-}
-.carTitle{ font-weight:900; font-size:18px; margin-bottom:8px; }
-.carMeta{ display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:13px; }
-.priceRow{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
-.price{ font-size:26px; font-weight:950; letter-spacing:-.5px; }
-.chip{
-  font-size:12px;
-  color:var(--muted);
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-}
+      <div class="center reveal" style="--d: 120ms">
+        <a class="btn btn--primary" href="#contacto">Quiero cotizar un auto</a>
+      </div>
+    </div>
+  </section>
 
-.miniActions{ display:flex; gap:10px; margin-top:14px; }
-.miniBtn{
-  padding:10px 12px;
-  border-radius:14px;
-  font-weight:800;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.06);
-  transition: transform .15s ease, background .15s ease;
-}
-.miniBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
-.miniBtn--ghost{ background: transparent; }
+  <!-- SERVICIOS -->
+  <section class="section section--alt" id="servicios">
+    <div class="container">
+      <div class="sectionHead">
+        <h2 class="reveal">Servicios</h2>
+        <p class="muted reveal" style="--d: 80ms">
+          Lo que la gente quiere ver rápido: financiamiento, trade-in y confianza.
+        </p>
+      </div>
 
-.fakeCar{
-  margin-top:14px;
-  border-radius:18px;
-  border:1px dashed rgba(255,255,255,.14);
-  background: rgba(0,0,0,.18);
-  padding:16px;
-}
-.fakeCar__line{
-  height:10px; border-radius:999px;
-  background: rgba(255,255,255,.08);
-  margin-bottom:10px;
-}
-.fakeCar__line:last-child{ width:65%; margin-bottom:0; }
+      <div class="grid3">
+        <div class="feature reveal">
+          <div class="icon">💳</div>
+          <h3>Financiamiento</h3>
+          <p class="muted">Te ayudamos a aplicar y escoger la mejor opción.</p>
+        </div>
+        <div class="feature reveal" style="--d: 90ms">
+          <div class="icon">🔁</div>
+          <h3>Trade-in</h3>
+          <p class="muted">Trae tu carro y lo usamos como parte del pago.</p>
+        </div>
+        <div class="feature reveal" style="--d: 140ms">
+          <div class="icon">🧾</div>
+          <h3>Documentos claros</h3>
+          <p class="muted">Proceso transparente: título, fees y firma sin sorpresas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-.trust{ display:flex; gap:10px; flex-wrap:wrap; }
-.trust__item{
-  padding:8px 10px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  font-size:13px;
-  color:var(--muted);
-}
+  <!-- PROCESO -->
+  <section class="section" id="proceso">
+    <div class="container">
+      <div class="sectionHead">
+        <h2 class="reveal">Cómo funciona</h2>
+      </div>
 
-/* SECTIONS */
-.section{ padding:44px 0; }
-.section--alt{ background: rgba(255,255,255,.02); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__n">1</span>
+          <div>
+            <h3>Elige tu auto</h3>
+            <p class="muted">Te enviamos info completa, fotos y detalles.</p>
+          </div>
+        </li>
+        <li class="step reveal" style="--d: 90ms">
+          <span class="step__n">2</span>
+          <div>
+            <h3>Verificación rápida</h3>
+            <p class="muted">Revisión básica, historial y condiciones del vehículo.</p>
+          </div>
+        </li>
+        <li class="step reveal" style="--d: 140ms">
+          <span class="step__n">3</span>
+          <div>
+            <h3>Compra sin estrés</h3>
+            <p class="muted">Firmas, pago y entrega. Listo.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-.sectionHead{ margin-bottom:18px; }
-.sectionHead h2{ margin:0 0 6px; font-size:26px; letter-spacing:-.2px; }
+  <!-- TESTIMONIOS -->
+  <section class="section section--alt" id="testimonios">
+    <div class="container">
+      <div class="sectionHead">
+        <h2 class="reveal">Reseñas</h2>
+      </div>
 
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:14px;
-}
-.carCard{
-  border-radius:22px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  overflow:hidden;
-  transition: transform .18s ease, border-color .18s ease;
-}
-.carCard:hover{ transform: translateY(-3px); border-color: rgba(87,163,255,.26); }
-.carCard__img{ height:160px; background: rgba(255,255,255,.06); }
-.carCard__body{ padding:14px; }
-.carCard__body h3{ margin:0 0 6px; }
-.carCard__foot{ display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
-.priceSm{ font-weight:950; letter-spacing:-.2px; }
+      <div class="quotes">
+        <figure class="quote reveal">
+          <p>“Trato claro y rápido. Me entregaron el carro limpio y con todo al día.”</p>
+          <figcaption>— Cliente verificado</figcaption>
+        </figure>
+        <figure class="quote reveal" style="--d: 90ms">
+          <p>“Me ayudaron con el financiamiento. Todo sin complicaciones.”</p>
+          <figcaption>— Cliente verificado</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
-/* Skeleton placeholder */
-.skeleton{
-  background:
-    linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.10), rgba(255,255,255,.05));
-  background-size: 220% 100%;
-  animation: shimmer 1.3s linear infinite;
-}
-@keyframes shimmer{
-  0%{ background-position: 200% 0; }
-  100%{ background-position: -200% 0; }
-}
+  <!-- CONTACTO -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="ctaBox reveal">
+        <div>
+          <h2>Cotiza hoy</h2>
+          <p class="muted">Cambia estos datos por los tuyos (teléfono, WhatsApp, dirección).</p>
+          <div class="contactRow">
+            <a class="btn btn--primary" href="https://wa.me/1XXXXXXXXXX" target="_blank" rel="noreferrer">
+              WhatsApp <span class="arrow">→</span>
+            </a>
+            <a class="btn btn--ghost" href="tel:+1XXXXXXXXXX">Llamar</a>
+            <a class="btn btn--ghost" href="mailto:ventas@jamros.co">Email</a>
+          </div>
+        </div>
 
-/* FEATURES */
-.grid3{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:14px;
-}
-.feature{
-  border-radius:22px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  padding:16px;
-}
-.icon{
-  width:44px; height:44px;
-  border-radius:16px;
-  display:grid; place-items:center;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  margin-bottom:10px;
-}
+        <form class="form" onsubmit="event.preventDefault(); alert('Listo ✅ Ahora conecta esto a un formulario real (Google Forms o Formspree).');">
+          <label>
+            Nombre
+            <input required placeholder="Tu nombre" />
+          </label>
+          <label>
+            Teléfono
+            <input required placeholder="(555) 555-5555" />
+          </label>
+          <label>
+            ¿Qué auto buscas?
+            <input placeholder="Marca / modelo / presupuesto" />
+          </label>
+          <button class="btn btn--primary" type="submit">Enviar</button>
+          <small class="muted">*Formulario de ejemplo</small>
+        </form>
+      </div>
 
-/* STEPS */
-.steps{ list-style:none; padding:0; margin:0; display:grid; gap:12px; }
-.step{
-  display:flex; gap:12px;
-  border-radius:22px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  padding:14px;
-}
-.step__n{
-  width:34px; height:34px; border-radius:14px;
-  display:grid; place-items:center;
-  font-weight:950;
-  background: rgba(87,163,255,.16);
-  border:1px solid rgba(87,163,255,.25);
-}
+      <footer class="footer">
+        <div class="muted">© <span id="year"></span> Jamros LLC. Todos los derechos reservados.</div>
+        <div class="muted">Hecho para vender: rápido, claro y con estilo.</div>
+      </footer>
+    </div>
+  </section>
 
-/* QUOTES */
-.quotes{ display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
-.quote{
-  margin:0;
-  border-radius:22px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  padding:16px;
-}
-.quote p{ margin:0 0 10px; color: var(--text); }
-.quote figcaption{ color:var(--muted); font-size:13px; }
-
-/* CTA + FORM */
-.ctaBox{
-  border-radius:26px;
-  border:1px solid rgba(255,255,255,.12);
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  box-shadow: var(--shadow);
-  padding:18px;
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap:16px;
-}
-.contactRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
-.form{
-  border-radius:22px;
-  border:1px solid var(--line);
-  background: rgba(0,0,0,.18);
-  padding:14px;
-  display:grid;
-  gap:10px;
-}
-label{ display:grid; gap:6px; font-size:13px; color:var(--muted); }
-input{
-  padding:12px 12px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  color:var(--text);
-  outline:none;
-}
-input:focus{ border-color: rgba(87,163,255,.45); }
-
-.footer{
-  display:flex; justify-content:space-between; gap:12px;
-  padding:18px 0 0;
-  border-top:1px solid var(--line);
-  margin-top:18px;
-  flex-wrap:wrap;
-}
-
-/* REVEAL ANIMATION */
-.reveal{
-  opacity:0;
-  transform: translateY(14px);
-  transition: opacity .6s ease, transform .6s ease;
-  transition-delay: var(--d, 0ms);
-}
-.reveal.in{
-  opacity:1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-@media (max-width: 920px){
-  .hero__inner{ grid-template-columns: 1fr; }
-  .cards{ grid-template-columns: 1fr; }
-  .grid3{ grid-template-columns: 1fr; }
-  .quotes{ grid-template-columns: 1fr; }
-  .ctaBox{ grid-template-columns: 1fr; }
-  .menu{ display:none; }
-  .burger{ display:block; }
-  .mobile.open{ display:block; }
-}
+  <script src="script.js"></script>
+</body>
+</html>
