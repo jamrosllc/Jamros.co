@@ -4,170 +4,773 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jamros LLC | Autos usados en Missouri</title>
-  <meta name="description" content="Autos usados verificados en Missouri. Compra/venta, financiamiento y trade-in. Trato rápido por WhatsApp." />
+  <meta name="description" content="Autos usados verificados en Missouri. Trato rápido, papeles claros. Financiamiento y trade-in. Cotiza por WhatsApp." />
 
   <style>
     :root{
-      --bg:#0b0e14;
+      --bg:#0b0f19;
+      --bg2:#0e1630;
       --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.10);
-      --text:#eaf0ff;
-      --muted: rgba(234,240,255,.7);
-      --line: rgba(255,255,255,.12);
-      --accent:#6ee7ff;
-      --accent2:#a78bfa;
+      --card2: rgba(255,255,255,.09);
+      --text:#e9eefc;
+      --muted: rgba(233,238,252,.72);
+      --line: rgba(233,238,252,.14);
+      --brand:#6ee7ff;
+      --brand2:#a78bfa;
       --ok:#34d399;
-      --warn:#fb7185;
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --warn:#fbbf24;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius: 18px;
-      --max: 1100px;
+      --radius2: 26px;
+      --max: 1120px;
+      --pad: 18px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 10% 10%, rgba(110,231,255,.18), transparent 60%),
-        radial-gradient(900px 500px at 90% 15%, rgba(167,139,250,.16), transparent 55%),
-        radial-gradient(700px 400px at 50% 80%, rgba(52,211,153,.10), transparent 60%),
-        var(--bg);
+        radial-gradient(900px 420px at 18% 10%, rgba(110,231,255,.20), transparent 55%),
+        radial-gradient(720px 420px at 78% 6%, rgba(167,139,250,.20), transparent 55%),
+        radial-gradient(720px 460px at 60% 70%, rgba(52,211,153,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 55%, #070b14);
       overflow-x:hidden;
     }
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius:999px; color:var(--muted);
+      backdrop-filter: blur(10px);
+    }
+    .pill .dot{width:9px;height:9px;border-radius:99px;background:var(--ok); box-shadow:0 0 0 6px rgba(52,211,153,.12)}
     .topbar{
       position:sticky; top:0; z-index:50;
+      background: rgba(7,10,18,.55);
+      border-bottom:1px solid var(--line);
       backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(11,14,20,.80), rgba(11,14,20,.55));
-      border-bottom: 1px solid var(--line);
     }
-    .topbar .row{
+    .nav{
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 0;
-      gap:14px;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.2px;
+      font-weight:800; letter-spacing:.3px;
     }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: 999px;
-      font-size:12px;
-      color:var(--muted);
-      white-space:nowrap;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--ok);
-      box-shadow: 0 0 0 6px rgba(52,211,153,.12);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse{
-      0%,100%{transform:scale(1); opacity:1}
-      50%{transform:scale(1.25); opacity:.75}
-    }
-    nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{
-      font-size:13px;
-      padding:8px 10px;
-      border-radius: 10px;
-      color:var(--muted);
-      border:1px solid transparent;
-      transition:.2s ease;
-    }
-    nav a:hover{
-      color:var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-    }
-
-    .hero{
-      padding:34px 0 10px;
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,255,.9), rgba(167,139,250,.9));
+      box-shadow: 0 10px 30px rgba(110,231,255,.18);
       position:relative;
     }
+    .logo:after{
+      content:"";
+      position:absolute; inset:7px;
+      border-radius:10px;
+      background: rgba(11,15,25,.8);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{
+      color:var(--muted);
+      font-weight:650;
+      padding:10px 10px;
+      border-radius:12px;
+      transition: .2s ease;
+    }
+    .menu a:hover{color:var(--text); background: rgba(255,255,255,.06)}
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+      box-shadow: 0 16px 45px rgba(0,0,0,.35);
+      color:var(--text);
+      font-weight:750;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .cta:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.28)}
+    .cta.primary{
+      border:none;
+      background: linear-gradient(135deg, rgba(110,231,255,.98), rgba(167,139,250,.95));
+      color:#0b0f19;
+      box-shadow: 0 22px 55px rgba(110,231,255,.22);
+    }
+    .cta.primary:hover{transform: translateY(-2px)}
+
+    .hero{
+      padding:46px 0 18px;
+      position:relative;
+    }
+
+    /* animated background blobs */
+    .blob{
+      position:absolute; width:520px; height:520px; border-radius:50%;
+      filter: blur(38px);
+      opacity:.35;
+      animation: float 9s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .blob.one{left:-220px; top:-160px; background: rgba(110,231,255,.55)}
+    .blob.two{right:-220px; top:-210px; background: rgba(167,139,250,.55); animation-delay:-2s}
+    .blob.three{right:-140px; bottom:-220px; background: rgba(52,211,153,.28); animation-delay:-4s}
+    @keyframes float{
+      0%,100%{transform: translate3d(0,0,0) scale(1)}
+      50%{transform: translate3d(0,18px,0) scale(1.04)}
+    }
+
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
       align-items:stretch;
+      position:relative;
     }
-    @media (max-width: 900px){
-      .heroGrid{grid-template-columns:1fr}
-      nav{justify-content:flex-start}
-    }
-    .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .heroMain{padding:26px 22px 20px; position:relative}
-    .kicker{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      margin-bottom:12px;
-    }
-    .tag{
-      font-size:12px; color:rgba(234,240,255,.85);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      padding:6px 10px;
-      border-radius:999px;
-    }
+
     h1{
-      margin:0;
-      font-size:44px;
-      line-height:1.06;
-      letter-spacing:-.8px;
+      margin:14px 0 10px;
+      font-size: clamp(34px, 4.2vw, 52px);
+      line-height:1.03;
+      letter-spacing:-.9px;
     }
-    @media (max-width:520px){ h1{font-size:34px} }
-    .lead{
-      margin:12px 0 0;
-      color:var(--muted);
-      font-size:15.5px;
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16.5px;
       line-height:1.55;
       max-width: 56ch;
     }
+    .heroActions{
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+      margin: 18px 0 18px;
+    }
 
-    .ctaRow{
-      display:flex; gap:10px; flex-wrap:wrap;
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
       margin-top:18px;
     }
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 14px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:700;
-      font-size:14px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
-    .btnPrimary{
-      border-color: rgba(110,231,255,.45);
-      background: linear-gradient(135deg, rgba(110,231,255,.18), rgba(167,139,250,.14));
-    }
-    .btnPrimary:hover{border-color: rgba(110,231,255,.75)}
-    .mini{
-      margin-top:14px;
-      display:flex; flex-wrap:wrap; gap:10px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .mini b{color:var(--text)}
-    .heroSide{padding:18px}
-    .glass{
+    .stat{
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       border-radius: 16px;
-      padd
+      padding:14px;
+      box-shadow: var(--shadow);
+    }
+    .stat b{display:block; font-size:22px; letter-spacing:-.4px}
+    .stat span{color:var(--muted); font-weight:600; font-size:12.5px}
+
+    .panel{
+      border-radius: var(--radius2);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .panelHeader{
+      padding:16px 16px 12px;
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:9px 12px; border-radius:999px;
+      background: rgba(251,191,36,.14);
+      border:1px solid rgba(251,191,36,.26);
+      color: rgba(255,255,255,.92);
+      font-weight:800;
+      font-size:12.5px;
+    }
+
+    .carCard{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+      align-items:center;
+    }
+    .carPhoto{
+      height: 210px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(120px 90px at 70% 30%, rgba(110,231,255,.22), transparent 65%),
+        radial-gradient(120px 90px at 35% 70%, rgba(167,139,250,.22), transparent 65%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      position:relative;
+      overflow:hidden;
+    }
+    .carPhoto img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      filter: contrast(1.04) saturate(1.04);
+      opacity:.98;
+    }
+    .carPhoto .shine{
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.16), transparent);
+      transform: rotate(20deg) translateX(-40%);
+      animation: shine 3.2s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes shine{
+      0%{transform: rotate(20deg) translateX(-40%)}
+      50%{transform: rotate(20deg) translateX(40%)}
+      100%{transform: rotate(20deg) translateX(-40%)}
+    }
+
+    .carTitle{font-weight:900; letter-spacing:-.3px; font-size:18px; margin:0 0 8px}
+    .carMeta{color:var(--muted); font-weight:650; font-size:13.5px; line-height:1.5}
+    .price{font-size:22px; font-weight:950; margin:10px 0 12px}
+    .checks{display:grid; gap:8px; margin:10px 0 0}
+    .check{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-weight:650; font-size:13px}
+    .check i{
+      width:18px;height:18px;border-radius:6px;
+      background: rgba(52,211,153,.16);
+      border:1px solid rgba(52,211,153,.26);
+      display:inline-flex; align-items:center; justify-content:center;
+      color: rgba(52,211,153,.95);
+      font-style:normal;
+      margin-top:1px;
+    }
+
+    section{padding:34px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size: clamp(22px, 2.4vw, 30px);
+      letter-spacing:-.6px;
+    }
+    .sectionTitle p{margin:0; color:var(--muted); font-weight:650}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:16px;
+      box-shadow: var(--shadow);
+      transition: .22s ease;
+    }
+    .card:hover{transform: translateY(-3px); border-color: rgba(255,255,255,.22)}
+    .card h3{margin:0 0 8px; font-size:16px; letter-spacing:-.2px}
+    .card p{margin:0; color:var(--muted); line-height:1.55; font-weight:620}
+
+    .inventory{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .unit{
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      transition:.22s ease;
+    }
+    .unit:hover{transform: translateY(-3px); border-color: rgba(255,255,255,.22)}
+    .unit .img{
+      height:170px;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border-bottom:1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+    }
+    .unit .img img{width:100%;height:100%;object-fit:cover;display:block}
+    .unit .body{padding:14px}
+    .unit .name{font-weight:900; margin:0 0 6px}
+    .unit .meta{color:var(--muted); font-weight:650; font-size:13px; line-height:1.5}
+    .unit .row{
+      display:flex; justify-content:space-between; align-items:center;
+      margin-top:10px; gap:10px;
+    }
+    .unit .tag{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(110,231,255,.25);
+      background: rgba(110,231,255,.10);
+      color: rgba(233,238,252,.92);
+      font-weight:800;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .unit .miniCta{
+      padding:9px 11px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-weight:850;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .unit .miniCta:hover{background: rgba(255,255,255,.10)}
+    .split{
+      display:grid; grid-template-columns: 1fr 1fr; gap:14px;
+    }
+    .contact{
+      display:grid; gap:12px;
+    }
+    .field{
+      display:grid; gap:8px;
+    }
+    label{color:var(--muted); font-weight:750; font-size:13px}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    .foot{
+      padding:28px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-weight:650;
+      text-align:center;
+    }
+
+    /* reveal on scroll */
+    .reveal{opacity:0; transform: translateY(10px); transition: .7s ease}
+    .reveal.in{opacity:1; transform: translateY(0)}
+
+    /* responsive */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr; gap:14px}
+      .stats{grid-template-columns:1fr; }
+      .grid{grid-template-columns:1fr}
+      .inventory{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+
+    /* reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .blob, .carPhoto .shine{animation:none}
+      .reveal{transition:none}
+      .cta:hover, .card:hover, .unit:hover{transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Jamros LLC</span>
+        </div>
+
+        <nav class="menu" aria-label="Menú">
+          <a href="#inventario">Inventario</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#como">Cómo funciona</a>
+          <a href="#resenas">Reseñas</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <a class="cta primary" id="ctaTop" href="#contacto">Cotizar ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="blob one"></div>
+      <div class="blob two"></div>
+      <div class="blob three"></div>
+
+      <div class="container">
+        <div class="heroGrid">
+          <div>
+            <div class="pill reveal">
+              <span class="dot"></span>
+              <span><b id="LOCATION">Missouri</b> · Inventario real · Trato rápido</span>
+            </div>
+
+            <h1 class="reveal" style="transition-delay:.06s">
+              Compra tu próximo auto con confianza<br />
+              y con un look profesional desde el primer clic.
+            </h1>
+
+            <p class="sub reveal" style="transition-delay:.12s">
+              Autos usados seleccionados, verificados y listos para entrega. Financiamiento,
+              trade-in y asesoría clara. Cotiza rápido por WhatsApp o llamada.
+            </p>
+
+            <div class="heroActions reveal" style="transition-delay:.18s">
+              <a class="cta primary" href="#inventario">Ver inventario</a>
+              <a class="cta" id="ctaWhats" href="#">Hablar por WhatsApp</a>
+              <a class="cta" id="ctaCall" href="#">Llamar</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat reveal" style="transition-delay:.24s">
+                <b id="statSold">0</b>
+                <span>Autos vendidos</span>
+              </div>
+              <div class="stat reveal" style="transition-delay:.30s">
+                <b><span id="statHours">0</span>h</b>
+                <span>Horas para respuesta</span>
+              </div>
+              <div class="stat reveal" style="transition-delay:.36s">
+                <b><span id="statRating">0.0</span>★</b>
+                <span>Calificación promedio</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="panel reveal" style="transition-delay:.12s">
+            <div class="panelHeader">
+              <span class="badge">🔥 Oferta destacada</span>
+              <span style="color:var(--muted); font-weight:800; font-size:12px;">Actualizado hoy</span>
+            </div>
+
+            <div class="carCard">
+              <div class="carPhoto" aria-label="Foto del auto">
+                <!-- Cambia esta imagen por una tuya (sube foto al repo y pon la ruta correcta) -->
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1400&q=70" alt="Auto destacado">
+                <span class="shine"></span>
+              </div>
+
+              <div>
+                <p class="carTitle">Toyota Corolla 2022 · Clean title</p>
+                <div class="carMeta">
+                  ✓ 52k mi · ✓ Title limpio · ✓ Garantía opcional<br />
+                  Financiamiento disponible · Trade-in
+                </div>
+                <div class="price">$16,900</div>
+
+                <div class="heroActions" style="margin:0">
+                  <a class="cta primary" href="#contacto">Cotizar</a>
+                  <a class="cta" href="#inventario">Ver más</a>
+                </div>
+
+                <div class="checks">
+                  <div class="check"><i>✓</i> Verificación y entrega clara</div>
+                  <div class="check"><i>✓</i> Papeles en orden</div>
+                  <div class="check"><i>✓</i> Trato rápido, sin vueltas</div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="inventario">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2 class="reveal">Inventario destacado</h2>
+          <p class="reveal">Reemplaza estos autos por los tuyos (modelo, millas, precio y foto).</p>
+        </div>
+
+        <div class="inventory">
+          <article class="unit reveal">
+            <div class="img">
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=70" alt="Honda Civic">
+            </div>
+            <div class="body">
+              <p class="name">Honda Civic 2021</p>
+              <div class="meta">45k mi · Clean title · Automático</div>
+              <div class="row">
+                <span class="tag">$15,900</span>
+                <a class="miniCta" href="#contacto" data-car="Honda Civic 2021">Cotizar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit reveal" style="transition-delay:.06s">
+            <div class="img">
+              <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1400&q=70" alt="Toyota Camry">
+            </div>
+            <div class="body">
+              <p class="name">Toyota Camry 2020</p>
+              <div class="meta">62k mi · Excelente estado · Automático</div>
+              <div class="row">
+                <span class="tag">$17,700</span>
+                <a class="miniCta" href="#contacto" data-car="Toyota Camry 2020">Cotizar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="unit reveal" style="transition-delay:.12s">
+            <div class="img">
+              <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1400&q=70" alt="Ford F-150">
+            </div>
+            <div class="body">
+              <p class="name">Ford F-150 2019</p>
+              <div class="meta">78k mi · 4x4 · Lista para trabajar</div>
+              <div class="row">
+                <span class="tag">$24,900</span>
+                <a class="miniCta" href="#contacto" data-car="Ford F-150 2019">Cotizar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2 class="reveal">Servicios</h2>
+          <p class="reveal">Todo claro, rápido y sin complicaciones.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <h3>✅ Verificación</h3>
+            <p>Revisamos historial y condición. Te decimos lo bueno y lo mejorable.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.06s">
+            <h3>💳 Financiamiento</h3>
+            <p>Opciones según tu caso. Te guiamos paso a paso para aprobar rápido.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.12s">
+            <h3>🔁 Trade-in</h3>
+            <p>Trae tu auto actual y lo tomamos como parte del pago (evaluación justa).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2 class="reveal">Cómo funciona</h2>
+          <p class="reveal">3 pasos y listo.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <h3>1) Elige tu auto</h3>
+            <p>Revisa inventario y elige el que te gusta. Si no está, lo buscamos.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.06s">
+            <h3>2) Cotiza rápido</h3>
+            <p>Envíanos tu presupuesto/enganche y si tienes trade-in.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.12s">
+            <h3>3) Cierre y entrega</h3>
+            <p>Papeles claros, firma y entrega. Te acompañamos en todo el proceso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resenas">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2 class="reveal">Reseñas</h2>
+          <p class="reveal">Agrega 2–3 reseñas reales (nombre + comentario).</p>
+        </div>
+
+        <div class="split">
+          <div class="card reveal">
+            <h3>“Trato rápido y honesto”</h3>
+            <p>Me explicaron todo claro y salí con mi carro el mismo día. — <b>Cliente</b></p>
+          </div>
+          <div class="card reveal" style="transition-delay:.06s">
+            <h3>“Papeles en orden”</h3>
+            <p>Todo transparente, sin letras pequeñas. Recomendado. — <b>Cliente</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2 class="reveal">Cotiza / Contacto</h2>
+          <p class="reveal">Te respondemos rápido.</p>
+        </div>
+
+        <div class="split">
+          <div class="card reveal">
+            <h3>Contacto directo</h3>
+            <p style="margin:0 0 12px; color:var(--muted); font-weight:650; line-height:1.6">
+              WhatsApp y llamada. También puedes enviar el formulario.
+            </p>
+
+            <div class="heroActions" style="margin:0">
+              <a class="cta primary" id="ctaWhats2" href="#">WhatsApp</a>
+              <a class="cta" id="ctaCall2" href="#">Llamar</a>
+            </div>
+
+            <div style="margin-top:14px; color:var(--muted); font-weight:650; line-height:1.7">
+              <div>📍 <b id="LOCATION2">Missouri</b></div>
+              <div>⏱ Respuesta promedio: <b><span id="statHours2">0</span> horas</b></div>
+            </div>
+          </div>
+
+          <form class="card reveal contact" id="leadForm">
+            <div class="field">
+              <label>Nombre</label>
+              <input type="text" id="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="field">
+              <label>Teléfono</label>
+              <input type="tel" id="phone" placeholder="(###) ###-####" required />
+            </div>
+            <div class="field">
+              <label>¿Qué buscas?</label>
+              <select id="topic">
+                <option value="Quiero cotizar un auto del inventario">Cotizar un auto del inventario</option>
+                <option value="Quiero financiamiento">Financiamiento</option>
+                <option value="Tengo un trade-in">Trade-in</option>
+                <option value="Estoy buscando un auto específico">Buscar un auto específico</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Mensaje</label>
+              <textarea id="msg" placeholder="Ej: Busco Corolla 2020-2022, presupuesto $16k, tengo $2k de enganche"></textarea>
+            </div>
+
+            <button class="cta primary" type="submit">Enviar por WhatsApp</button>
+            <p style="margin:0; color:var(--muted); font-weight:650; font-size:12.5px; line-height:1.5">
+              Al enviar, se abrirá WhatsApp con tu mensaje listo.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="foot">
+        © <span id="year"></span> Jamros LLC · Autos usados · Hecho con GitHub Pages
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ====== CONFIG (CAMBIA ESTO) ======
+    const WHATSAPP_NUMBER = "+1XXXXXXXXXX"; // ejemplo: +15735551234
+    const PHONE_NUMBER = "+1XXXXXXXXXX";    // ejemplo: +15735551234
+    const LOCATION_TEXT = "Missouri";
+
+    // stats (ajústalos a tu realidad)
+    const SOLD_CARS = 0;
+    const AVG_RESPONSE_HOURS = 1; // ejemplo: 1
+    const AVG_RATING = 5.0;
+
+    // ====== helpers ======
+    const $ = (id) => document.getElementById(id);
+
+    function waLink(text){
+      const msg = encodeURIComponent(text);
+      return `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g,"")}?text=${msg}`;
+    }
+
+    function setLinks(){
+      const baseMsg = `Hola, quiero información sobre autos en ${LOCATION_TEXT}.`;
+      const wa = waLink(baseMsg);
+
+      ["ctaWhats","ctaWhats2"].forEach(id => { if($(id)) $(id).href = wa; });
+      ["ctaCall","ctaCall2"].forEach(id => { if($(id)) $(id).href = `tel:${PHONE_NUMBER}`; });
+    }
+
+    function animateNumber(el, to, decimals=0){
+      const start = 0;
+      const dur = 900;
+      const t0 = performance.now();
+      function tick(t){
+        const p = Math.min(1, (t - t0)/dur);
+        const v = start + (to - start) * (1 - Math.pow(1-p, 3));
+        el.textContent = v.toFixed(decimals);
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ====== scroll reveal ======
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.12});
+
+    document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+
+    // ====== setup ======
+    $("year").textContent = new Date().getFullYear();
+    ["LOCATION","LOCATION2"].forEach(id => { if($(id)) $(id).textContent = LOCATION_TEXT; });
+    setLinks();
+
+    // stats
+    animateNumber($("statSold"), SOLD_CARS, 0);
+    animateNumber($("statHours"), AVG_RESPONSE_HOURS, 0);
+    animateNumber($("statRating"), AVG_RATING, 1);
+    $("statHours2").textContent = AVG_RESPONSE_HOURS;
+
+    // quick quote buttons prefill message
+    document.querySelectorAll("[data-car]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const car = btn.getAttribute("data-car");
+        const t = `Hola, quiero cotizar: ${car}. ¿Está disponible?`;
+        $("msg").value = t;
+        $("topic").value = "Quiero cotizar un auto del inventario";
+      });
+    });
+
+    // form -> WhatsApp
+    $("leadForm").addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const name = $("name").value.trim();
+      const phone = $("phone").value.trim();
+      const topic = $("topic").value;
+      const msg = $("msg").value.trim();
+
+      const text =
+`Hola, soy ${name}.
+Tel: ${phone}
+Tema: ${topic}
+Mensaje: ${msg || "—"}`;
+
+      window.open(waLink(text), "_blank");
+    });
+
+    // smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const href = a.getAttribute("href");
+        if(href.length>1){
+          const target = document.querySelector(href);
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({behavior:"smooth", block:"start"});
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
