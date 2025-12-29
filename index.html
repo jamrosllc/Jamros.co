@@ -7,17 +7,23 @@
   <meta name="description" content="Autos usados verificados en Missouri. Compra, venta, trade-in y financiamiento.">
 
   <style>
-    header {
+   header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
   display:flex;
   align-items:center;
   gap:12px;
-  padding:16px 24px;
-  background:#ffffff;
-color:#111;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:14px 24px;
+
+  background: rgba(16, 24, 38, 0.65);   /* vidrio oscuro */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
-}
     :root{
       --bg:#0b0f14;
       --card:#101826;
