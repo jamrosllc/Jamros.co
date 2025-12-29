@@ -40,20 +40,35 @@
 
     /* ====== Sticky Header ====== */
     .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background: rgba(7,10,16,.55);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom:1px solid var(--line);
-      transform: translateY(-14px);
-      opacity: 0;
-      animation: slideIn .55s ease forwards;
-    }
-    @keyframes slideIn{
-      to{transform:translateY(0); opacity:1;}
-    }
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(7,10,16,.65);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  overflow:hidden;
+}
+
+.topbar::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(600px 200px at 10% 30%, rgba(255,255,255,.12), transparent 60%),
+    radial-gradient(600px 200px at 80% 20%, rgba(255,255,255,.08), transparent 60%);
+  animation:sweep 6s ease-in-out infinite;
+}
+
+@keyframes sweep{
+  0%{transform:translateX(120%)}
+  50%{transform:translateX(0)}
+  100%{transform:translateX(-120%)}
+}
+
+.topbar > *{
+  position:relative;
+  z-index:2;
+}
 
     .bar{
       max-width:var(--max);
@@ -73,37 +88,47 @@
     }
 
     .brandLogo{
-  width:48px;
-  height:48px;
-  border-radius:12px;
+  width:64px;
+  height:64px;
+  border-radius:16px;
   overflow:hidden;
-
-  /* FONDO BLANCO REAL */
   background:#ffffff;
+  padding:6px;
 
-  /* Borde fino elegante */
-  border:1px solid rgba(0,0,0,.08);
-
-  /* Sombra premium */
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
-
-  flex:0 0 auto;
-
-  transition: transform .25s ease, box-shadow .25s ease;
-
-  will-change: transform;
-
+  box-shadow:0 12px 32px rgba(0,0,0,.45);
+  transition:transform .25s ease, box-shadow .25s ease;
+  animation:carMove .9s ease 1;
 }
-    
+
+.brandLogo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+@keyframes carMove{
+  0%{transform:translateX(-12px) scale(.95); opacity:0}
+  60%{transform:translateX(4px) scale(1.05); opacity:1}
+  100%{transform:translateX(0) scale(1)}
+}
+
 .brandLogo:hover{
-  transform: scale(1.08);
-  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  transform:scale(1.1);
+  box-shadow:0 18px 44px rgba(0,0,0,.6);
 }
 
-    .brandLogo img{
-      width:100%; height:100%;
-      object-fit:cover;
-    }
+
+/* animación tipo carro */
+@keyframes carMove{
+  0%{transform:translateX(0) scale(1)}
+  30%{transform:translateX(-2px) scale(1.03)}
+  60%{transform:translateX(4px) scale(1.08)}
+  100%{transform:translateX(0) scale(1)}
+}
+
+.brandLogo{
+  animation:carMove .9s ease 1;
+}
+
 
     .brandText strong{
       display:block;
@@ -531,7 +556,7 @@
     <div class="bar">
       <a class="brand" href="#top" aria-label="Ir al inicio">
         <div class="brandLogo">
-          <img src="logo.png" alt="Jamros LLC">
+          <img src="logo-anim.png" alt="Jamros LLC">
         </div>
         <div class="brandText">
           <strong>Jamros LLC</strong>
