@@ -1,238 +1,661 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jamros LLC | Autos usados en Missouri</title>
-  <meta name="description" content="Autos usados verificados en Missouri. Compra, venta, trade-in y financiamiento.">
+  <meta name="description" content="Autos usados verificados en Missouri. Compra, venta, trade-in y financiamiento." />
 
   <style>
     :root{
       --bg:#0b0f14;
-      --card:#101826;
-      --text:#e6eaf2;
-      --muted:#98a2b3;
+      --panel:#0f1726;
+      --card:#0f1a2a;
+      --stroke:rgba(255,255,255,.10);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.70);
       --brand:#22c55e;
+      --brand2:#60a5fa;
       --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 30px rgba(0,0,0,.40);
+      --max:1150px;
     }
 
-    *{ box-sizing:border-box; }
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(96,165,250,.25), transparent 55%),
+        radial-gradient(900px 600px at 90% 0%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(900px 600px at 50% 110%, rgba(168,85,247,.10), transparent 55%),
+        var(--bg);
       color:var(--text);
     }
 
-    /* ===== HEADER ===== */
-    header{
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ---------- Header sticky animado ---------- */
+    .topbar{
       position:sticky;
       top:0;
       z-index:50;
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease, border-color .25s ease;
+      background: rgba(10,14,20,.35);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .topbar.scrolled{
+      background: rgba(7,10,14,.78);
+      box-shadow: 0 8px 26px rgba(0,0,0,.45);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 18px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:14px 24px;
-      background:rgba(16,24,38,.7);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(255,255,255,.1);
-      transition:all .25s ease;
-    }
-
-    header.shrink{
-      padding:10px 24px;
-      background:rgba(11,15,20,.85);
+      gap:14px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      color:var(--text);
-      text-decoration:none;
+      min-width: 210px;
     }
-
-    .brand img{
-      width:64px;
-      height:64px;
-      background:#fff;
-      padding:8px;
+    .brand .logo{
+      width:56px;
+      height:56px;
       border-radius:14px;
       object-fit:contain;
-      box-shadow:0 6px 16px rgba(0,0,0,.25);
+      background: rgba(255,255,255,.06);  /* <- fondo claro del logo */
+      border:1px solid rgba(255,255,255,.10);
+      padding:6px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.35);
     }
-
-    .brand span{
+    .brand .name{
+      line-height:1.05;
+    }
+    .brand .name strong{
+      font-size:15px;
+      letter-spacing:.2px;
+    }
+    .brand .name span{
+      display:inline-block;
+      margin-top:4px;
       font-size:12px;
       color:var(--muted);
     }
 
-    nav{
+    .nav{
       display:flex;
-      gap:18px;
       align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size:13px;
+      color: rgba(238,242,255,.86);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition: all .18s ease;
+    }
+    .nav a:hover{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
     }
 
-    nav a{
-      color:var(--text);
-      text-decoration:none;
-      font-weight:600;
+    .nav .cta{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(34,197,94,.30);
+      background: linear-gradient(135deg, rgba(34,197,94,.18), rgba(96,165,250,.14));
     }
 
-    /* ===== HERO ===== */
-    main{
-      max-width:1100px;
-      margin:auto;
-      padding:48px 24px;
+    /* ---------- Layout ---------- */
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{
+      padding:56px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    .hero-left{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-left:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 220px at 20% 10%, rgba(96,165,250,.25), transparent 55%),
+        radial-gradient(600px 220px at 70% 20%, rgba(34,197,94,.22), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .hero-left > *{position:relative; z-index:1}
+
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      font-size:13px;
+      color: rgba(238,242,255,.88);
+      width: fit-content;
+    }
+    .pulse{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--brand);
+      box-shadow: 0 0 0 0 rgba(34,197,94,.55);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}
+      70%{box-shadow:0 0 0 14px rgba(34,197,94,0)}
+      100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}
     }
 
     h1{
-      font-size:40px;
-      margin:0 0 10px;
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
     }
-
-    p{
-      max-width:600px;
+    @media (max-width: 520px){
+      h1{font-size:36px}
+    }
+    .lead{
       color:var(--muted);
-      line-height:1.6;
+      line-height:1.7;
+      max-width: 62ch;
+      font-size:16px;
+      margin:0 0 18px;
     }
 
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:16px;
+      align-items:center;
+    }
     .btn{
-      display:inline-block;
-      margin-top:20px;
-      padding:12px 26px;
-      background:var(--brand);
-      color:#06210f;
-      font-weight:800;
-      border-radius:var(--radius);
-      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:700;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      cursor:pointer;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+    }
+    .btn.primary{
+      border-color: rgba(34,197,94,.35);
+      background: linear-gradient(135deg, rgba(34,197,94,.92), rgba(96,165,250,.70));
+      color:#06110a;
+    }
+    .btn.primary:hover{transform: translateY(-2px)}
+
+    .hero-right{
+      border-radius: calc(var(--radius) + 8px);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      min-height: 340px;
     }
 
-    /* ===== INVENTARIO ===== */
-    section{
-      margin-top:60px;
+    /* “Acción en movimiento” (imagen + brillo) */
+    .hero-media{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 420px at 30% 10%, rgba(96,165,250,.26), transparent 55%),
+        radial-gradient(900px 420px at 70% 80%, rgba(34,197,94,.18), transparent 55%),
+        url("https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1400&q=80");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.1) contrast(1.05);
+      transform: scale(1.03);
+      animation: slowpan 12s ease-in-out infinite alternate;
+    }
+    @keyframes slowpan{
+      from{transform: scale(1.03) translateY(0px)}
+      to{transform: scale(1.08) translateY(-10px)}
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,15,20,.08), rgba(11,15,20,.85));
+    }
+    .hero-card{
+      position:absolute;
+      left:18px; right:18px; bottom:18px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,14,.70);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding:14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .hero-card .mini{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .hero-card .mini b{font-size:14px}
+    .hero-card .mini span{font-size:12px;color:var(--muted)}
+    .chip{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      white-space:nowrap;
     }
 
+    /* ---------- Secciones ---------- */
+    .section{
+      padding:24px 0 8px;
+    }
+    .section h2{
+      margin:0 0 8px;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .section p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    /* ---------- Inventario cards ---------- */
     .grid{
+      margin-top:16px;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:20px;
-      margin-top:20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
     }
+    @media (max-width: 980px){ .grid{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 620px){ .grid{grid-template-columns: 1fr;} }
 
     .car{
-      background:var(--card);
-      border-radius:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       overflow:hidden;
-      box-shadow:0 18px 50px rgba(0,0,0,.45);
-      transition:transform .2s ease;
+      box-shadow: 0 14px 38px rgba(0,0,0,.45);
+      transform: translateY(0);
+      transition: transform .18s ease, border-color .18s ease;
     }
-
     .car:hover{
-      transform:translateY(-4px);
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.18);
     }
-
-    .car img{
+    .car .photo{
+      aspect-ratio: 16 / 10;
+      background:#0a0f16;
+      overflow:hidden;
+      position:relative;
+    }
+    .car .photo img{
       width:100%;
-      height:220px;
+      height:100%;
       object-fit:cover;
+      transform: scale(1.02);
+      transition: transform .25s ease;
     }
-
-    .car-body{
-      padding:16px;
+    .car:hover .photo img{transform: scale(1.08)}
+    .tag{
+      position:absolute;
+      left:10px; top:10px;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(8px);
     }
-
+    .car .body{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .car .title{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .car .title b{
+      font-size:14px;
+      letter-spacing:.2px;
+    }
     .price{
-      font-weight:900;
-      margin:10px 0;
+      font-weight:800;
+      color: #dbeafe;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      color: var(--muted);
+      font-size:12px;
+    }
+    .meta span{
+      padding:6px 8px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .car .actions{
+      display:flex;
+      gap:10px;
+      margin-top:6px;
+    }
+    .car .actions a{
+      flex:1;
+      text-align:center;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      font-weight:700;
+      font-size:13px;
+      transition: transform .18s ease;
+    }
+    .car .actions a:hover{transform: translateY(-1px)}
+    .car .actions a.primary{
+      border-color: rgba(34,197,94,.30);
+      background: linear-gradient(135deg, rgba(34,197,94,.90), rgba(96,165,250,.55));
+      color:#06110a;
     }
 
-    /* ===== WHATSAPP ===== */
+    /* ---------- Footer ---------- */
+    footer{
+      margin-top:26px;
+      padding:22px 0 40px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: rgba(238,242,255,.70);
+      font-size:13px;
+    }
+
+    /* ---------- WhatsApp botón flotante ---------- */
     .wa{
       position:fixed;
       right:18px;
       bottom:18px;
-      background:#22c55e;
-      color:#06210f;
-      padding:14px 18px;
-      border-radius:999px;
+      z-index:80;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 999px;
+      background: rgba(34,197,94,.92);
+      color:#031008;
       font-weight:900;
-      text-decoration:none;
-      box-shadow:0 18px 40px rgba(0,0,0,.45);
-      z-index:60;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      transition: transform .18s ease;
+    }
+    .wa:hover{transform: translateY(-2px)}
+    .wa svg{width:18px;height:18px}
+    .wa small{
+      font-weight:800;
+      opacity:.92;
     }
 
-    @media(max-width:720px){
-      h1{ font-size:30px; }
-      nav{ display:none; }
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <a class="brand" href="#">
-    <img src="logo.png" alt="Jamros LLC">
-    <div>
-      <strong>Jamros LLC</strong><br>
-      <span>Autos usados • Missouri</span>
+  <!-- HEADER -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <!-- Logo + nombre como link a home -->
+      <a class="brand" href="#home" aria-label="Jamros LLC - Inicio">
+        <!-- CAMBIA esto si tu logo tiene otro nombre o está en carpeta assets -->
+        <img class="logo" src="logo.png" alt="Jamros LLC Logo" />
+        <div class="name">
+          <strong>Jamros LLC</strong>
+          <span>Autos usados • Missouri</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#inventario">Inventario</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto" class="cta">Contactar</a>
+      </nav>
     </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="badge">
+            <span class="pulse"></span>
+            <span>Trade-in • Financiamiento • Compra/Venta</span>
+          </div>
+
+          <h1>Compra tu próximo auto con confianza</h1>
+          <p class="lead">
+            Autos usados verificados, proceso claro y atención rápida. Te ayudamos con
+            financiamiento, trade-in y todo el papeleo para que salgas manejando.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#inventario">Ver inventario</a>
+            <a class="btn" href="#contacto">Cotizar / Contactar</a>
+          </div>
+        </div>
+
+        <div class="hero-right" aria-label="Imagen destacada">
+          <div class="hero-media"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-card">
+            <div class="mini">
+              <b>Respuestas rápidas</b>
+              <span>Te cotizamos en minutos</span>
+            </div>
+            <div class="chip">📍 Missouri</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVENTARIO -->
+    <section class="section" id="inventario">
+      <h2>Inventario destacado</h2>
+      <p>Cambia estas tarjetas con tus autos reales (foto, nombre, precio y datos).</p>
+
+      <div class="grid">
+        <!-- CARD 1 -->
+        <article class="car">
+          <div class="photo">
+            <span class="tag">Disponible</span>
+            <!-- Pega aquí la foto real del carro (URL o archivo del repo) -->
+            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80" alt="Sedan gris" />
+          </div>
+          <div class="body">
+            <div class="title">
+              <b>2018 Toyota Camry SE</b>
+              <span class="price">$15,900</span>
+            </div>
+            <div class="meta">
+              <span>92k mi</span>
+              <span>Automático</span>
+              <span>Gasolina</span>
+            </div>
+            <div class="actions">
+              <a href="#contacto">Detalles</a>
+              <a class="primary" id="cta1" href="#">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="car">
+          <div class="photo">
+            <span class="tag">Financiable</span>
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80" alt="Coupe deportivo" />
+          </div>
+          <div class="body">
+            <div class="title">
+              <b>2017 Honda Civic EX</b>
+              <span class="price">$13,450</span>
+            </div>
+            <div class="meta">
+              <span>88k mi</span>
+              <span>Automático</span>
+              <span>Gasolina</span>
+            </div>
+            <div class="actions">
+              <a href="#contacto">Detalles</a>
+              <a class="primary" id="cta2" href="#">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="car">
+          <div class="photo">
+            <span class="tag">Nuevo ingreso</span>
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1400&q=80" alt="SUV negra" />
+          </div>
+          <div class="body">
+            <div class="title">
+              <b>2019 Ford Escape SEL</b>
+              <span class="price">$16,750</span>
+            </div>
+            <div class="meta">
+              <span>79k mi</span>
+              <span>Automático</span>
+              <span>Gasolina</span>
+            </div>
+            <div class="actions">
+              <a href="#contacto">Detalles</a>
+              <a class="primary" id="cta3" href="#">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <h2>Servicios</h2>
+      <p>
+        ✅ Compra y venta • ✅ Trade-in • ✅ Financiamiento • ✅ Asesoría de documentos
+      </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <h2>Contacto</h2>
+      <p>
+        Escríbenos por WhatsApp para cotizar, agendar test drive o enviarte opciones según tu presupuesto.
+      </p>
+      <div class="hero-actions" style="margin-top:14px;">
+        <a class="btn primary" id="ctaMain" href="#">Hablar por WhatsApp</a>
+        <a class="btn" href="mailto:ventas@jamros.co">ventas@jamros.co</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Jamros LLC. Todos los derechos reservados.
+    </footer>
+  </main>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a class="wa" id="waFloat" href="#" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M19.11 17.4c-.27-.14-1.6-.79-1.84-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.33-.79-.7-1.33-1.57-1.49-1.84-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.64 1.12 2.82c.14.18 1.93 2.95 4.68 4.14.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+      <path d="M26.67 5.33A14.57 14.57 0 0 0 16.02 1C8.35 1 2.1 7.25 2.1 14.92c0 2.4.62 4.74 1.8 6.82L2 31l9.48-1.86a13.8 13.8 0 0 0 4.54.76h.01c7.67 0 13.92-6.25 13.92-13.92 0-3.72-1.45-7.22-4.28-9.65zM16.03 27.5h-.01c-1.44 0-2.85-.39-4.08-1.12l-.29-.17-5.63 1.11 1.12-5.49-.19-.29a11.3 11.3 0 0 1-1.72-6.03c0-6.24 5.08-11.32 11.32-11.32 3.02 0 5.86 1.18 8 3.32a11.26 11.26 0 0 1 3.32 8c0 6.24-5.08 11.32-11.32 11.32z"/>
+    </svg>
+    <small>WhatsApp</small>
   </a>
 
-  <nav>
-    <a href="#inventario">Inventario</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
+  <script>
+    // Año automático
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<main>
-  <h1>Compra tu próximo auto con confianza</h1>
-  <p>
-    Autos usados verificados, precios claros y proceso rápido.
-    Te ayudamos con trade-in y financiamiento.
-  </p>
+    // Sticky animado
+    const topbar = document.getElementById("topbar");
+    const onScroll = () => {
+      if (window.scrollY > 8) topbar.classList.add("scrolled");
+      else topbar.classList.remove("scrolled");
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll();
 
-  <a class="btn" href="#inventario">Ver inventario</a>
+    // ============ CAMBIA AQUÍ TU NÚMERO ============
+    // Formato WhatsApp: código país + número, sin +, sin espacios.
+    // USA: 1 + tu número (ej: 13145551234)
+    const WHATSAPP_NUMBER = "13145551234"; // <-- CAMBIA ESTE NÚMERO
 
-  <section id="inventario">
-    <h2>Inventario destacado</h2>
+    const defaultMsg = encodeURIComponent("Hola! Quiero información sobre sus autos disponibles.");
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${defaultMsg}`;
 
-    <div class="grid">
-      <div class="car">
-        <img src="TOYOTA 2025.jpg" alt="Toyota 2025">
-        <div class="car-body">
-          <h3>Toyota Corolla 2025</h3>
-          <div class="price">$19,500</div>
-          <a class="btn" href="#contacto">Cotizar</a>
-        </div>
-      </div>
-
-      <div class="car">
-        <img src="KIA FORTE 2023.jpg" alt="Kia Forte 2023">
-        <div class="car-body">
-          <h3>Kia Forte 2023</h3>
-          <div class="price">$12,500</div>
-          <a class="btn" href="#contacto">Cotizar</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<a class="wa"
-   href="https://wa.me/13143767641?text=Hola%20quiero%20info%20de%20un%20auto"
-   target="_blank">
-  WhatsApp
-</a>
-
-<script>
-  const header = document.querySelector("header");
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("shrink", window.scrollY > 10);
-  });
-</script>
-
+    // Botones WhatsApp
+    document.getElementById("waFloat").href = waLink;
+    document.getElementById("ctaMain").href = waLink;
+    document.getElementById("cta1").href = waLink;
+    document.getElementById("cta2").href = waLink;
+    document.getElementById("cta3").href = waLink;
+  </script>
 </body>
 </html>
