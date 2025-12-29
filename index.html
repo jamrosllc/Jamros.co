@@ -87,17 +87,25 @@
       min-width: 230px;
     }
 
-    .brandLogo{
-  width:64px;
-  height:64px;
-  border-radius:16px;
+   .brandLogo{
+  width:56px;
+  height:56px;
+  border-radius:14px;
   overflow:hidden;
-  background:#ffffff;
-  padding:6px;
 
-  box-shadow:0 12px 32px rgba(0,0,0,.45);
+  /* SIN fondo */
+  background:transparent;
+  padding:0;
+
+  /* borde sutil para separar del fondo */
+  border:1px solid rgba(255,255,255,.15);
+
+  /* sombra elegante */
+  box-shadow:0 10px 28px rgba(0,0,0,.45);
+
   transition:transform .25s ease, box-shadow .25s ease;
   animation:carMove .9s ease 1;
+
 }
 
 .brandLogo img{
