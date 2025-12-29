@@ -88,6 +88,16 @@
   box-shadow: 0 6px 20px rgba(0,0,0,.25);
 
   flex:0 0 auto;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+
+  will-change: transform;
+
+}
+    
+.brandLogo:hover{
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
 }
 
     .brandLogo img{
