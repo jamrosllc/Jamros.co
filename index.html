@@ -120,6 +120,12 @@ header.shrink{
 
     <a class="btn" href="#inventario">Ver inventario</a>
   </main>
+<script>
+  const header = document.querySelector("header");
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("shrink", window.scrollY > 10);
+  });
+</script>
 
 </body>
 </html>
