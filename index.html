@@ -1,495 +1,93 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Autos usados verificados en Missouri. Compra/venta, trade-in y financiamiento." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jamros LLC | Autos usados en Missouri</title>
+  <meta name="description" content="Autos usados verificados en Missouri. Compra, venta, trade-in y financiamiento.">
 
   <style>
     :root{
       --bg:#0b0f14;
       --card:#101826;
-      --muted:#98a2b3;
       --text:#e6eaf2;
-      --line:rgba(255,255,255,.10);
+      --muted:#98a2b3;
       --brand:#22c55e;
-      --brand2:#38bdf8;
-      --shadow: 0 24px 60px rgba(0,0,0,.55);
-      --radius: 18px;
-      --max: 1120px;
+      --radius:16px;
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
-    /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(11,15,20,.88), rgba(11,15,20,.55));
-      border-bottom:1px solid var(--line);
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
-    .nav .bar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:14px 24px;
-      max-width:var(--max); margin:0 auto;
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 24px;
+      background:#000;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+
+    header img{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+      object-fit:contain;
     }
-    .logo{
-      width:36px; height:36px; border-radius:12px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(56,189,248,.9), transparent 60%),
-        radial-gradient(circle at 70% 60%, rgba(34,197,94,.9), transparent 60%),
-        rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+
+    main{
+      padding:40px 24px;
+      max-width:1100px;
+      margin:auto;
     }
-    .menu{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .menu a{
-      color:rgba(230,234,242,.85);
-      font-weight:600;
-      padding:10px 12px;
-      border-radius:12px;
-      transition: .2s ease;
-    }
-    .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px; padding:12px 14px;
-      border-radius:14px; border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-      transition:.2s ease; font-weight:800;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09)}
-    .btn.primary{
-      border:none;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#061018;
-    }
-    .btn.primary:hover{filter:brightness(1.03)}
-    /* HERO */
-    .hero{
-      position:relative;
-      padding:46px 0 22px;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    @media (max-width: 960px){
-      .heroGrid{grid-template-columns:1fr; }
-      .menu{gap:8px}
-    }
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-      color:rgba(230,234,242,.9);
-      font-weight:700;
-      width:fit-content;
-      animation: floatIn .7s ease both;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:99px; background:var(--brand);
-      box-shadow: 0 0 0 6px rgba(34,197,94,.16);
-    }
+
     h1{
-      margin:14px 0 12px;
-      font-size: clamp(34px, 4.2vw, 56px);
-      line-height: 1.03;
-      letter-spacing: -0.6px;
-      animation: floatIn .8s ease both;
-      animation-delay:.06s;
-    }
-    .sub{
-      color:rgba(230,234,242,.80);
-      font-size: clamp(15px, 1.6vw, 18px);
-      line-height: 1.55;
-      max-width: 62ch;
-      animation: floatIn .85s ease both;
-      animation-delay:.12s;
-    }
-    .ctaRow{
-      margin-top:18px;
-      display:flex; flex-wrap:wrap; gap:12px;
-      animation: floatIn .9s ease both;
-      animation-delay:.18s;
+      font-size:40px;
+      margin-bottom:12px;
     }
 
-    /* RIGHT: moving “actions” */
-    .panel{
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      min-height: 310px;
-    }
-    .panelTop{
-      padding:16px 16px 12px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      display:flex; justify-content:space-between; gap:10px; align-items:center;
-    }
-    .panelTop .title{font-weight:900}
-    .panelTop .pill{
-      font-size:12px; font-weight:900;
-      padding:7px 10px; border-radius:999px;
-      background: rgba(34,197,94,.12);
-      border: 1px solid rgba(34,197,94,.22);
-      color: rgba(230,234,242,.92);
-    }
-    .ticker{
-      position:absolute; inset:56px 0 0 0;
-      padding:14px 16px 18px;
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .row{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px; padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      transform: translateX(0);
-      animation: slide .85s ease both;
-    }
-    .row small{color:var(--muted); font-weight:700}
-    .row b{font-weight:900}
-    .tag{
-      font-size:12px; font-weight:900;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      white-space:nowrap;
-    }
-    .tag.hot{background: rgba(56,189,248,.12); border-color: rgba(56,189,248,.22)}
-    .tag.ok{background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.22)}
-    .tag.warn{background: rgba(245,158,11,.12); border-color: rgba(245,158,11,.22)}
-    .glow{
-      position:absolute; inset:-120px -80px auto auto;
-      width:360px; height:360px; border-radius:50%;
-      background: radial-gradient(circle, rgba(56,189,248,.22), transparent 60%);
-      filter: blur(2px);
-      animation: pulse 3.6s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes pulse{ 50%{transform: scale(1.06)} }
-    @keyframes floatIn{
-      from{opacity:0; transform: translateY(14px)}
-      to{opacity:1; transform: translateY(0)}
-    }
-    @keyframes slide{
-      from{opacity:0; transform: translateX(20px)}
-      to{opacity:1; transform: translateX(0)}
+    p{
+      color:var(--muted);
+      max-width:600px;
+      line-height:1.6;
     }
 
-    /* SECTIONS */
-    .section{padding:26px 0}
-    .grid3{
-      display:grid; grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 24px;
+      background:var(--brand);
+      color:#000;
+      font-weight:700;
+      border-radius:var(--radius);
+      text-decoration:none;
     }
-    @media (max-width: 900px){ .grid3{grid-template-columns:1fr} }
-    .card{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: 0 14px 36px rgba(0,0,0,.35);
-    }
-    .card h3{margin:0 0 8px; font-size:18px}
-    .muted{color:rgba(230,234,242,.74); line-height:1.5}
-    .invGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width: 1000px){ .invGrid{grid-template-columns:1fr} }
-    .car{
-      overflow:hidden;
-      padding:0;
-    }
-    .carImg{
-      height:180px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02)),
-        radial-gradient(700px 280px at 40% 40%, rgba(56,189,248,.20), transparent 55%),
-        radial-gradient(700px 280px at 70% 70%, rgba(34,197,94,.18), transparent 55%),
-        rgba(0,0,0,.22);
-      border-bottom:1px solid rgba(255,255,255,.10);
-      position:relative;
-    }
-    .carImg::after{
-      content:"FOTO";
-      position:absolute; bottom:12px; left:12px;
-      font-size:12px; font-weight:900; letter-spacing:.6px;
-      padding:7px 10px; border-radius:999px;
-      background: rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.14);
-      color:rgba(230,234,242,.85);
-    }
-    .carBody{padding:16px}
-    .carTitle{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
-    .price{font-size:18px; font-weight:1000}
-    .specs{margin:10px 0 12px; color:rgba(230,234,242,.75); font-weight:700}
-    .carBtns{display:flex; gap:10px; flex-wrap:wrap}
-    footer{
-      padding:22px 0 34px;
-      border-top:1px solid rgba(255,255,255,.10);
-      color:rgba(230,234,242,.7);
-    }
-    .kpi{
-      display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;
-    }
-    .kpi .k{
-      padding:10px 12px; border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      font-weight:900;
-    }
-    .k span{display:block; font-size:12px; color:rgba(230,234,242,.7); font-weight:800; margin-top:4px}
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      border-radius: 8px;
-    } 
-    </style>
-</head>
-  <body>
-<header class="topbar">
-  <div class="logo">
-    <img src="logo.png" alt="Jamros LLC">
-    <div>
-      <strong>Jamros LLC</strong><br>
-      <span>Autos usados • Missouri</span>
-    </div>
-  </div>
-</header>
   </style>
 </head>
 
 <body>
-  <div class="nav">
-    <div class="bar">
-      <div class="brand">
-        <div class="logo"></div>
-        <div>
-          <div style="font-size:14px; opacity:.85; font-weight:900;">Jamros LLC</div>
-          <div style="font-size:12px; opacity:.70; font-weight:800;">Autos usados • Missouri</div>
-        </div>
-      </div>
 
-      <div class="menu">
-        <a href="#inventario">Inventario</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#como">Cómo funciona</a>
-        <a href="#contacto">Contacto</a>
-        <a class="btn primary" href="#inventario">Ver autos</a>
-      </div>
+  <header>
+    <img src="logo.png" alt="Jamros LLC">
+    <div>
+      <strong>Jamros LLC</strong><br>
+      <span style="font-size:12px;color:#9ca3af;">Autos usados • Missouri</span>
     </div>
-  </div>
+  </header>
 
-  <main class="wrap">
-    <section class="hero" id="inicio">
-      <div class="heroGrid">
-        <div>
-          <div class="badge"><span class="dot"></span> Inventario real • Trato rápido • papeles listos</div>
-          <h1>Compra tu próximo auto con confianza desde el primer clic.</h1>
-          <p class="sub">
-            Autos usados seleccionados y verificados. Te ayudamos con financiamiento, trade-in y
-            un proceso claro. Sin vueltas, sin estrés.
-          </p>
+  <main>
+    <h1>Compra tu próximo auto con confianza</h1>
+    <p>
+      Autos usados verificados. Te ayudamos con financiamiento, trade-in y un proceso claro.
+      Sin vueltas, sin estrés.
+    </p>
 
-          <div class="ctaRow">
-            <a class="btn primary" href="#inventario">🚗 Ver inventario</a>
-            <a class="btn" href="https://wa.me/13143767641" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
-            <a class="btn" href="#contacto">📞 Llamar / Texto</a>
-          </div>
-
-          <div class="kpi">
-            <div class="k">⚡ Respuesta rápida <span>en minutos</span></div>
-            <div class="k">✅ Verificación <span>títulos / historial</span></div>
-            <div class="k">🤝 Trade-in <span>tomamos tu auto</span></div>
-          </div>
-        </div>
-
-        <div class="panel" aria-label="Acciones en movimiento">
-          <div class="glow"></div>
-          <div class="panelTop">
-            <div class="title">Acciones en vivo</div>
-            <div class="pill">Actualiza • Destaca</div>
-          </div>
-          <div class="ticker" id="ticker">
-            <!-- JS inserta “acciones” aquí -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="servicios">
-      <div class="grid3">
-        <div class="card">
-          <h3>Financiamiento</h3>
-          <div class="muted">Opciones para distintos perfiles. Te decimos lo que sí se puede hacer, claro y directo.</div>
-        </div>
-        <div class="card">
-          <h3>Trade-in</h3>
-          <div class="muted">Trae tu auto y lo tomamos como parte de pago. Evaluación rápida.</div>
-        </div>
-        <div class="card">
-          <h3>Compra/Venta</h3>
-          <div class="muted">Si quieres vender tu vehículo, lo revisamos y te hacemos oferta.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="inventario">
-      <h2 style="margin:0 0 12px; font-size:28px;">Inventario destacado</h2>
-      <p class="muted" style="margin:0 0 16px;">Reemplaza estos autos por los tuyos (modelo, millas, precio y foto).</p>
-
-      <div class="invGrid">
-        <article class="card car">
-          <div class="carImg"></div>
-          <div class="carBody">
-            <div class="carTitle">
-              <div>
-                <div style="font-weight:1000; font-size:18px;">Toyota Corolla 2025 • Clean</div>
-                <div class="specs">20k mi • Automático • Title limpio</div>
-              </div>
-              <div class="price">$19,500</div>
-            </div>
-            <div class="carBtns">
-              <a class="btn primary" href="https://wa.me/13143767641" target="_blank" rel="noopener">Cotizar</a>
-              <a class="btn" href="#contacto">Ver más</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card car">
-          <div class="carImg"></div>
-          <div class="carBody">
-            <div class="carTitle">
-              <div>
-                <div style="font-weight:1000; font-size:18px;">Kia Forte XLS 2023 • Clean</div>
-                <div class="specs">98k mi • Automático • CarFax</div>
-              </div>
-              <div class="price">$12,500</div>
-            </div>
-            <div class="carBtns">
-              <a class="btn primary" href="https://wa.me/13143767641" target="_blank" rel="noopener">Cotizar</a>
-              <a class="btn" href="#contacto">Ver más</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card car">
-          <div class="carImg"></div>
-          <div class="carBody">
-            <div class="carTitle">
-              <div>
-                <div style="font-weight:1000; font-size:18px;">Nissan Sentra 2019 • SE</div>
-                <div class="specs">96k mi • Económico • Garantía opcional</div>
-              </div>
-              <div class="price">$7,900</div>
-            </div>
-            <div class="carBtns">
-              <a class="btn primary" href="https://wa.me/13143767641" target="_blank" rel="noopener">Cotizar</a>
-              <a class="btn" href="#contacto">Ver más</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="como">
-      <div class="card">
-        <h3 style="margin:0 0 10px;">Cómo funciona</h3>
-        <ol class="muted" style="margin:0; padding-left:18px;">
-          <li>Elige un auto del inventario.</li>
-          <li>Te enviamos detalles, historial y opciones de pago.</li>
-          <li>Agendamos visita/prueba y cerramos con los documentos listos .</li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section" id="contacto">
-      <div class="grid3">
-        <div class="card">
-          <h3>Ubicación</h3>
-          <div class="muted">Missouri (St. Louis / 10882 Pear Blossom Ct, St Ann, MO 63074)</div>
-        </div>
-        <div class="card">
-          <h3>Teléfono</h3>
-          <div class="muted">📞 +1 (314) 376-7641</div>
-        </div>
-        <div class="card">
-          <h3>WhatsApp</h3>
-          <div class="muted">
-            <a class="btn primary" href="https://wa.me/13143767641" target="_blank" rel="noopener">Abrir WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="wrap" style="padding-left:0; padding-right:0;">
-      <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-        <div>© <span id="year"></span> Jamros LLC</div>
-        <div style="opacity:.75;">Autos usados • Compra/Venta • Financiamiento</div>
-      </div>
-    </footer>
+    <a class="btn" href="#inventario">Ver inventario</a>
   </main>
 
-  <script>
-    // Año automático
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // “Acciones en movimiento” (ticker)
-    const ticker = document.getElementById("ticker");
-    const actions = [
-      { left:"✅ Verificado", mid:"Toyota Corolla 2025", right:"$19,500", tag:"ok" },
-      { left:"🔥 Oferta", mid:"Kia Forte XLS 2021 (98k mi)", right:"$12,500", tag:"hot" },
-      { left:"⚡ Nuevo", mid:"Sentra 2019 SV", right:"$7,500", tag:"ok" },
-      { left:"📩 Mensaje", mid:"Cliente preguntó por financiamiento", right:"Ahora", tag:"hot" },
-      { left:"🔁 Trade-in", mid:"Evaluación de vehículo", right:"15 min", tag:"warn" }
-    ];
-
-    function renderRows(){
-      ticker.innerHTML = "";
-      actions.slice(0,3).forEach((a, i) => {
-        const el = document.createElement("div");
-        el.className = "row";
-        el.style.animationDelay = (i * 0.08) + "s";
-        el.innerHTML = `
-          <div style="min-width:110px"><small>${a.left}</small></div>
-          <div style="flex:1"><b>${a.mid}</b></div>
-          <div class="tag ${a.tag}">${a.right}</div>
-        `;
-        ticker.appendChild(el);
-      });
-    }
-
-    renderRows();
-    setInterval(() => {
-      actions.push(actions.shift()); // rota
-      renderRows();
-    }, 2400);
-  </script>
 </body>
 </html>
-
