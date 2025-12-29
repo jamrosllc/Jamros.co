@@ -53,15 +53,16 @@
     }
 
     header img{
-  width:64px;
-  height:64px;
-  border-radius:10px;
-  object-fit:contain;
-
-  background: #ffffff;     /* fondo blanco para que se vea */
-  padding: 2px;            /* espacio alrededor del logo */
-  border: 1px solid rgba(0,0,0,.08);
-    }
+  header img{
+  width:64px;        /* tamaño del logo */
+  height:auto;       /* mantiene proporción */
+  max-height:64px;   /* evita que se deforme */
+  
+  background:#fff;
+  padding:8px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
 
     main{
       padding:40px 24px;
