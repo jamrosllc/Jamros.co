@@ -3,66 +3,70 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jamros LLC | 2024 Toyota Corolla LE</title>
-  <meta name="description" content="Jamros LLC en Missouri. 2024 Toyota Corolla LE con fotos reales, diseño premium, atención rápida y contacto directo por WhatsApp." />
+  <title>Jamros LLC | Autos en Missouri</title>
+  <meta name="description" content="Autos verificados en Missouri. Compra/venta, trade-in y financiamiento. Atención rápida por WhatsApp." />
+
   <style>
     :root{
-      --bg:#060b14;
-      --bg-2:#0a1323;
-      --panel:rgba(10,18,32,.78);
-      --panel-2:rgba(8,15,27,.92);
-      --line:rgba(255,255,255,.10);
-      --line-strong:rgba(255,255,255,.18);
-      --text:#f3f7ff;
-      --muted:#9bacca;
-      --gold:#d8c08a;
-      --gold-2:#b8954f;
-      --green:#7de46b;
-      --green-2:#34d4a2;
-      --shadow:0 30px 90px rgba(0,0,0,.45);
-      --max:1200px;
+      --bg:#070a10;
+      --card: rgba(16, 24, 38, .72);
+      --card2: rgba(16, 24, 38, .55);
+      --line: rgba(255,255,255,.10);
+      --text:#e9eef8;
+      --muted:#a7b0c0;
+      --brand:#22c55e;
+      --brand2:#38bdf8;
+      --shadow: 0 22px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1180px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
+      font-family:"Segoe UI", Arial, sans-serif;
       color:var(--text);
-      font-family:Georgia, "Times New Roman", serif;
       background:
-        radial-gradient(900px 700px at 15% 0%, rgba(216,192,138,.12), transparent 55%),
-        radial-gradient(900px 700px at 100% 10%, rgba(52,212,162,.08), transparent 55%),
-        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+        radial-gradient(1000px 700px at 10% 10%, rgba(56,189,248,.16), transparent 60%),
+        radial-gradient(900px 700px at 80% 15%, rgba(34,197,94,.14), transparent 55%),
+        radial-gradient(900px 900px at 60% 95%, rgba(34,197,94,.10), transparent 60%),
+        var(--bg);
       overflow-x:hidden;
     }
 
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
-
-    .page{
-      position:relative;
-      isolation:isolate;
-    }
-
-    .page::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(rgba(255,255,255,.015), rgba(255,255,255,0)),
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,.04), transparent 22%);
-      opacity:.45;
-      z-index:-1;
-    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
 
     .topbar{
       position:sticky;
       top:0;
-      z-index:90;
-      backdrop-filter:blur(18px);
-      background:rgba(6,11,20,.72);
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(7,10,16,.65);
       border-bottom:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+
+    .topbar::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 200px at 10% 30%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(600px 200px at 80% 20%, rgba(255,255,255,.08), transparent 60%);
+      animation:sweep 6s ease-in-out infinite;
+    }
+
+    @keyframes sweep{
+      0%{transform:translateX(120%)}
+      50%{transform:translateX(0)}
+      100%{transform:translateX(-120%)}
+    }
+
+    .topbar > *{
+      position:relative;
+      z-index:2;
     }
 
     .bar{
@@ -72,24 +76,27 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:14px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
-      min-width:220px;
+      gap:12px;
+      min-width: 230px;
     }
 
     .brandLogo{
-      width:58px;
-      height:58px;
-      border-radius:18px;
+      width:56px;
+      height:56px;
+      border-radius:14px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(255,255,255,.04);
-      box-shadow:0 12px 28px rgba(0,0,0,.24);
+      background:transparent;
+      padding:0;
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 10px 28px rgba(0,0,0,.45);
+      transition:transform .25s ease, box-shadow .25s ease;
+      animation:carMove .9s ease 1;
     }
 
     .brandLogo img{
@@ -98,30 +105,29 @@
       object-fit:contain;
     }
 
-    .brandText strong,
-    .menu,
-    .btn,
-    .kicker,
-    .spec,
-    .tag,
-    .service,
-    .contactCard,
-    .galleryCard p{
-      font-family:Segoe UI, Arial, sans-serif;
+    @keyframes carMove{
+      0%{transform:translateX(-12px) scale(.95); opacity:0}
+      60%{transform:translateX(4px) scale(1.05); opacity:1}
+      100%{transform:translateX(0) scale(1)}
+    }
+
+    .brandLogo:hover{
+      transform:scale(1.1);
+      box-shadow:0 18px 44px rgba(0,0,0,.6);
     }
 
     .brandText strong{
       display:block;
-      font-size:15px;
-      letter-spacing:.3px;
+      font-size:14px;
+      letter-spacing:.2px;
+      line-height:1.1;
     }
 
     .brandText span{
       display:block;
-      margin-top:4px;
       font-size:12px;
       color:var(--muted);
-      font-family:Segoe UI, Arial, sans-serif;
+      margin-top:3px;
     }
 
     .menu{
@@ -129,185 +135,174 @@
       align-items:center;
       gap:18px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .menu a{
-      color:rgba(243,247,255,.88);
       font-size:14px;
+      color: rgba(233,238,248,.88);
+      opacity:.9;
+      transition: .2s ease;
     }
+
+    .menu a:hover{opacity:1; transform: translateY(-1px);}
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding:11px 16px;
-      border-radius:999px;
+      border-radius: 999px;
+      padding: 10px 14px;
       border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
-      transition:.22s ease;
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+      transition: .18s ease;
       white-space:nowrap;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-      border-color:rgba(255,255,255,.22);
-    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22);}
 
     .btn.primary{
-      background:linear-gradient(135deg, var(--gold), var(--gold-2));
-      color:#120d04;
-      border-color:rgba(0,0,0,.12);
-      font-weight:800;
-      box-shadow:0 16px 30px rgba(184,149,79,.18);
+      background: linear-gradient(135deg, var(--brand), #2dd4bf);
+      color:#071015;
+      border-color: rgba(0,0,0,.15);
+      font-weight: 800;
     }
 
-    .btn.secondary{
-      background:linear-gradient(135deg, var(--green), var(--green-2));
-      color:#06140e;
-      border-color:rgba(0,0,0,.12);
-      font-weight:800;
-    }
+    .btn.primary:hover{filter: brightness(1.02);}
 
     .wrap{
       max-width:var(--max);
       margin:0 auto;
-      padding:28px 18px 90px;
+      padding: 28px 18px 90px;
     }
 
-    .hero{
+    .heroGrid{
       display:grid;
-      grid-template-columns:1.08fr .92fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:18px;
       align-items:stretch;
+      margin-top: 10px;
     }
 
     .panel{
-      position:relative;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(16,24,38,.70), rgba(16,24,38,.40));
+      border-radius: 26px;
+      box-shadow: var(--shadow);
       overflow:hidden;
-      border-radius:32px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(12,20,35,.92), rgba(8,15,27,.82));
-      box-shadow:var(--shadow);
+      position:relative;
     }
 
     .panel::before{
       content:"";
       position:absolute;
-      inset:0;
-      pointer-events:none;
+      inset:-2px;
       background:
-        radial-gradient(700px 340px at 0% 0%, rgba(216,192,138,.12), transparent 55%),
-        radial-gradient(600px 300px at 100% 0%, rgba(52,212,162,.08), transparent 50%);
+        radial-gradient(700px 300px at 20% 10%, rgba(56,189,248,.18), transparent 60%),
+        radial-gradient(700px 300px at 90% 30%, rgba(34,197,94,.16), transparent 55%);
+      pointer-events:none;
+      opacity:.85;
     }
 
-    .heroCopy{
-      min-height:500px;
-      padding:38px 32px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+    .heroLeft{
+      padding: 30px 26px;
+      min-height: 360px;
     }
 
-    .kicker{
+    .pill{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      width:max-content;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      color:rgba(243,247,255,.92);
       font-size:13px;
-      letter-spacing:.1px;
+      color: rgba(233,238,248,.92);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+      position:relative;
+      z-index:1;
     }
 
-    .kickerDot{
+    .dot{
       width:10px;
       height:10px;
       border-radius:50%;
-      background:var(--gold);
-      box-shadow:0 0 0 6px rgba(216,192,138,.10);
-      animation:pulse 1.7s ease-in-out infinite;
+      background: var(--brand);
+      box-shadow: 0 0 0 6px rgba(34,197,94,.12);
+      animation: pulse 1.4s ease-in-out infinite;
     }
 
     @keyframes pulse{
-      0%,100%{transform:scale(1);opacity:1}
-      50%{transform:scale(1.15);opacity:.72}
+      0%,100%{transform: scale(1); opacity:1;}
+      50%{transform: scale(1.12); opacity:.75;}
     }
 
     h1{
-      margin:18px 0 12px;
-      font-size:clamp(42px, 5.3vw, 68px);
-      line-height:.94;
-      letter-spacing:-1.2px;
-      max-width:10ch;
+      position:relative;
+      z-index:1;
+      margin: 16px 0 10px;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -.8px;
+      font-weight:800;
     }
 
     .sub{
-      max-width:56ch;
-      margin:0;
-      color:var(--muted);
-      line-height:1.74;
-      font-size:16px;
-      font-family:Segoe UI, Arial, sans-serif;
+      position:relative;
+      z-index:1;
+      color: rgba(167,176,192,.95);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 52ch;
+      margin: 10px 0 18px;
     }
 
-    .heroActions{
+    .ctaRow{
+      position:relative;
+      z-index:1;
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:24px;
+      align-items:center;
+      margin-top: 10px;
     }
 
-    .specs{
+    .miniCards{
+      position:relative;
+      z-index:1;
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:12px;
-      margin-top:24px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 16px;
     }
 
-    .spec{
-      padding:15px;
-      border-radius:22px;
+    .mini{
       border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      transform:translateY(16px);
-      opacity:0;
-      animation:floatIn .7s ease forwards;
+      background: rgba(0,0,0,.18);
+      border-radius: 18px;
+      padding: 12px 12px;
+      min-height: 64px;
+      transition: .2s ease;
     }
 
-    .spec:nth-child(2){animation-delay:.08s}
-    .spec:nth-child(3){animation-delay:.16s}
+    .mini:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18);}
+    .mini strong{display:block; font-size:13px;}
+    .mini span{display:block; margin-top:4px; font-size:12px; color: var(--muted);}
 
-    @keyframes floatIn{
-      to{transform:translateY(0);opacity:1}
-    }
-
-    .spec strong{
-      display:block;
-      font-size:15px;
-    }
-
-    .spec span{
-      display:block;
-      margin-top:5px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.55;
-    }
-
-    .heroMediaWrap{
-      min-height:500px;
+    .heroRight{
+      min-height: 360px;
       display:flex;
-      align-items:flex-end;
+      flex-direction:column;
+      justify-content:flex-end;
     }
 
     .heroMedia{
       position:absolute;
       inset:0;
+      z-index:0;
       overflow:hidden;
     }
 
@@ -315,686 +310,761 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      transform:scale(1.04);
-      animation:heroMove 12s ease-in-out infinite alternate;
+      transform: scale(1.06);
+      filter: contrast(1.05) saturate(1.05);
+      animation: kenburns 12s ease-in-out infinite alternate;
     }
 
-    @keyframes heroMove{
-      0%{transform:scale(1.03) translate3d(-1%, -1%, 0)}
-      100%{transform:scale(1.11) translate3d(1%, 1%, 0)}
+    @keyframes kenburns{
+      0%{transform: scale(1.06) translate3d(-1%, -1%, 0);}
+      100%{transform: scale(1.14) translate3d(1%, 1%, 0);}
     }
 
     .heroOverlay{
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(6,11,20,.84), rgba(6,11,20,.18) 58%, rgba(6,11,20,.78)),
-        linear-gradient(180deg, transparent 50%, rgba(6,11,20,.92));
+        linear-gradient(90deg, rgba(7,10,16,.92), rgba(7,10,16,.55) 60%, rgba(7,10,16,.72)),
+        linear-gradient(180deg, transparent 55%, rgba(7,10,16,.85));
+      z-index:1;
+      pointer-events:none;
     }
 
-    .heroInfo{
+    .heroRightFooter{
       position:relative;
       z-index:2;
-      margin:18px;
-      width:calc(100% - 36px);
-      padding:18px;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(8,14,24,.44);
-      backdrop-filter:blur(14px);
+      margin: 18px;
+      padding: 14px 14px;
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      gap:14px;
-      align-items:flex-end;
-    }
-
-    .heroInfo strong{
-      display:block;
-      font-size:20px;
-      line-height:1.08;
-      font-family:Segoe UI, Arial, sans-serif;
-    }
-
-    .heroInfo span{
-      display:block;
-      margin-top:5px;
-      color:var(--muted);
-      font-size:12px;
-      font-family:Segoe UI, Arial, sans-serif;
+      gap: 12px;
     }
 
     .chip{
       display:inline-flex;
       align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
       border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      font-size:12px;
+      background: rgba(255,255,255,.06);
+      color: rgba(233,238,248,.92);
+      font-size: 13px;
       white-space:nowrap;
-      font-family:Segoe UI, Arial, sans-serif;
     }
 
     .section{
-      margin-top:38px;
+      margin-top: 26px;
     }
 
-    .sectionHeader{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:16px;
-      margin-bottom:18px;
+    .section h2{
+      font-size: 26px;
+      margin: 0 0 8px;
     }
 
-    .sectionHeader h2{
-      margin:0;
-      font-size:32px;
+    .section p.lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 70ch;
+      line-height: 1.65;
     }
 
-    .lead{
-      margin:7px 0 0;
-      max-width:70ch;
-      color:var(--muted);
-      line-height:1.72;
-      font-size:15px;
-      font-family:Segoe UI, Arial, sans-serif;
-    }
-
-    .showcase{
+    .grid{
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:18px;
+      grid-template-columns: 1.05fr 1fr 1fr;
+      gap: 14px;
     }
 
-    .mainCard{
+    .car{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
+      background: rgba(16,24,38,.55);
       overflow:hidden;
-      border-radius:30px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(12,20,35,.92), rgba(8,15,27,.82));
-      box-shadow:var(--shadow);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      transform: translateY(6px);
+      opacity:0;
+      animation: rise .6s ease forwards;
     }
 
-    .mainPhoto{
+    .car:nth-child(2){animation-delay:.08s}
+    .car:nth-child(3){animation-delay:.16s}
+    .car:nth-child(4){animation-delay:.24s}
+    .car:nth-child(5){animation-delay:.32s}
+    .car:nth-child(6){animation-delay:.40s}
+
+    @keyframes rise{to{transform:translateY(0); opacity:1}}
+
+    .thumb{
       position:relative;
-      height:410px;
+      height: 240px;
       overflow:hidden;
+      background: rgba(0,0,0,.25);
     }
 
-    .mainPhoto img{
+    .thumb img{
       width:100%;
       height:100%;
       object-fit:cover;
-      transition:transform .45s ease;
+      transform: scale(1.02);
+      transition: .35s ease;
+      object-position:center center;
     }
 
-    .mainCard:hover .mainPhoto img{
-      transform:scale(1.05);
+    .car:nth-child(2) .thumb img{
+      object-position:center 38%;
     }
 
-    .mainBadge{
+    .car:nth-child(3) .thumb img{
+      object-position:center 35%;
+    }
+
+    .car:hover .thumb img{
+      transform: scale(1.08);
+    }
+
+    .badge{
       position:absolute;
-      top:16px;
-      left:16px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.42);
+      top:12px;
+      left:12px;
+      z-index:2;
+      padding: 8px 10px;
+      border-radius: 999px;
       font-size:12px;
-      font-family:Segoe UI, Arial, sans-serif;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    .mainBody{
-      padding:20px;
+    .carBody{
+      padding: 14px 14px 16px;
     }
 
-    .mainTop{
+    .row{
       display:flex;
-      justify-content:space-between;
-      gap:12px;
       align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
-    .mainTop h3{
+    .car h3{
       margin:0;
-      font-size:28px;
-      line-height:1.02;
+      font-size: 17px;
+      letter-spacing: -.2px;
+      font-weight:700;
     }
 
     .price{
+      font-weight: 900;
+      color: rgba(233,238,248,.95);
+      font-size: 18px;
       white-space:nowrap;
-      font-size:26px;
-      font-weight:900;
-      font-family:Segoe UI, Arial, sans-serif;
     }
 
     .meta{
       display:flex;
       flex-wrap:wrap;
-      gap:9px;
-      margin:16px 0 0;
+      gap:8px;
+      margin-bottom: 12px;
     }
 
     .tag{
-      padding:8px 11px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:rgba(243,247,255,.92);
       font-size:12px;
+      color: rgba(233,238,248,.86);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
     }
 
-    .mainText{
-      margin:16px 0 0;
-      color:var(--muted);
-      line-height:1.72;
-      font-size:14px;
-      font-family:Segoe UI, Arial, sans-serif;
-    }
-
-    .mainActions{
+    .carActions{
       display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-
-    .sideList{
-      display:grid;
-      gap:14px;
-    }
-
-    .sideCar{
-      display:grid;
-      grid-template-columns:170px 1fr;
-      overflow:hidden;
-      border-radius:24px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(12,20,35,.88), rgba(8,15,27,.76));
-      box-shadow:0 18px 40px rgba(0,0,0,.25);
-      transition:transform .22s ease;
-    }
-
-    .sideCar:hover{
-      transform:translateY(-2px);
-    }
-
-    .sideCar img{
-      width:100%;
-      height:100%;
-      min-height:182px;
-      object-fit:cover;
-    }
-
-    .sideBody{
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
       gap:10px;
     }
 
-    .sideBody h3{
-      margin:0;
-      font-size:18px;
-      line-height:1.08;
+    .btnSmall{
+      flex:1;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 800;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      text-align:center;
+      transition:.18s ease;
     }
 
-    .sideBody p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:13px;
-      font-family:Segoe UI, Arial, sans-serif;
+    .btnSmall:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.20);}
+
+    .btnSmall.green{
+      background: linear-gradient(135deg, var(--brand), #2dd4bf);
+      color:#071015;
+      border-color: rgba(0,0,0,.12);
     }
 
-    .gallery{
+    .galleryGrid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
     }
 
-    .galleryCard{
+    .galleryItem{
+      position:relative;
+      border-radius:22px;
       overflow:hidden;
-      border-radius:26px;
-      border:1px solid var(--line);
-      background:var(--panel-2);
-      box-shadow:0 18px 42px rgba(0,0,0,.24);
-      transform:translateY(18px);
-      opacity:0;
-      animation:cardIn .72s ease forwards;
+      min-height:220px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(16,24,38,.45);
+      box-shadow: 0 18px 40px rgba(0,0,0,.30);
     }
 
-    .galleryCard:nth-child(2){animation-delay:.05s}
-    .galleryCard:nth-child(3){animation-delay:.10s}
-    .galleryCard:nth-child(4){animation-delay:.15s}
-    .galleryCard:nth-child(5){animation-delay:.20s}
-    .galleryCard:nth-child(6){animation-delay:.25s}
-    .galleryCard:nth-child(7){animation-delay:.30s}
-    .galleryCard:nth-child(8){animation-delay:.35s}
-    .galleryCard:nth-child(9){animation-delay:.40s}
-    .galleryCard:nth-child(10){animation-delay:.45s}
-    .galleryCard:nth-child(11){animation-delay:.50s}
-
-    @keyframes cardIn{
-      to{transform:translateY(0);opacity:1}
-    }
-
-    .galleryFrame{
-      overflow:hidden;
-    }
-
-    .galleryCard img{
+    .galleryItem img{
       width:100%;
-      height:260px;
+      height:100%;
       object-fit:cover;
-      background:#0b1525;
-      transition:transform .42s ease, filter .42s ease;
+      transition:transform .35s ease;
     }
 
-    .galleryCard:hover img{
-      transform:scale(1.08);
-      filter:saturate(1.05) contrast(1.03);
+    .galleryItem:hover img{
+      transform:scale(1.07);
     }
 
-    .galleryCard p{
-      margin:0;
-      padding:14px 15px 16px;
+    .galleryCaption{
+      position:absolute;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      z-index:2;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.36);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .galleryCaption strong{
+      display:block;
+      font-size:14px;
+    }
+
+    .galleryCaption span{
+      display:block;
+      margin-top:4px;
       color:var(--muted);
-      line-height:1.55;
       font-size:12px;
     }
 
-    .galleryCard strong{
-      display:block;
-      margin-bottom:5px;
-      color:var(--text);
-      font-size:15px;
-    }
-
-    .services{
+    .serviceGrid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
     }
 
-    .service,
-    .contactCard{
-      padding:18px;
-      border-radius:24px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(12,20,35,.88), rgba(8,15,27,.78));
-      box-shadow:0 18px 40px rgba(0,0,0,.22);
+    .svc{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(16,24,38,.45);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.30);
     }
 
-    .service strong{
-      display:block;
-      margin-bottom:8px;
-      font-size:16px;
-    }
-
-    .service span,
-    .contactCard p{
-      color:var(--muted);
-      line-height:1.68;
-      font-size:14px;
-    }
+    .svc strong{display:block; font-size:15px; margin-bottom: 6px;}
+    .svc span{display:block; color: var(--muted); line-height:1.6; font-size: 13px;}
 
     .contact{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:16px;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items:stretch;
     }
 
-    .contactCard h3{
-      margin:0 0 10px;
-      font-size:22px;
+    .box{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(16,24,38,.45);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.30);
     }
 
-    .contactActions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
+    .box h3{margin:0 0 8px}
+    .box p{margin:0; color:var(--muted); line-height:1.65}
+    .contactBtns{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
 
     .waFloat{
       position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:95;
-      display:inline-flex;
+      right: 18px;
+      bottom: 18px;
+      z-index: 80;
+      display:flex;
       align-items:center;
       gap:10px;
-      padding:12px 15px;
-      border-radius:999px;
-      background:linear-gradient(135deg, #25D366, #22c55e);
-      color:#04140b;
-      font-weight:900;
-      border:1px solid rgba(0,0,0,.10);
-      box-shadow:0 18px 36px rgba(0,0,0,.30);
-      font-family:Segoe UI, Arial, sans-serif;
-      animation:floatBtn 2.2s ease-in-out infinite;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25D366, #22c55e);
+      color:#04150b;
+      font-weight: 900;
+      box-shadow: 0 22px 50px rgba(0,0,0,.50);
+      border:1px solid rgba(0,0,0,.12);
+      transform: translateY(18px);
+      opacity:0;
+      animation: pop .55s ease .25s forwards;
     }
 
-    @keyframes floatBtn{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-4px)}
-    }
+    @keyframes pop{to{transform:translateY(0); opacity:1}}
 
     .waIcon{
       width:18px;
       height:18px;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
     }
 
-    @media (max-width:980px){
-      .hero,
-      .showcase,
-      .contact,
-      .services,
-      .gallery,
-      .specs{
-        grid-template-columns:1fr;
-      }
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr}
+      .heroRight{min-height: 280px}
+      .grid{grid-template-columns: 1fr}
+      .galleryGrid{grid-template-columns: 1fr}
+      .serviceGrid{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+      .miniCards{grid-template-columns: 1fr}
+      .menu{display:none}
+      .brand{min-width:auto}
+    }
 
-      .sideCar{
-        grid-template-columns:1fr;
-      }
-
-      .menu{
-        display:none;
-      }
-
-      .heroCopy,
-      .heroMediaWrap{
-        min-height:auto;
-      }
-
-      .mainPhoto{
-        height:300px;
-      }
+    @media (min-width: 981px) and (max-width: 1180px){
+      .galleryGrid{grid-template-columns: repeat(2, minmax(0,1fr))}
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <header class="topbar">
-      <div class="bar">
-        <a class="brand" href="#top" aria-label="Ir al inicio">
-          <div class="brandLogo">
-            <img src="logo-anim.png" alt="Jamros LLC">
-          </div>
-          <div class="brandText">
-            <strong>Jamros LLC</strong>
-            <span>Autos usados • Missouri</span>
-          </div>
-        </a>
+  <header class="topbar">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <div class="brandLogo">
+          <img src="logo-anim.png" alt="Jamros LLC">
+        </div>
+        <div class="brandText">
+          <strong>Jamros LLC</strong>
+          <span>Autos usados • Missouri</span>
+        </div>
+      </a>
 
-        <nav class="menu" aria-label="Navegación">
-          <a href="#inventario">Inventario</a>
-          <a href="#galeria">Galería</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#contacto">Contacto</a>
-          <a class="btn primary" href="#contacto">Cotizar ahora</a>
-        </nav>
+      <nav class="menu" aria-label="Navegación">
+        <a href="#inventario">Inventario</a>
+        <a href="#galeria">Galería</a>
+        <a href="#kia-fotos">Kia</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn primary" href="#inventario">Ver autos</a>
+      </nav>
 
-        <a class="btn secondary" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20informaci%C3%B3n%20del%202024%20Toyota%20Corolla%20LE" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn" href="#contacto">Contactar</a>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="heroGrid">
+      <div class="panel heroLeft">
+        <div class="pill"><span class="dot"></span> Inventario real • Trato rápido • papeles listos</div>
+
+        <h1>Compra tu próximo auto con confianza desde el primer clic.</h1>
+        <p class="sub">
+          Autos verificados, proceso claro y atención rápida. Te ayudamos con financiamiento,
+          trade-in y todo el papeleo para que salgas manejando.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#inventario">Ver inventario</a>
+          <a class="btn" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20auto" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+13143767641">Llamar</a>
+        </div>
+
+        <div class="miniCards">
+          <div class="mini">
+            <strong>Respuesta rápida</strong>
+            <span>Te contestamos en minutos.</span>
+          </div>
+          <div class="mini">
+            <strong>Verificación</strong>
+            <span>Títulos / historial claro.</span>
+          </div>
+          <div class="mini">
+            <strong>Trade-in</strong>
+            <span>Tomamos tu auto como parte.</span>
+          </div>
+        </div>
       </div>
-    </header>
 
-    <main id="top" class="wrap">
-      <section class="hero">
-        <div class="panel heroCopy">
-          <div class="kicker"><span class="kickerDot"></span> Presentación premium • Fotos reales • Atención directa</div>
-          <h1>Un Corolla con presencia de concesionario premium.</h1>
-          <p class="sub">
-            Esta versión está diseñada para que el 2024 Toyota Corolla LE se vea más exclusivo, más serio y más fácil de vender.
-            La estructura resalta el carro, ordena las fotos y lleva al cliente directo al contacto.
+      <div class="panel heroRight">
+        <div class="heroMedia">
+          <img src="COROLLA1.jpg" alt="Toyota Corolla destacado Jamros LLC">
+        </div>
+        <div class="heroOverlay"></div>
+        <div class="heroRightFooter">
+          <div>
+            <div style="font-weight:900; font-size:14px;">Respuestas rápidas</div>
+            <div style="color:var(--muted); font-size:12px; margin-top:2px;">Cotización y opciones en minutos</div>
+          </div>
+          <div class="chip">Missouri</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inventario" class="section">
+      <h2>Inventario destacado</h2>
+      <p class="lead">El mejor vehículo al mejor precio posible.</p>
+
+      <div class="grid">
+        <article class="car">
+          <div class="thumb">
+            <span class="badge">Verificado</span>
+            <img src="COROLLA1.jpg" alt="Toyota Corolla 2025 vista 1">
+          </div>
+          <div class="carBody">
+            <div class="row">
+              <h3>2024 Toyota Corolla LE</h3>
+              <div class="price">$18,500</div>
+            </div>
+            <div class="meta">
+              <span class="tag">20k mi</span>
+              <span class="tag">Automático</span>
+              <span class="tag">Gasolina</span>
+            </div>
+            <div class="carActions">
+              <a class="btnSmall" href="#contacto">Detalles</a>
+              <a class="btnSmall green" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20el%202024%20Toyota%20Corolla%20LE" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="car">
+          <div class="thumb">
+            <span class="badge">Oferta</span>
+            <img src="Kia 1.jpg" alt="Kia Forte 2023">
+          </div>
+          <div class="carBody">
+            <div class="row">
+              <h3>2023 Kia Forte LXS</h3>
+              <div class="price">$12,500</div>
+            </div>
+            <div class="meta">
+              <span class="tag">98k mi</span>
+              <span class="tag">Automático</span>
+              <span class="tag">Gasolina</span>
+            </div>
+            <div class="carActions">
+              <a class="btnSmall" href="#contacto">Detalles</a>
+              <a class="btnSmall green" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20el%20Kia%20Forte%202023%20LXS" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="car">
+          <div class="thumb">
+            <span class="badge">Popular</span>
+            <img src="NISSAN-SENTRA-2019.jpg" alt="Nissan Sentra 2019">
+          </div>
+          <div class="carBody">
+            <div class="row">
+              <h3>2019 Nissan Sentra SV</h3>
+              <div class="price">$7,900</div>
+            </div>
+            <div class="meta">
+              <span class="tag">95k mi</span>
+              <span class="tag">Automático</span>
+              <span class="tag">Gasolina</span>
+            </div>
+            <div class="carActions">
+              <a class="btnSmall" href="#contacto">Detalles</a>
+              <a class="btnSmall green" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20el%20Nissan%20Sentra%202019%20SV" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="car">
+          <div class="thumb">
+            <span class="badge">SUV</span>
+            <img src="HONDA-CRV-2022.jpg" alt="Honda CR-V 2022">
+          </div>
+          <div class="carBody">
+            <div class="row">
+              <h3>2022 Honda CR-V EX</h3>
+              <div class="price">$19,900</div>
+            </div>
+            <div class="meta">
+              <span class="tag">54k mi</span>
+              <span class="tag">Automático</span>
+              <span class="tag">Gasolina</span>
+            </div>
+            <div class="carActions">
+              <a class="btnSmall" href="#contacto">Detalles</a>
+              <a class="btnSmall green" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20la%20Honda%20CR-V%20EX%202022" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="car">
+          <div class="thumb">
+            <span class="badge">Sedán</span>
+            <img src="HYUNDAI-ELANTRA-2021.jpg" alt="Hyundai Elantra 2021">
+          </div>
+          <div class="carBody">
+            <div class="row">
+              <h3>2021 Hyundai Elantra SEL</h3>
+              <div class="price">$14,800</div>
+            </div>
+            <div class="meta">
+              <span class="tag">63k mi</span>
+              <span class="tag">Automático</span>
+              <span class="tag">Gasolina</span>
+            </div>
+            <div class="carActions">
+              <a class="btnSmall" href="#contacto">Detalles</a>
+              <a class="btnSmall green" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20el%20Hyundai%20Elantra%20SEL%202021" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="car">
+          <div class="thumb">
+            <span class="badge">Destacado</span>
+            <img src="CHEVROLET-EQUINOX-2020.jpg" alt="Chevrolet Equinox 2020">
+          </div>
+          <div class="carBody">
+            <div class="row">
+              <h3>2020 Chevrolet Equinox LT</h3>
+              <div class="price">$15,400</div>
+            </div>
+            <div class="meta">
+              <span class="tag">71k mi</span>
+              <span class="tag">Automático</span>
+              <span class="tag">Gasolina</span>
+            </div>
+            <div class="carActions">
+              <a class="btnSmall" href="#contacto">Detalles</a>
+              <a class="btnSmall green" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20la%20Chevrolet%20Equinox%20LT%202020" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="galeria" class="section">
+      <h2>Más fotos del Toyota Corolla 2024</h2>
+      <p class="lead">Mostramos más ángulos reales del Corolla para que el cliente vea mejor el carro antes de escribir.</p>
+
+      <div class="galleryGrid">
+        <article class="galleryItem">
+          <img src="COROLLA 2.jpg" alt="Toyota Corolla vista 2">
+          <div class="galleryCaption">
+            <strong>Corolla vista lateral</strong>
+            <span>Segunda foto para mostrar más detalle del vehículo.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 3.jpg" alt="Toyota Corolla vista 3">
+          <div class="galleryCaption">
+            <strong>Corolla vista adicional</strong>
+            <span>Tercera imagen para reforzar la presentación del auto.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 4.jpg" alt="Toyota Corolla vista 4">
+          <div class="galleryCaption">
+            <strong>Corolla frente</strong>
+            <span>Otra toma del vehículo para mostrar su diseño frontal.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 5.jpg" alt="Toyota Corolla vista 5">
+          <div class="galleryCaption">
+            <strong>Corolla detalle exterior</strong>
+            <span>Más fotos para reforzar la confianza del cliente.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 6.jpg" alt="Toyota Corolla vista 6">
+          <div class="galleryCaption">
+            <strong>Corolla ángulo extra</strong>
+            <span>Vista adicional del vehículo en inventario.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 7.jpg" alt="Toyota Corolla vista 7">
+          <div class="galleryCaption">
+            <strong>Corolla más detalles</strong>
+            <span>Otra imagen real del mismo auto.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 8.jpg" alt="Toyota Corolla vista 8">
+          <div class="galleryCaption">
+            <strong>Corolla vista completa</strong>
+            <span>Más presencia visual en la página del inventario.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 11.jpg" alt="Toyota Corolla vista 11">
+          <div class="galleryCaption">
+            <strong>Corolla toma adicional</strong>
+            <span>Imagen extra para enseñar mejor el carro.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 12.jpg" alt="Toyota Corolla vista 12">
+          <div class="galleryCaption">
+            <strong>Corolla detalle final</strong>
+            <span>Otra foto lista para cerrar mejor la presentación.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="COROLLA 13.jpg" alt="Toyota Corolla vista 13">
+          <div class="galleryCaption">
+            <strong>Corolla extra premium</strong>
+            <span>Foto adicional para una galería más completa.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="kia-fotos" class="section">
+      <h2>Fotos del Kia Forte 2023</h2>
+      <p class="lead">Sección completa con varias fotos reales del Kia para que el cliente pueda verlo mejor desde distintos ángulos.</p>
+
+      <div class="galleryGrid">
+        <article class="galleryItem">
+          <img src="Kia 1.jpg" alt="Kia Forte 2023 vista 1">
+          <div class="galleryCaption">
+            <strong>Kia vista principal</strong>
+            <span>Primera foto real del Kia Forte 2023.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 2.jpg" alt="Kia Forte 2023 vista 2">
+          <div class="galleryCaption">
+            <strong>Kia vista adicional</strong>
+            <span>Segunda imagen para mostrar mejor el vehículo.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 3.jpg" alt="Kia Forte 2023 vista 3">
+          <div class="galleryCaption">
+            <strong>Kia vista 3</strong>
+            <span>Otra toma real del Kia Forte 2023.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 4.jpg" alt="Kia Forte 2023 vista 4">
+          <div class="galleryCaption">
+            <strong>Kia vista 4</strong>
+            <span>Más detalle para reforzar la presentación.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 5.jpg" alt="Kia Forte 2023 vista 5">
+          <div class="galleryCaption">
+            <strong>Kia vista 5</strong>
+            <span>Otra imagen útil para mostrar el exterior.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 6.jpg" alt="Kia Forte 2023 vista 6">
+          <div class="galleryCaption">
+            <strong>Kia vista 6</strong>
+            <span>Más material visual del mismo vehículo.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 7.jpg" alt="Kia Forte 2023 vista 7">
+          <div class="galleryCaption">
+            <strong>Kia vista 7</strong>
+            <span>Otra toma para una galería más sólida.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 8.jpg" alt="Kia Forte 2023 vista 8">
+          <div class="galleryCaption">
+            <strong>Kia vista 8</strong>
+            <span>Se suma para que el Kia tenga más protagonismo.</span>
+          </div>
+        </article>
+        <article class="galleryItem">
+          <img src="kia 9.jpg" alt="Kia Forte 2023 vista 9">
+          <div class="galleryCaption">
+            <strong>Kia vista 9</strong>
+            <span>Última imagen para cerrar la galería del Kia.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="servicios" class="section">
+      <h2>Servicios</h2>
+      <p class="lead">Lo que la gente quiere ver rápido: financiamiento, trade-in y compra/venta.</p>
+
+      <div class="serviceGrid">
+        <div class="svc">
+          <strong>Financiamiento</strong>
+          <span>Opciones según tu perfil. Te decimos lo que sí se puede hacer, claro y directo.</span>
+        </div>
+        <div class="svc">
+          <strong>Trade-in</strong>
+          <span>Trae tu auto y lo tomamos como parte de pago. Evaluación rápida.</span>
+        </div>
+        <div class="svc">
+          <strong>Compra / Venta</strong>
+          <span>Si quieres vender tu vehículo, lo revisamos y te hacemos oferta.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2>Contacto</h2>
+      <p class="lead">Escríbenos por WhatsApp o llámanos. Respuesta rápida.</p>
+
+      <div class="contact">
+        <div class="box">
+          <h3>Jamros LLC</h3>
+          <p>
+            Missouri<br>
+            <a href="tel:+13143767641" style="text-decoration:underline;">(314) 376-7641</a><br>
+            WhatsApp: <a href="https://wa.me/13143767641" target="_blank" rel="noopener" style="text-decoration:underline;">abrir chat</a>
           </p>
 
-          <div class="heroActions">
-            <a class="btn primary" href="#galeria">Ver galería</a>
-            <a class="btn" href="tel:+13143767641">Llamar</a>
-            <a class="btn" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20cotizar%20el%202024%20Toyota%20Corolla%20LE" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
-          </div>
-
-          <div class="specs">
-            <div class="spec">
-              <strong>2024 Toyota Corolla LE</strong>
-              <span>Modelo claro y protagonista absoluto de la página.</span>
-            </div>
-            <div class="spec">
-              <strong>20k millas</strong>
-              <span>Dato rápido para compradores que buscan unidades recientes.</span>
-            </div>
-            <div class="spec">
-              <strong>$18,500</strong>
-              <span>Precio visible para filtrar interés real desde el inicio.</span>
-            </div>
+          <div class="contactBtns">
+            <a class="btn primary" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20cotizar%20un%20auto" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+            <a class="btn" href="tel:+13143767641">Llamar ahora</a>
           </div>
         </div>
 
-        <div class="panel heroMediaWrap">
-          <div class="heroMedia">
-            <img src="COROLLA1.jpg" alt="2024 Toyota Corolla LE principal">
-          </div>
-          <div class="heroOverlay"></div>
-          <div class="heroInfo">
-            <div>
-              <strong>2024 Toyota Corolla LE</strong>
-              <span>Diseño limpio, perfil elegante y presentación lista para vender</span>
-            </div>
-            <div class="chip">Missouri</div>
-          </div>
+        <div class="box">
+          <h3>Horario</h3>
+          <p>
+            Lun-Sáb: 9:00 AM - 6:00 PM<br>
+            Dom: Con cita
+          </p>
+          <p style="margin-top:10px;">
+            Tip: si me mandas “modelo + presupuesto”, te digo opciones rápido.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section id="inventario" class="section">
-        <div class="sectionHeader">
-          <div>
-            <h2>Inventario destacado</h2>
-            <p class="lead">La página gira alrededor del Corolla y mantiene el resto del inventario como apoyo elegante, no como distracción.</p>
-          </div>
-        </div>
-
-        <div class="showcase">
-          <article class="mainCard">
-            <div class="mainPhoto">
-              <span class="mainBadge">Unidad destacada</span>
-              <img src="COROLLA1.jpg" alt="2024 Toyota Corolla LE">
-            </div>
-            <div class="mainBody">
-              <div class="mainTop">
-                <h3>2024 Toyota Corolla LE</h3>
-                <div class="price">$18,500</div>
-              </div>
-
-              <div class="meta">
-                <span class="tag">20k mi</span>
-                <span class="tag">Automático</span>
-                <span class="tag">Gasolina</span>
-                <span class="tag">Sedán</span>
-              </div>
-
-              <p class="mainText">
-                Un Corolla confiable, moderno y visualmente fuerte. La presentación premium ayuda a que esta unidad destaque mejor,
-                inspire confianza y convierta visitas en mensajes de WhatsApp.
-              </p>
-
-              <div class="mainActions">
-                <a class="btn primary" href="#galeria">Ver todas las fotos</a>
-                <a class="btn secondary" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20me%20interesa%20el%202024%20Toyota%20Corolla%20LE" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
-              </div>
-            </div>
-          </article>
-
-          <div class="sideList">
-            <article class="sideCar">
-              <img src="KIA-FORTE-2023.jpg" alt="2023 Kia Forte LXS">
-              <div class="sideBody">
-                <div>
-                  <h3>2023 Kia Forte LXS</h3>
-                  <p>Una opción funcional y económica para clientes que buscan un sedán accesible.</p>
-                </div>
-                <div class="meta">
-                  <span class="tag">98k mi</span>
-                  <span class="tag">$12,500</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="sideCar">
-              <img src="NISSAN-SENTRA-2019.jpg" alt="2019 Nissan Sentra SV">
-              <div class="sideBody">
-                <div>
-                  <h3>2019 Nissan Sentra SV</h3>
-                  <p>Alternativa popular para quien quiere bajar presupuesto sin salir del segmento sedán.</p>
-                </div>
-                <div class="meta">
-                  <span class="tag">95k mi</span>
-                  <span class="tag">$7,900</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="galeria" class="section">
-        <div class="sectionHeader">
-          <div>
-            <h2>Galería premium del Corolla</h2>
-            <p class="lead">Más impacto visual, tarjetas más limpias y un estilo que hace que las fotos parezcan de catálogo profesional.</p>
-          </div>
-        </div>
-
-        <div class="gallery">
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA1.jpg" alt="Toyota Corolla foto principal"></div>
-            <p><strong>Vista principal</strong>La imagen de apertura del vehículo, con más presencia y mejor jerarquía visual.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 2.jpg" alt="Toyota Corolla perfil lateral"></div>
-            <p><strong>Perfil lateral</strong>Una toma limpia para mostrar la línea del sedán de forma elegante.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 3.jpg" alt="Toyota Corolla ángulo adicional"></div>
-            <p><strong>Ángulo adicional</strong>Sirve para reforzar que el inventario es real y está bien presentado.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 4.jpg" alt="Toyota Corolla frontal"></div>
-            <p><strong>Frontal</strong>Un encuadre ideal para destacar el diseño delantero del auto.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 5.jpg" alt="Toyota Corolla exterior"></div>
-            <p><strong>Exterior</strong>Otra vista útil para vender mejor el estado general del vehículo.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 6.jpg" alt="Toyota Corolla detalle lateral"></div>
-            <p><strong>Detalle lateral</strong>La animación suave hace que la galería se sienta más viva y elegante.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 7.jpg" alt="Toyota Corolla vista completa"></div>
-            <p><strong>Vista completa</strong>Una foto que ayuda a sostener la atención del cliente por más tiempo.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 8.jpg" alt="Toyota Corolla detalle adicional"></div>
-            <p><strong>Detalle adicional</strong>Más contenido visual sin que la página se vea cargada.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 11.jpg" alt="Toyota Corolla foto extra uno"></div>
-            <p><strong>Foto extra</strong>Apoya una percepción más seria y más profesional del inventario.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 12.jpg" alt="Toyota Corolla foto extra dos"></div>
-            <p><strong>Detalle final</strong>Otra toma para sostener la confianza antes de escribir.</p>
-          </article>
-
-          <article class="galleryCard">
-            <div class="galleryFrame"><img src="COROLLA 13.jpg" alt="Toyota Corolla cierre de galería"></div>
-            <p><strong>Cierre de galería</strong>Una última imagen para cerrar la presentación con una sensación más premium.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="servicios" class="section">
-        <div class="sectionHeader">
-          <div>
-            <h2>Servicios</h2>
-            <p class="lead">La parte comercial sigue presente, pero con una estética más refinada y alineada con el look premium.</p>
-          </div>
-        </div>
-
-        <div class="services">
-          <div class="service">
-            <strong>Financiamiento</strong>
-            <span>Opciones según tu perfil con explicación clara y rápida.</span>
-          </div>
-          <div class="service">
-            <strong>Trade-in</strong>
-            <span>Recibimos tu vehículo como parte de pago con evaluación directa.</span>
-          </div>
-          <div class="service">
-            <strong>Compra / Venta</strong>
-            <span>Revisamos tu unidad y te presentamos una oferta si deseas vender.</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto" class="section">
-        <div class="sectionHeader">
-          <div>
-            <h2>Contacto</h2>
-            <p class="lead">Un cierre más fuerte y más elegante para facilitar la conversación y la conversión.</p>
-          </div>
-        </div>
-
-        <div class="contact">
-          <div class="contactCard">
-            <h3>Jamros LLC</h3>
-            <p>
-              Missouri<br>
-              <a href="tel:+13143767641" style="text-decoration:underline;">(314) 376-7641</a><br>
-              WhatsApp:
-              <a href="https://wa.me/13143767641" target="_blank" rel="noopener" style="text-decoration:underline;">abrir chat</a>
-            </p>
-
-            <div class="contactActions">
-              <a class="btn primary" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20cotizar%20el%202024%20Toyota%20Corolla%20LE" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
-              <a class="btn" href="tel:+13143767641">Llamar ahora</a>
-            </div>
-          </div>
-
-          <div class="contactCard">
-            <h3>Horario</h3>
-            <p>
-              Lun-Sáb: 9:00 AM - 6:00 PM<br>
-              Dom: Con cita
-            </p>
-            <p style="margin-top:12px;">
-              Tip: si envías “Corolla 2024 + presupuesto”, la respuesta es más rápida.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <a class="waFloat" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20informaci%C3%B3n%20del%202024%20Toyota%20Corolla%20LE" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-      <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
-        <path fill="#0a1f12" d="M19.11 17.16c-.27-.14-1.58-.78-1.83-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.97 2.64 1.1 2.82c.14.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.58.64.2 1.22.17 1.68.1.51-.08 1.58-.65 1.8-1.28.22-.63.22-1.17.15-1.28-.07-.11-.25-.18-.52-.32z"/>
-        <path fill="#0a1f12" d="M26.67 5.33A13.23 13.23 0 0016.01 0C8.84 0 3.01 5.83 3.01 13c0 2.29.6 4.53 1.74 6.5L3 32l12.71-1.71A12.96 12.96 0 0016 26c7.17 0 13-5.83 13-13 0-3.48-1.36-6.75-3.33-9.67zM16 23.67c-2.05 0-4.06-.55-5.83-1.6l-.42-.25-7.55 1.02 1.01-7.36-.27-.46A10.56 10.56 0 015.67 13C5.67 7.3 10.3 2.67 16 2.67S26.33 7.3 26.33 13 21.7 23.67 16 23.67z"/>
-      </svg>
-      WhatsApp
-    </a>
-  </div>
+  <a class="waFloat" href="https://wa.me/13143767641?text=Hola%20Jamros%20LLC%2C%20quiero%20información" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="#0a1f12" d="M19.11 17.16c-.27-.14-1.58-.78-1.83-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.97 2.64 1.1 2.82c.14.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.58.64.2 1.22.17 1.68.1.51-.08 1.58-.65 1.8-1.28.22-.63.22-1.17.15-1.28-.07-.11-.25-.18-.52-.32z"/>
+      <path fill="#0a1f12" d="M26.67 5.33A13.23 13.23 0 0016.01 0C8.84 0 3.01 5.83 3.01 13c0 2.29.6 4.53 1.74 6.5L3 32l12.71-1.71A12.96 12.96 0 0016 26c7.17 0 13-5.83 13-13 0-3.48-1.36-6.75-3.33-9.67zM16 23.67c-2.05 0-4.06-.55-5.83-1.6l-.42-.25-7.55 1.02 1.01-7.36-.27-.46A10.56 10.56 0 015.67 13C5.67 7.3 10.3 2.67 16 2.67S26.33 7.3 26.33 13 21.7 23.67 16 23.67z"/>
+    </svg>
+    WhatsApp
+  </a>
 </body>
 </html>
