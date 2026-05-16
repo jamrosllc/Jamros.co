@@ -193,8 +193,8 @@ Key colors in `css/style.css`:
 
 ## 📞 Business Contact
 
-- **Phone:** (314) 376-7641
-- **WhatsApp:** [wa.me/13143767641](https://wa.me/13143767641)
+- **Phone:** (314) 555-0100
+- **WhatsApp:** [wa.me/13145550100](https://wa.me/13145550100)
 - **Email:** info@jamros.co
 - **Location:** Saint Louis, Missouri
 
