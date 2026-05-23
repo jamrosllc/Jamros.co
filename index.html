@@ -1,1039 +1,1618 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jamros.co - Premium used cars in Saint Louis, Missouri. Fast financing, verified titles, trade-in accepted." />
-  <meta name="keywords" content="used cars Saint Louis, buy car STL, Jamros, financing cars Missouri" />
-  <title>JAMROS | Premium Used Cars — Saint Louis, MO</title>
+  <title>JAMROS LLC | Inventario Premium de Autos Usados</title>
+  <meta
+    name="description"
+    content="JAMROS LLC: autos verificados, financiamiento rápido, trade-in y atención bilingüe. Catálogo premium con diseño moderno y enfoque en compra inmediata."
+  />
+  <meta name="theme-color" content="#05070b" />
+  <meta property="og:title" content="JAMROS LLC | Inventario Premium" />
+  <meta
+    property="og:description"
+    content="Compra tu próximo auto con confianza. Diseño premium, inventario destacado, atención rápida y CTA directo a WhatsApp."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.genspark.ai/api/files/s/q2hKPlWd" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#05070b;
+      --bg-soft:#0d1118;
+      --panel:#101722;
+      --panel-2:#131c29;
+      --panel-3:#f4f7fb;
+      --text:#eef2f7;
+      --text-soft:#b5bfce;
+      --dark:#0c1220;
+      --line:rgba(255,255,255,.08);
+      --line-soft:rgba(255,255,255,.06);
+      --shadow:0 20px 80px rgba(0,0,0,.35);
+      --shadow-soft:0 10px 40px rgba(0,0,0,.18);
+      --radius:24px;
+      --radius-lg:34px;
+      --silver-1:#f6f8fb;
+      --silver-2:#d5dde7;
+      --silver-3:#a9b3bf;
+      --silver-4:#7e8794;
+      --accent:#dce5ef;
+      --accent-2:#8fb7ff;
+      --success:#8dffc0;
+      --warning:#ffd38a;
+      --max:1280px;
+    }
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" />
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(143,183,255,.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,.05), transparent 22%),
+        linear-gradient(180deg, #03050a 0%, #070b12 42%, #0b1018 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(calc(100% - 32px), var(--max)); margin-inline:auto}
+    .section{padding:88px 0}
+    .muted{color:var(--text-soft)}
+    .grid{display:grid; gap:24px}
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform:none;
+    }
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(5,7,11,.68);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line-soft);
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:78px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:150px;
+      max-width:38vw;
+      height:auto;
+      filter:drop-shadow(0 10px 24px rgba(255,255,255,.12));
+    }
+
+    .brand-copy{
+      display:none;
+    }
+
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .nav a{
+      padding:11px 14px;
+      border-radius:999px;
+      color:var(--text-soft);
+      transition:.25s ease;
+      font-size:.95rem;
+      white-space:nowrap;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+    }
+
+    .lang-toggle{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:5px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .lang-toggle button{
+      border:0;
+      background:transparent;
+      color:var(--text-soft);
+      padding:8px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.25s ease;
+      font-weight:700;
+    }
+
+    .lang-toggle button.active{
+      color:#06101d;
+      background:linear-gradient(135deg, var(--silver-1), var(--silver-2), var(--silver-1));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+    }
+
+    .menu-btn{
+      display:none;
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      cursor:pointer;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 20px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+      font-weight:800;
+      letter-spacing:.01em;
+      text-align:center;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      color:#08111d;
+      background:linear-gradient(135deg, #ffffff 0%, #d3dbe6 40%, #f7fbff 100%);
+      box-shadow:0 14px 36px rgba(255,255,255,.14);
+    }
+
+    .btn-secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+    }
+
+    .btn-ghost{
+      color:var(--text-soft);
+      background:transparent;
+      border-color:var(--line);
+    }
+
+    .hero{
+      position:relative;
+      padding:58px 0 76px;
+      overflow:hidden;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      filter:blur(70px);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .hero::before{
+      top:-80px;
+      right:-80px;
+      background:rgba(145,175,255,.12);
+    }
+
+    .hero::after{
+      left:-100px;
+      bottom:-80px;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero-grid{
+      display:grid;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-copy{
+      display:grid;
+      gap:22px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:max-content;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+      color:var(--silver-2);
+      font-weight:700;
+      font-size:.86rem;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .hero-logo{
+      width:min(320px, 78vw);
+      margin-top:6px;
+      filter:drop-shadow(0 14px 34px rgba(255,255,255,.12));
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(2.3rem, 6vw, 5.2rem);
+      line-height:.94;
+      letter-spacing:-.04em;
+      max-width:12ch;
+    }
+
+    .hero-lead{
+      margin:0;
+      color:var(--text-soft);
+      font-size:clamp(1rem, 1.8vw, 1.18rem);
+      line-height:1.75;
+      max-width:60ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .trust-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line-soft);
+      color:var(--text);
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .hero-side{
+      display:grid;
+      gap:16px;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(135deg, #0c1421, #111b29 55%, #0b1017);
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:linear-gradient(130deg, rgba(255,255,255,.28), transparent 28%, transparent 74%, rgba(255,255,255,.12));
+      border-radius:inherit;
+      mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite:exclude;
+      -webkit-mask-composite:xor;
+      padding:1px;
+      pointer-events:none;
+    }
+
+    .highlight-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      color:#09111d;
+      background:linear-gradient(135deg, var(--silver-1), var(--silver-2));
+      width:max-content;
+      margin-bottom:14px;
+    }
+
+    .hero-card h2{
+      margin:0 0 10px;
+      font-size:clamp(1.5rem, 3vw, 2.3rem);
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+
+    .hero-card p{
+      margin:0;
+      color:var(--text-soft);
+      line-height:1.75;
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:22px;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.03);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.35rem;
+      letter-spacing:-.03em;
+      margin-bottom:4px;
+    }
+
+    .metric span{
+      color:var(--text-soft);
+      font-size:.92rem;
+    }
+
+    .section-heading{
+      display:grid;
+      gap:14px;
+      margin-bottom:28px;
+    }
+
+    .section-heading h2{
+      margin:0;
+      font-size:clamp(1.9rem, 4vw, 3.4rem);
+      line-height:1;
+      letter-spacing:-.04em;
+      color:#09111d;
+    }
+
+    .section-heading p{
+      margin:0;
+      max-width:72ch;
+      color:#556173;
+      line-height:1.8;
+      font-size:1.03rem;
+    }
+
+    .section-heading.light h2{color:var(--text)}
+    .section-heading.light p{color:var(--text-soft)}
+
+    .inventory-section{
+      background:linear-gradient(180deg, #edf3f9 0%, #f7fbff 100%);
+      color:#09111d;
+      border-top-left-radius:34px;
+      border-top-right-radius:34px;
+      position:relative;
+      z-index:2;
+      box-shadow:0 -12px 60px rgba(0,0,0,.18);
+    }
+
+    .inventory-toolbar{
+      display:flex;
+      gap:12px;
+      justify-content:space-between;
+      align-items:flex-end;
+      flex-wrap:wrap;
+      margin-bottom:26px;
+    }
+
+    .inventory-badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .inventory-badge{
+      padding:10px 14px;
+      border-radius:999px;
+      background:#ffffff;
+      color:#0d1522;
+      font-weight:800;
+      border:1px solid rgba(9,17,29,.08);
+      box-shadow:var(--shadow-soft);
+      font-size:.9rem;
+    }
+
+    .inventory-grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .vehicle-card{
+      background:#fff;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid rgba(10,18,31,.08);
+      box-shadow:0 20px 60px rgba(9,17,29,.08);
+      display:grid;
+      transition:transform .35s ease, box-shadow .35s ease;
+    }
+
+    .vehicle-card:hover{
+      transform:translateY(-7px);
+      box-shadow:0 28px 70px rgba(9,17,29,.12);
+    }
+
+    .vehicle-visual{
+      position:relative;
+      min-height:300px;
+      background:#0b1017;
+      overflow:hidden;
+    }
+
+    .vehicle-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .8s ease;
+    }
+
+    .vehicle-card:hover .vehicle-visual img{
+      transform:scale(1.05);
+    }
+
+    .vehicle-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(5,7,11,.08) 0%, rgba(5,7,11,.2) 45%, rgba(5,7,11,.78) 100%);
+      pointer-events:none;
+    }
+
+    .vehicle-badge{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      color:#0b1220;
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.02em;
+      box-shadow:0 12px 30px rgba(0,0,0,.16);
+    }
+
+    .vehicle-price{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      padding:12px 14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.92);
+      color:#09111d;
+      font-weight:900;
+      box-shadow:0 12px 28px rgba(0,0,0,.15);
+      font-size:1.1rem;
+    }
+
+    .vehicle-body{
+      padding:22px;
+      display:grid;
+      gap:16px;
+    }
+
+    .vehicle-top{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .vehicle-title{
+      margin:0;
+      font-size:1.55rem;
+      letter-spacing:-.03em;
+      color:#09111d;
+    }
+
+    .vehicle-sub{
+      margin:6px 0 0;
+      color:#5a6676;
+      font-size:.98rem;
+    }
+
+    .vehicle-specs{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .spec{
+      background:#f4f7fb;
+      border:1px solid rgba(9,17,29,.06);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .spec-label{
+      display:block;
+      font-size:.8rem;
+      font-weight:800;
+      color:#6b7788;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:5px;
+    }
+
+    .spec-value{
+      font-size:1rem;
+      font-weight:800;
+      color:#09111d;
+      line-height:1.3;
+    }
+
+    .vehicle-tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:#eef3f8;
+      color:#0b1220;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .vehicle-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .vehicle-actions .btn{
+      flex:1 1 220px;
+    }
+
+    .services{
+      position:relative;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(143,183,255,.1), transparent 18%),
+        linear-gradient(180deg, #0c1118 0%, #080c12 100%);
+    }
+
+    .services-grid{
+      display:grid;
+      gap:22px;
+    }
+
+    .service-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:24px;
+      box-shadow:var(--shadow-soft);
+      display:grid;
+      gap:14px;
+    }
+
+    .service-icon{
+      width:58px;
+      height:58px;
+      display:grid;
+      place-items:center;
+      border-radius:18px;
+      background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
+      border:1px solid var(--line-soft);
+      font-size:1.6rem;
+    }
+
+    .service-card h3{
+      margin:0;
+      font-size:1.4rem;
+      letter-spacing:-.02em;
+    }
+
+    .service-card p{
+      margin:0;
+      color:var(--text-soft);
+      line-height:1.8;
+    }
+
+    .service-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:max-content;
+      font-weight:800;
+      color:#f3f7fb;
+      padding-bottom:2px;
+      border-bottom:1px solid rgba(255,255,255,.18);
+    }
+
+    .benefits-strip{
+      display:grid;
+      gap:16px;
+      margin-top:30px;
+    }
+
+    .benefit{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:18px 18px;
+      border-radius:22px;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.04);
+    }
+
+    .benefit strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:1rem;
+    }
+
+    .benefit p{
+      margin:0;
+      color:var(--text-soft);
+      line-height:1.65;
+      font-size:.95rem;
+    }
+
+    .contact{
+      background:
+        linear-gradient(180deg, #0a0f17 0%, #05070b 100%);
+      position:relative;
+    }
+
+    .contact-shell{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(143,183,255,.13), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-grid{
+      display:grid;
+      gap:24px;
+      align-items:center;
+    }
+
+    .contact-copy h2{
+      margin:0 0 12px;
+      font-size:clamp(2rem, 4vw, 3.7rem);
+      line-height:.98;
+      letter-spacing:-.04em;
+    }
+
+    .contact-copy p{
+      margin:0;
+      color:var(--text-soft);
+      line-height:1.8;
+      max-width:60ch;
+    }
+
+    .contact-points{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .contact-boxes{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-box{
+      padding:18px;
+      border-radius:22px;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.04);
+    }
+
+    .contact-box strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:1.04rem;
+    }
+
+    .contact-box span,
+    .contact-box a{
+      color:var(--text-soft);
+      line-height:1.7;
+    }
+
+    .footer{
+      padding:26px 0 46px;
+      border-top:1px solid var(--line-soft);
+      background:#03050a;
+    }
+
+    .footer-inner{
+      display:grid;
+      gap:18px;
+      align-items:center;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-logo{
+      width:170px;
+      filter:drop-shadow(0 12px 26px rgba(255,255,255,.10));
+    }
+
+    .footer p{
+      margin:0;
+      color:var(--text-soft);
+      line-height:1.7;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      color:var(--text-soft);
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.03);
+      transition:.25s ease;
+    }
+
+    .footer-links a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+    }
+
+    .wa-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:60;
+      min-height:60px;
+      padding:0 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #2ad66f, #18b75a);
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 18px 40px rgba(42,214,111,.28);
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (min-width: 768px){
+      .hero-grid{
+        grid-template-columns:minmax(0, 1.15fr) minmax(380px, .85fr);
+      }
+
+      .inventory-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .services-grid{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+      }
+
+      .benefits-strip{
+        grid-template-columns:repeat(4, minmax(0, 1fr));
+      }
+
+      .contact-grid{
+        grid-template-columns:1.2fr .8fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1.2fr .8fr;
+      }
+    }
+
+    @media (min-width: 1100px){
+      .inventory-grid{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1024px){
+      .nav{
+        position:absolute;
+        top:calc(100% + 10px);
+        right:16px;
+        left:16px;
+        display:grid;
+        gap:8px;
+        padding:14px;
+        border-radius:24px;
+        background:rgba(8,11,17,.96);
+        border:1px solid var(--line);
+        box-shadow:var(--shadow);
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-8px);
+        transition:.25s ease;
+      }
+
+      .nav.is-open{
+        opacity:1;
+        visibility:visible;
+        transform:none;
+      }
+
+      .nav a{
+        width:100%;
+        padding:13px 14px;
+        background:rgba(255,255,255,.03);
+      }
+
+      .menu-btn{display:inline-grid; place-items:center}
+    }
+
+    @media (max-width: 767px){
+      .section{padding:74px 0}
+      .hero{padding:40px 0 70px}
+      .hero h1{max-width:14ch}
+      .vehicle-specs{grid-template-columns:1fr}
+      .vehicle-visual{min-height:260px}
+      .header-inner{min-height:72px}
+      .brand-mark{width:122px}
+      .btn{width:100%}
+      .hero-actions .btn,
+      .vehicle-actions .btn{flex:1 1 100%}
+      .contact-shell{padding:22px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *, *::before, *::after{
+        animation:none !important;
+        transition:none !important;
+      }
+      .reveal{
+        opacity:1;
+        transform:none;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- =============================================
-       NAVIGATION / HEADER
-  ============================================== -->
-  <header class="site-header" id="site-header">
-    <nav class="nav-container">
-
-      <!-- Logo -->
-      <a href="#hero" class="nav-logo" aria-label="Jamros Home">
-        <span class="logo-jam">JAM</span><span class="logo-ros">ROS</span>
-        <span class="logo-dot">.co</span>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand" aria-label="JAMROS LLC">
+        <img
+          class="brand-mark"
+          src="https://www.genspark.ai/api/files/s/q2hKPlWd"
+          alt="Logo JAMROS 2025"
+          width="300"
+          height="110"
+          decoding="async"
+        />
       </a>
 
-      <!-- Desktop Nav Links -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#solution" data-i18n="nav_solution">Solution</a></li>
-        <li><a href="#market" data-i18n="nav_market">Market</a></li>
-        <li><a href="#model" data-i18n="nav_model">Business Model</a></li>
-        <li><a href="#team" data-i18n="nav_team">Team</a></li>
-        <li><a href="#projections" data-i18n="nav_projections">Projections</a></li>
-        <li><a href="#inventory" data-i18n="nav_inventory">Inventory</a></li>
-      </ul>
+      <div class="nav-wrap">
+        <nav class="nav" id="siteNav" aria-label="Navegación principal">
+          <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
+          <a href="#inventario" data-es="Inventario" data-en="Inventory">Inventario</a>
+          <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+          <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+        </nav>
 
-      <!-- Right Controls -->
-      <div class="nav-controls">
-        <!-- Language Toggle -->
-        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle Language">
-          <span class="lang-option" id="lang-en">EN</span>
-          <span class="lang-divider">|</span>
-          <span class="lang-option" id="lang-es">ES</span>
-        </button>
+        <div class="lang-toggle" aria-label="Selector de idioma">
+          <button class="active" type="button" data-lang-btn="es">ES</button>
+          <button type="button" data-lang-btn="en">EN</button>
+        </div>
 
-        <!-- CTA Button -->
-        <a href="#contact" class="btn btn-primary nav-cta" data-i18n="nav_cta">Get My Car</a>
+        <a
+          class="btn btn-primary"
+          href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20informaci%C3%B3n%20sobre%20su%20inventario."
+          target="_blank"
+          rel="noopener noreferrer"
+          data-es="WhatsApp ahora"
+          data-en="WhatsApp now"
+        >WhatsApp ahora</a>
 
-        <!-- Hamburger -->
-        <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
-          <span></span><span></span><span></span>
+        <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="siteNav">
+          ☰
+          <span class="sr-only">Abrir menú</span>
         </button>
       </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-      <ul>
-        <li><a href="#solution" data-i18n="nav_solution">Solution</a></li>
-        <li><a href="#market" data-i18n="nav_market">Market</a></li>
-        <li><a href="#model" data-i18n="nav_model">Business Model</a></li>
-        <li><a href="#team" data-i18n="nav_team">Team</a></li>
-        <li><a href="#projections" data-i18n="nav_projections">Projections</a></li>
-        <li><a href="#inventory" data-i18n="nav_inventory">Inventory</a></li>
-        <li><a href="#contact" class="btn btn-primary" data-i18n="nav_cta">Get My Car</a></li>
-      </ul>
     </div>
   </header>
 
   <main>
-
-    <!-- =============================================
-         HERO SECTION
-    ============================================== -->
-    <section class="hero" id="hero">
-      <!-- Animated Particles Canvas -->
-      <canvas id="particles-canvas" aria-hidden="true"></canvas>
-
-      <!-- Speed Lines Overlay -->
-      <div class="speed-lines" aria-hidden="true"></div>
-
-      <!-- Hero Content -->
-      <div class="hero-content">
-        <div class="hero-badge" data-i18n="hero_badge">
-          <i class="fas fa-map-marker-alt"></i>
-          Saint Louis, Missouri
-        </div>
-
-        <h1 class="hero-title">
-          <span class="title-line-1" data-i18n="hero_title_1">YOUR NEXT</span>
-          <span class="title-line-2" data-i18n="hero_title_2">CAR AWAITS</span>
-          <span class="title-line-accent" data-i18n="hero_title_3">AT FULL SPEED.</span>
-        </h1>
-
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
-          Verified used cars, lightning-fast financing, zero stress.<br />
-          The STL dealership that moves as fast as you do.
-        </p>
-
-        <div class="hero-ctas">
-          <a href="#inventory" class="btn btn-primary btn-xl" data-i18n="hero_cta_1">
-            <i class="fas fa-car"></i> Browse Inventory
-          </a>
-          <a href="#contact" class="btn btn-ghost btn-xl" data-i18n="hero_cta_2">
-            <i class="fab fa-whatsapp"></i> WhatsApp Us
-          </a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="trust-badges">
-          <div class="trust-item">
-            <i class="fas fa-shield-alt"></i>
-            <span data-i18n="trust_1">Verified Titles</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-bolt"></i>
-            <span data-i18n="trust_2">24h Response</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-exchange-alt"></i>
-            <span data-i18n="trust_3">Trade-In Accepted</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-hand-holding-usd"></i>
-            <span data-i18n="trust_4">Easy Financing</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hero Car Visual -->
-      <div class="hero-car-visual" aria-hidden="true">
-        <div class="car-glow"></div>
-        <div class="speed-streak streak-1"></div>
-        <div class="speed-streak streak-2"></div>
-        <div class="speed-streak streak-3"></div>
-      </div>
-
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator" aria-hidden="true">
-        <div class="scroll-line"></div>
-        <span data-i18n="scroll_down">SCROLL</span>
-      </div>
-    </section>
-
-    <!-- =============================================
-         STATS BAR
-    ============================================== -->
-    <section class="stats-bar" aria-label="Key Statistics">
-      <div class="stat-item">
-        <span class="stat-number" data-target="150">0</span><span class="stat-suffix">+</span>
-        <span class="stat-label" data-i18n="stat_1">Vehicles Sold</span>
-      </div>
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
-        <span class="stat-label" data-i18n="stat_2">Customer Satisfaction</span>
-      </div>
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="24">0</span><span class="stat-suffix">h</span>
-        <span class="stat-label" data-i18n="stat_3">Avg Response Time</span>
-      </div>
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="5">0</span><span class="stat-suffix">★</span>
-        <span class="stat-label" data-i18n="stat_4">Google Rating</span>
-      </div>
-    </section>
-
-    <!-- =============================================
-         LA SOLUCIÓN / THE SOLUTION
-    ============================================== -->
-    <section class="solution" id="solution">
-      <div class="container">
-        <div class="section-tag" data-i18n="solution_tag">THE SOLUTION</div>
-        <h2 class="section-title" data-i18n="solution_title">
-          Buying a Car Shouldn't<br />Feel Like a <span class="text-accent">Race Against Time.</span>
-        </h2>
-        <p class="section-subtitle" data-i18n="solution_subtitle">
-          Most buyers in Saint Louis waste weeks visiting dealerships, dealing with unclear titles,
-          and struggling to get financing. Jamros changes all that.
-        </p>
-
-        <!-- Problem vs Solution Grid -->
-        <div class="vs-grid">
-          <div class="vs-column problem-col">
-            <div class="vs-header">
-              <i class="fas fa-times-circle"></i>
-              <h3 data-i18n="problem_title">The Problem</h3>
-            </div>
-            <ul class="vs-list">
-              <li data-i18n="problem_1"><i class="fas fa-times"></i> Unclear vehicle history</li>
-              <li data-i18n="problem_2"><i class="fas fa-times"></i> Slow, complicated financing</li>
-              <li data-i18n="problem_3"><i class="fas fa-times"></i> Dealers that ignore trade-ins</li>
-              <li data-i18n="problem_4"><i class="fas fa-times"></i> Hidden fees and surprises</li>
-              <li data-i18n="problem_5"><i class="fas fa-times"></i> Poor after-sale support</li>
-            </ul>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" data-es="Inventario real • atención rápida • papeles listos" data-en="Real inventory • fast service • paperwork ready">
+            Inventario real • atención rápida • papeles listos
           </div>
 
-          <div class="vs-divider" aria-hidden="true">
-            <div class="vs-icon"><i class="fas fa-bolt"></i></div>
+          <img
+            class="hero-logo"
+            src="https://www.genspark.ai/api/files/s/q2hKPlWd"
+            alt="Logo principal JAMROS 2025"
+            width="640"
+            height="260"
+            decoding="async"
+          />
+
+          <h1 data-es="Compra tu próximo auto con confianza y sin vueltas." data-en="Buy your next car with confidence and zero friction.">
+            Compra tu próximo auto con confianza y sin vueltas.
+          </h1>
+
+          <p class="hero-lead" data-es="Rediseñado para vender mejor: imágenes grandes, proceso claro, atención bilingüe y un catálogo premium que impulsa la decisión de compra desde el primer vistazo." data-en="Built to convert faster: large visuals, a clear process, bilingual support, and a premium inventory experience that drives immediate buying intent.">
+            Rediseñado para vender mejor: imágenes grandes, proceso claro, atención bilingüe y un catálogo premium que impulsa la decisión de compra desde el primer vistazo.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20cotizar%20un%20veh%C3%ADculo."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-es="Cotizar por WhatsApp"
+              data-en="Get a WhatsApp quote"
+            >Cotizar por WhatsApp</a>
+
+            <a class="btn btn-secondary" href="#inventario" data-es="Ver inventario" data-en="View inventory">
+              Ver inventario
+            </a>
           </div>
 
-          <div class="vs-column solution-col">
-            <div class="vs-header">
-              <i class="fas fa-check-circle"></i>
-              <h3 data-i18n="solution_col_title">The Jamros Way</h3>
-            </div>
-            <ul class="vs-list">
-              <li data-i18n="solution_1"><i class="fas fa-check"></i> Full title & Carfax verification</li>
-              <li data-i18n="solution_2"><i class="fas fa-check"></i> Financing approved in hours</li>
-              <li data-i18n="solution_3"><i class="fas fa-check"></i> We value your trade-in fairly</li>
-              <li data-i18n="solution_4"><i class="fas fa-check"></i> Transparent pricing, no surprises</li>
-              <li data-i18n="solution_5"><i class="fas fa-check"></i> Dedicated buyer support team</li>
-            </ul>
+          <div class="trust-row">
+            <div class="trust-pill" data-es="✓ Vehículos verificados" data-en="✓ Verified vehicles">✓ Vehículos verificados</div>
+            <div class="trust-pill" data-es="⚡ Respuesta rápida" data-en="⚡ Fast response">⚡ Respuesta rápida</div>
+            <div class="trust-pill" data-es="⇄ Trade-in disponible" data-en="⇄ Trade-in available">⇄ Trade-in disponible</div>
+            <div class="trust-pill" data-es="💳 Financiamiento fácil" data-en="💳 Easy financing">💳 Financiamiento fácil</div>
           </div>
         </div>
 
-        <!-- Solution Feature Cards -->
-        <div class="feature-cards">
-          <article class="feature-card">
-            <div class="feature-icon"><i class="fas fa-search-dollar"></i></div>
-            <h4 data-i18n="feat_1_title">100% Verified</h4>
-            <p data-i18n="feat_1_desc">Every vehicle passes our rigorous inspection. Clean titles, no salvage, no surprises.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-            <h4 data-i18n="feat_2_title">Speed to Market</h4>
-            <p data-i18n="feat_2_desc">From inquiry to keys in hand — we move at your speed. No endless waiting.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon"><i class="fas fa-comments-dollar"></i></div>
-            <h4 data-i18n="feat_3_title">Flexible Financing</h4>
-            <p data-i18n="feat_3_desc">Multiple lender options. Bad credit? No credit? We find a solution for you.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
-            <h4 data-i18n="feat_4_title">Fair Trade-In</h4>
-            <p data-i18n="feat_4_desc">Bring your current vehicle and we'll give you a competitive offer — instantly.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         MARKET OPPORTUNITY — SAINT LOUIS
-    ============================================== -->
-    <section class="market" id="market">
-      <div class="container">
-        <div class="section-tag" data-i18n="market_tag">MARKET OPPORTUNITY</div>
-        <h2 class="section-title" data-i18n="market_title">
-          Saint Louis Is a <span class="text-accent">Goldmine</span><br />for Used Cars.
-        </h2>
-        <p class="section-subtitle" data-i18n="market_subtitle">
-          STL's growing population, rising demand for affordable transportation,
-          and limited quality inventory create a perfect runway for Jamros.
-        </p>
-
-        <!-- Market Stats Grid -->
-        <div class="market-grid">
-          <div class="market-card market-card-large">
-            <div class="market-icon"><i class="fas fa-city"></i></div>
-            <div class="market-num">2.8M+</div>
-            <div class="market-label" data-i18n="market_stat_1">Metro Population</div>
-            <p class="market-desc" data-i18n="market_stat_1_desc">Greater Saint Louis metro area, one of the largest in the Midwest.</p>
-          </div>
-          <div class="market-card">
-            <div class="market-icon"><i class="fas fa-car-side"></i></div>
-            <div class="market-num">$18B</div>
-            <div class="market-label" data-i18n="market_stat_2">Used Car Market MO</div>
-            <p class="market-desc" data-i18n="market_stat_2_desc">Missouri's used vehicle market annual value.</p>
-          </div>
-          <div class="market-card">
-            <div class="market-icon"><i class="fas fa-chart-line"></i></div>
-            <div class="market-num">+12%</div>
-            <div class="market-label" data-i18n="market_stat_3">YoY Demand Growth</div>
-            <p class="market-desc" data-i18n="market_stat_3_desc">Year-over-year growth in used vehicle purchases in the STL area.</p>
-          </div>
-          <div class="market-card">
-            <div class="market-icon"><i class="fas fa-users"></i></div>
-            <div class="market-num">67%</div>
-            <div class="market-label" data-i18n="market_stat_4">Buy Used vs New</div>
-            <p class="market-desc" data-i18n="market_stat_4_desc">Of STL buyers prefer used vehicles due to affordability and value.</p>
-          </div>
-        </div>
-
-        <!-- Competitive Advantages -->
-        <div class="competitive-section">
-          <h3 class="subsection-title" data-i18n="competitive_title">Jamros Competitive Advantage</h3>
-          <div class="advantage-list">
-            <div class="advantage-item">
-              <div class="advantage-rank">01</div>
-              <div class="advantage-content">
-                <h4 data-i18n="adv_1_title">Speed & Agility</h4>
-                <p data-i18n="adv_1_desc">While big dealers take weeks, we close deals in 24-48 hours. Modern buyers demand speed.</p>
-              </div>
-              <div class="advantage-bar"><div class="advantage-fill" style="--fill: 92%"></div></div>
-            </div>
-            <div class="advantage-item">
-              <div class="advantage-rank">02</div>
-              <div class="advantage-content">
-                <h4 data-i18n="adv_2_title">Digital-First Approach</h4>
-                <p data-i18n="adv_2_desc">WhatsApp, online listings, social media — we meet buyers where they already are.</p>
-              </div>
-              <div class="advantage-bar"><div class="advantage-fill" style="--fill: 88%"></div></div>
-            </div>
-            <div class="advantage-item">
-              <div class="advantage-rank">03</div>
-              <div class="advantage-content">
-                <h4 data-i18n="adv_3_title">Community Trust</h4>
-                <p data-i18n="adv_3_desc">Deep roots in STL's Hispanic and multicultural communities — a segment underserved by major chains.</p>
-              </div>
-              <div class="advantage-bar"><div class="advantage-fill" style="--fill: 95%"></div></div>
-            </div>
-            <div class="advantage-item">
-              <div class="advantage-rank">04</div>
-              <div class="advantage-content">
-                <h4 data-i18n="adv_4_title">Curated Low-Overhead Inventory</h4>
-                <p data-i18n="adv_4_desc">Lean model with high-turnover, high-demand vehicles. Lower costs = better deals for buyers.</p>
-              </div>
-              <div class="advantage-bar"><div class="advantage-fill" style="--fill: 84%"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         BUSINESS MODEL
-    ============================================== -->
-    <section class="business-model" id="model">
-      <div class="container">
-        <div class="section-tag" data-i18n="model_tag">BUSINESS MODEL</div>
-        <h2 class="section-title" data-i18n="model_title">
-          How Jamros <span class="text-accent">Generates Revenue</span>
-        </h2>
-        <p class="section-subtitle" data-i18n="model_subtitle">
-          A diversified revenue model built for sustainable growth and maximum value delivery.
-        </p>
-
-        <!-- Revenue Streams -->
-        <div class="revenue-streams">
-          <article class="revenue-card">
-            <div class="revenue-icon"><i class="fas fa-tags"></i></div>
-            <div class="revenue-pct">65%</div>
-            <h4 data-i18n="rev_1_title">Vehicle Sales</h4>
-            <p data-i18n="rev_1_desc">Direct margin on each vehicle sold. Average gross profit of $2,500–$4,500 per unit.</p>
-            <div class="revenue-bar-bg"><div class="revenue-bar-fill" style="--fill:65%"></div></div>
-          </article>
-
-          <article class="revenue-card">
-            <div class="revenue-icon"><i class="fas fa-percentage"></i></div>
-            <div class="revenue-pct">20%</div>
-            <h4 data-i18n="rev_2_title">Financing Commissions</h4>
-            <p data-i18n="rev_2_desc">Backend commissions from lending partners. $400–$1,200 per financed deal.</p>
-            <div class="revenue-bar-bg"><div class="revenue-bar-fill" style="--fill:20%"></div></div>
-          </article>
-
-          <article class="revenue-card">
-            <div class="revenue-icon"><i class="fas fa-exchange-alt"></i></div>
-            <div class="revenue-pct">10%</div>
-            <h4 data-i18n="rev_3_title">Trade-In Arbitrage</h4>
-            <p data-i18n="rev_3_desc">Buy low on trade-ins, recondition, and resell at market value. Recurring inventory pipeline.</p>
-            <div class="revenue-bar-bg"><div class="revenue-bar-fill" style="--fill:10%"></div></div>
-          </article>
-
-          <article class="revenue-card">
-            <div class="revenue-icon"><i class="fas fa-shield-alt"></i></div>
-            <div class="revenue-pct">5%</div>
-            <h4 data-i18n="rev_4_title">Add-Ons & Warranties</h4>
-            <p data-i18n="rev_4_desc">Extended warranties, gap insurance, and service packages. High-margin supplemental revenue.</p>
-            <div class="revenue-bar-bg"><div class="revenue-bar-fill" style="--fill:5%"></div></div>
-          </article>
-        </div>
-
-        <!-- Business Process Flow -->
-        <div class="process-flow">
-          <h3 class="subsection-title" data-i18n="process_title">The Jamros Process</h3>
-          <div class="flow-steps">
-            <div class="flow-step">
-              <div class="flow-num">1</div>
-              <i class="fas fa-search flow-icon"></i>
-              <h5 data-i18n="flow_1">Source</h5>
-              <p data-i18n="flow_1_desc">Auctions, trade-ins & private sellers</p>
-            </div>
-            <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="flow-step">
-              <div class="flow-num">2</div>
-              <i class="fas fa-tools flow-icon"></i>
-              <h5 data-i18n="flow_2">Inspect</h5>
-              <p data-i18n="flow_2_desc">Full mechanical & title verification</p>
-            </div>
-            <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="flow-step">
-              <div class="flow-num">3</div>
-              <i class="fas fa-bullhorn flow-icon"></i>
-              <h5 data-i18n="flow_3">List</h5>
-              <p data-i18n="flow_3_desc">Multi-platform digital marketing</p>
-            </div>
-            <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="flow-step">
-              <div class="flow-num">4</div>
-              <i class="fas fa-file-signature flow-icon"></i>
-              <h5 data-i18n="flow_4">Finance</h5>
-              <p data-i18n="flow_4_desc">Fast approvals with partner lenders</p>
-            </div>
-            <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="flow-step">
-              <div class="flow-num">5</div>
-              <i class="fas fa-key flow-icon"></i>
-              <h5 data-i18n="flow_5">Deliver</h5>
-              <p data-i18n="flow_5_desc">Happy customer drives away</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         TEAM SECTION
-    ============================================== -->
-    <section class="team" id="team">
-      <div class="container">
-        <div class="section-tag" data-i18n="team_tag">THE TEAM</div>
-        <h2 class="section-title" data-i18n="team_title">
-          Driven by <span class="text-accent">Passion.</span><br />Powered by Expertise.
-        </h2>
-        <p class="section-subtitle" data-i18n="team_subtitle">
-          A dedicated team with deep roots in Saint Louis and a passion for connecting people with their perfect car.
-        </p>
-
-        <div class="team-grid">
-          <article class="team-card">
-            <div class="team-avatar">
-              <div class="avatar-initials">JM</div>
-              <div class="avatar-ring"></div>
-            </div>
-            <h4 class="team-name">Jeison Martinez</h4>
-            <span class="team-role" data-i18n="role_1">Founder & CEO</span>
-            <p class="team-bio" data-i18n="bio_1">10+ years in automotive sales in the Midwest. Former finance director at major STL dealership.</p>
-            <div class="team-socials">
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-avatar">
-              <div class="avatar-initials">AM</div>
-              <div class="avatar-ring"></div>
-            </div>
-            <h4 class="team-name">Ana Martinez</h4>
-            <span class="team-role" data-i18n="role_2">Finance Director</span>
-            <p class="team-bio" data-i18n="bio_2">Expert in automotive lending and credit solutions. Specializes in helping buyers with diverse financial backgrounds.</p>
-            <div class="team-socials">
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-avatar">
-              <div class="avatar-initials">DL</div>
-              <div class="avatar-ring"></div>
-            </div>
-            <h4 class="team-name">David Lopez</h4>
-            <span class="team-role" data-i18n="role_3">Head of Sales</span>
-            <p class="team-bio" data-i18n="bio_3">Bilingual sales professional with 7 years serving the STL community. Known for no-pressure consultative selling.</p>
-            <div class="team-socials">
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-avatar">
-              <div class="avatar-initials">SK</div>
-              <div class="avatar-ring"></div>
-            </div>
-            <h4 class="team-name">Sarah Kim</h4>
-            <span class="team-role" data-i18n="role_4">Digital Marketing</span>
-            <p class="team-bio" data-i18n="bio_4">Social media and digital advertising specialist driving Jamros's online presence and lead generation.</p>
-            <div class="team-socials">
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         FINANCIAL PROJECTIONS
-    ============================================== -->
-    <section class="projections" id="projections">
-      <div class="container">
-        <div class="section-tag" data-i18n="proj_tag">FINANCIAL PROJECTIONS</div>
-        <h2 class="section-title" data-i18n="proj_title">
-          Scaling Toward <span class="text-accent">$5M+ Revenue</span><br />by Year 3
-        </h2>
-        <p class="section-subtitle" data-i18n="proj_subtitle">
-          Conservative projections based on current market data, average deal values,
-          and a disciplined growth strategy.
-        </p>
-
-        <!-- Projection Key Numbers -->
-        <div class="proj-kpis">
-          <div class="kpi-card">
-            <span class="kpi-label" data-i18n="kpi_1">Year 1 Revenue</span>
-            <span class="kpi-value">$1.2M</span>
-            <span class="kpi-sub" data-i18n="kpi_1_sub">~35 units/month</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label" data-i18n="kpi_2">Year 2 Revenue</span>
-            <span class="kpi-value">$2.8M</span>
-            <span class="kpi-sub" data-i18n="kpi_2_sub">~70 units/month</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label" data-i18n="kpi_3">Year 3 Revenue</span>
-            <span class="kpi-value">$5.4M</span>
-            <span class="kpi-sub" data-i18n="kpi_3_sub">~130 units/month</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label" data-i18n="kpi_4">Avg Gross/Unit</span>
-            <span class="kpi-value">$3,200</span>
-            <span class="kpi-sub" data-i18n="kpi_4_sub">Including F&I backend</span>
-          </div>
-        </div>
-
-        <!-- Charts -->
-        <div class="charts-grid">
-          <div class="chart-wrapper">
-            <h3 class="chart-title" data-i18n="chart_1_title">Revenue Growth (3 Years)</h3>
-            <div class="chart-container" style="height:320px;">
-              <canvas id="revenueChart"></canvas>
-            </div>
-          </div>
-          <div class="chart-wrapper">
-            <h3 class="chart-title" data-i18n="chart_2_title">Units Sold Per Month</h3>
-            <div class="chart-container" style="height:320px;">
-              <canvas id="unitsChart"></canvas>
-            </div>
-          </div>
-          <div class="chart-wrapper">
-            <h3 class="chart-title" data-i18n="chart_3_title">Revenue by Stream (Year 3)</h3>
-            <div class="chart-container" style="height:320px;">
-              <canvas id="revenueStreamChart"></canvas>
-            </div>
-          </div>
-          <div class="chart-wrapper">
-            <h3 class="chart-title" data-i18n="chart_4_title">Gross Profit Margin</h3>
-            <div class="chart-container" style="height:320px;">
-              <canvas id="marginChart"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <!-- Investment Ask -->
-        <div class="investment-block">
-          <div class="invest-icon"><i class="fas fa-rocket"></i></div>
-          <div class="invest-content">
-            <h3 data-i18n="invest_title">Ready to Accelerate Growth?</h3>
-            <p data-i18n="invest_desc">Jamros is positioned for rapid scale. We're seeking strategic partners and investors who believe in the STL market opportunity.</p>
-          </div>
-          <a href="#contact" class="btn btn-primary" data-i18n="invest_cta">Talk to Us</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         INVENTORY SECTION
-    ============================================== -->
-    <section class="inventory" id="inventory">
-      <div class="container">
-        <div class="section-tag" data-i18n="inv_tag">FEATURED INVENTORY</div>
-        <h2 class="section-title" data-i18n="inv_title">
-          Hot Picks. <span class="text-accent">Ready to Drive.</span>
-        </h2>
-        <p class="section-subtitle" data-i18n="inv_subtitle">
-          Every vehicle is inspected, verified, and priced to move. Your next car is right here.
-        </p>
-
-        <!-- Filter Buttons -->
-        <div class="inv-filters" role="group" aria-label="Filter Inventory">
-          <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All Vehicles</button>
-          <button class="filter-btn" data-filter="sedan" data-i18n="filter_sedan">Sedans</button>
-          <button class="filter-btn" data-filter="suv" data-i18n="filter_suv">SUVs</button>
-        </div>
-
-        <!-- Inventory Cards -->
-        <div class="inventory-grid" id="inventory-grid">
-
-          <article class="car-card" data-category="sedan">
-            <div class="car-image-wrap">
-              <img src="https://sspark.genspark.ai/cfimages?u1=rT1vEIenF47AGxiQVWlcr25%2BlA7BbdD5EdFpngJGP6FLgT1HmLYX4IiyatVK24%2F6QpE8mZofIz8NrEULOqiH7g1p4BYfDkMz0BZxdtXZxi5wd3EIGgkamQhbu8x%2BuSbjRcmXrnhvOReYpuspqFcjoX4%3D&u2=EgRayVIfiBICA%2B5f&width=800" alt="2024 Toyota Corolla" loading="lazy" />
-              <div class="car-badge badge-new" data-i18n="badge_hot">🔥 HOT</div>
-              <div class="car-overlay">
-                <a href="#contact" class="btn btn-primary btn-sm" data-i18n="car_inquire">Inquire Now</a>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-year-make">
-                <span class="car-year">2024</span>
-                <span class="car-make">Toyota Corolla</span>
-              </div>
-              <div class="car-price">$22,900</div>
-              <div class="car-specs">
-                <span><i class="fas fa-road"></i> 8,200 mi</span>
-                <span><i class="fas fa-gas-pump"></i> 30/38 mpg</span>
-                <span><i class="fas fa-cog"></i> CVT Auto</span>
-              </div>
-              <div class="car-features">
-                <span class="car-tag" data-i18n="tag_verified">✓ Verified</span>
-                <span class="car-tag" data-i18n="tag_finance">✓ Finance Available</span>
-              </div>
-              <div class="car-cta">
-                <a href="tel:+13143767641" class="btn btn-ghost btn-sm"><i class="fas fa-phone"></i> <span data-i18n="car_call">Call</span></a>
-                <a href="https://wa.me/13143767641" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="car_wa">WhatsApp</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="car-card" data-category="sedan">
-            <div class="car-image-wrap">
-              <div class="car-placeholder">
-                <i class="fas fa-car"></i>
-                <span>2023 Kia Forte</span>
-              </div>
-              <div class="car-badge badge-deal" data-i18n="badge_deal">💰 BEST DEAL</div>
-              <div class="car-overlay">
-                <a href="#contact" class="btn btn-primary btn-sm" data-i18n="car_inquire">Inquire Now</a>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-year-make">
-                <span class="car-year">2023</span>
-                <span class="car-make">Kia Forte</span>
-              </div>
-              <div class="car-price">$17,500</div>
-              <div class="car-specs">
-                <span><i class="fas fa-road"></i> 22,400 mi</span>
-                <span><i class="fas fa-gas-pump"></i> 29/39 mpg</span>
-                <span><i class="fas fa-cog"></i> 6-Speed Auto</span>
-              </div>
-              <div class="car-features">
-                <span class="car-tag" data-i18n="tag_verified">✓ Verified</span>
-                <span class="car-tag" data-i18n="tag_finance">✓ Finance Available</span>
-              </div>
-              <div class="car-cta">
-                <a href="tel:+13143767641" class="btn btn-ghost btn-sm"><i class="fas fa-phone"></i> <span data-i18n="car_call">Call</span></a>
-                <a href="https://wa.me/13143767641" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="car_wa">WhatsApp</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="car-card" data-category="sedan">
-            <div class="car-image-wrap">
-              <div class="car-placeholder">
-                <i class="fas fa-car"></i>
-                <span>2019 Nissan Sentra</span>
-              </div>
-              <div class="car-badge badge-budget" data-i18n="badge_budget">💎 VALUE</div>
-              <div class="car-overlay">
-                <a href="#contact" class="btn btn-primary btn-sm" data-i18n="car_inquire">Inquire Now</a>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-year-make">
-                <span class="car-year">2019</span>
-                <span class="car-make">Nissan Sentra</span>
-              </div>
-              <div class="car-price">$12,800</div>
-              <div class="car-specs">
-                <span><i class="fas fa-road"></i> 54,100 mi</span>
-                <span><i class="fas fa-gas-pump"></i> 27/37 mpg</span>
-                <span><i class="fas fa-cog"></i> CVT Auto</span>
-              </div>
-              <div class="car-features">
-                <span class="car-tag" data-i18n="tag_verified">✓ Verified</span>
-                <span class="car-tag" data-i18n="tag_finance">✓ Finance Available</span>
-              </div>
-              <div class="car-cta">
-                <a href="tel:+13143767641" class="btn btn-ghost btn-sm"><i class="fas fa-phone"></i> <span data-i18n="car_call">Call</span></a>
-                <a href="https://wa.me/13143767641" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="car_wa">WhatsApp</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="car-card" data-category="suv">
-            <div class="car-image-wrap">
-              <div class="car-placeholder">
-                <i class="fas fa-car-side"></i>
-                <span>2022 Honda CR-V</span>
-              </div>
-              <div class="car-badge badge-new" data-i18n="badge_hot">🔥 HOT</div>
-              <div class="car-overlay">
-                <a href="#contact" class="btn btn-primary btn-sm" data-i18n="car_inquire">Inquire Now</a>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-year-make">
-                <span class="car-year">2022</span>
-                <span class="car-make">Honda CR-V</span>
-              </div>
-              <div class="car-price">$28,400</div>
-              <div class="car-specs">
-                <span><i class="fas fa-road"></i> 31,200 mi</span>
-                <span><i class="fas fa-gas-pump"></i> 28/34 mpg</span>
-                <span><i class="fas fa-cog"></i> CVT AWD</span>
-              </div>
-              <div class="car-features">
-                <span class="car-tag" data-i18n="tag_verified">✓ Verified</span>
-                <span class="car-tag" data-i18n="tag_finance">✓ Finance Available</span>
-              </div>
-              <div class="car-cta">
-                <a href="tel:+13143767641" class="btn btn-ghost btn-sm"><i class="fas fa-phone"></i> <span data-i18n="car_call">Call</span></a>
-                <a href="https://wa.me/13143767641" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="car_wa">WhatsApp</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="car-card" data-category="sedan">
-            <div class="car-image-wrap">
-              <div class="car-placeholder">
-                <i class="fas fa-car"></i>
-                <span>2021 Hyundai Elantra</span>
-              </div>
-              <div class="car-badge badge-deal" data-i18n="badge_deal">💰 BEST DEAL</div>
-              <div class="car-overlay">
-                <a href="#contact" class="btn btn-primary btn-sm" data-i18n="car_inquire">Inquire Now</a>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-year-make">
-                <span class="car-year">2021</span>
-                <span class="car-make">Hyundai Elantra</span>
-              </div>
-              <div class="car-price">$16,200</div>
-              <div class="car-specs">
-                <span><i class="fas fa-road"></i> 38,700 mi</span>
-                <span><i class="fas fa-gas-pump"></i> 31/41 mpg</span>
-                <span><i class="fas fa-cog"></i> IVT Auto</span>
-              </div>
-              <div class="car-features">
-                <span class="car-tag" data-i18n="tag_verified">✓ Verified</span>
-                <span class="car-tag" data-i18n="tag_finance">✓ Finance Available</span>
-              </div>
-              <div class="car-cta">
-                <a href="tel:+13143767641" class="btn btn-ghost btn-sm"><i class="fas fa-phone"></i> <span data-i18n="car_call">Call</span></a>
-                <a href="https://wa.me/13143767641" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="car_wa">WhatsApp</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="car-card" data-category="sedan">
-            <div class="car-image-wrap">
-              <div class="car-placeholder">
-                <i class="fas fa-car"></i>
-                <span>2023 Chevy Malibu</span>
-              </div>
-              <div class="car-badge badge-new" data-i18n="badge_hot">🔥 HOT</div>
-              <div class="car-overlay">
-                <a href="#contact" class="btn btn-primary btn-sm" data-i18n="car_inquire">Inquire Now</a>
-              </div>
-            </div>
-            <div class="car-info">
-              <div class="car-year-make">
-                <span class="car-year">2023</span>
-                <span class="car-make">Chevrolet Malibu</span>
-              </div>
-              <div class="car-price">$19,750</div>
-              <div class="car-specs">
-                <span><i class="fas fa-road"></i> 18,900 mi</span>
-                <span><i class="fas fa-gas-pump"></i> 27/36 mpg</span>
-                <span><i class="fas fa-cog"></i> 6-Speed Auto</span>
-              </div>
-              <div class="car-features">
-                <span class="car-tag" data-i18n="tag_verified">✓ Verified</span>
-                <span class="car-tag" data-i18n="tag_finance">✓ Finance Available</span>
-              </div>
-              <div class="car-cta">
-                <a href="tel:+13143767641" class="btn btn-ghost btn-sm"><i class="fas fa-phone"></i> <span data-i18n="car_call">Call</span></a>
-                <a href="https://wa.me/13143767641" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="car_wa">WhatsApp</span></a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- View All CTA -->
-        <div class="inv-cta-wrap">
-          <a href="#contact" class="btn btn-primary btn-lg" data-i18n="inv_see_all">
-            <i class="fas fa-th-large"></i> See Full Inventory
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         TESTIMONIALS / SOCIAL PROOF
-    ============================================== -->
-    <section class="testimonials" id="testimonials">
-      <div class="container">
-        <div class="section-tag" data-i18n="testi_tag">CUSTOMER REVIEWS</div>
-        <h2 class="section-title" data-i18n="testi_title">
-          Real People. <span class="text-accent">Real Results.</span>
-        </h2>
-
-        <div class="testimonials-grid">
-          <article class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-text" data-i18n="testi_1">"Jamros helped me get my first car in less than 48 hours. They explained everything clearly and the financing was smooth. Highly recommend!"</p>
-            <div class="testi-author">
-              <div class="testi-avatar">MR</div>
-              <div>
-                <strong>Maria R.</strong>
-                <span data-i18n="testi_1_loc">Saint Louis, MO</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="testi-card testi-featured">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-text" data-i18n="testi_2">"I traded in my old car and drove off in a 2022 CR-V same day! They gave me fair value for my trade and zero pressure. This is how car buying should be."</p>
-            <div class="testi-author">
-              <div class="testi-avatar">JT</div>
-              <div>
-                <strong>Jason T.</strong>
-                <span data-i18n="testi_2_loc">Florissant, MO</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-text" data-i18n="testi_3">"El equipo de Jamros es increíble. Hablan español y me ayudaron a conseguir financiamiento aunque mi crédito no era perfecto. ¡Gracias!"</p>
-            <div class="testi-author">
-              <div class="testi-avatar">LC</div>
-              <div>
-                <strong>Luis C.</strong>
-                <span data-i18n="testi_3_loc">Saint Charles, MO</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================
-         CONTACT / FINAL CTA
-    ============================================== -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact-grid">
-
-          <!-- Contact Info -->
-          <div class="contact-info">
-            <div class="section-tag" data-i18n="contact_tag">GET IN TOUCH</div>
-            <h2 class="section-title" data-i18n="contact_title">
-              Your Dream Car<br />Is <span class="text-accent">One Message Away.</span>
+        <div class="hero-side reveal">
+          <article class="hero-card">
+            <div class="highlight-label" data-es="JAMROS en Missouri" data-en="JAMROS in Missouri">JAMROS en Missouri</div>
+            <h2 data-es="Claridad, profesionalismo y visión de futuro." data-en="Clarity, professionalism, and a future-forward vision.">
+              Claridad, profesionalismo y visión de futuro.
             </h2>
-            <p data-i18n="contact_subtitle">
-              Reach out via any channel. We respond fast — that's the Jamros promise.
+            <p data-es="Mostramos lo que el cliente quiere ver al instante: autos atractivos, precio claro, millaje, beneficios y contacto directo. Menos fricción, más cierres." data-en="We highlight exactly what buyers need at a glance: attractive vehicles, clear pricing, mileage, benefits, and direct contact. Less friction, more conversions.">
+              Mostramos lo que el cliente quiere ver al instante: autos atractivos, precio claro, millaje, beneficios y contacto directo. Menos fricción, más cierres.
             </p>
 
-            <div class="contact-channels">
-              <a href="https://wa.me/13143767641" class="contact-channel" target="_blank">
-                <div class="channel-icon channel-wa"><i class="fab fa-whatsapp"></i></div>
-                <div>
-                  <strong>WhatsApp</strong>
-                  <span data-i18n="channel_wa">Chat with us instantly</span>
-                </div>
-              </a>
-              <a href="tel:+13143767641" class="contact-channel">
-                <div class="channel-icon channel-phone"><i class="fas fa-phone-alt"></i></div>
-                <div>
-                  <strong>(314) 376-3767641</strong>
-                  <span data-i18n="channel_phone">Call Mon–Sat 9AM–7PM</span>
-                </div>
-              </a>
-              <a href="mailto:info@jamros.co" class="contact-channel">
-                <div class="channel-icon channel-email"><i class="fas fa-envelope"></i></div>
-                <div>
-                  <strong>info@jamros.co</strong>
-                  <span data-i18n="channel_email">Email us anytime</span>
-                </div>
-              </a>
-              <div class="contact-channel contact-location">
-                <div class="channel-icon channel-loc"><i class="fas fa-map-marker-alt"></i></div>
-                <div>
-                  <strong data-i18n="channel_loc_title">Saint Louis, Missouri</strong>
-                  <span data-i18n="channel_loc">Serving the entire STL metro area</span>
-                </div>
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong data-es="6 modelos" data-en="6 featured cars">6 modelos</strong>
+                <span data-es="Inventario destacado" data-en="Featured inventory">Inventario destacado</span>
+              </div>
+              <div class="metric">
+                <strong data-es="Bilingüe" data-en="Bilingual">Bilingüe</strong>
+                <span data-es="Español / English" data-en="Spanish / English">Español / English</span>
+              </div>
+              <div class="metric">
+                <strong data-es="WhatsApp directo" data-en="Direct WhatsApp">WhatsApp directo</strong>
+                <span data-es="+1 314-376-7641" data-en="+1 314-376-7641">+1 314-376-7641</span>
+              </div>
+              <div class="metric">
+                <strong data-es="Proceso claro" data-en="Clear process">Proceso claro</strong>
+                <span data-es="Financiamiento, trade-in y compra/venta" data-en="Financing, trade-in, and buy/sell">Financiamiento, trade-in y compra/venta</span>
               </div>
             </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="contact-form-wrap">
-            <form class="contact-form" id="contact-form" novalidate>
-              <h3 data-i18n="form_title">Send Us a Message</h3>
-
-              <div class="form-group">
-                <label for="name" data-i18n="form_name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="John Smith" />
-              </div>
-
-              <div class="form-group">
-                <label for="phone" data-i18n="form_phone">Phone / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" required placeholder="+1 (314) 000-0000" />
-              </div>
-
-              <div class="form-group">
-                <label for="interest" data-i18n="form_interest">I'm interested in...</label>
-                <select id="interest" name="interest">
-                  <option value="buying" data-i18n="form_opt_buy">Buying a car</option>
-                  <option value="financing" data-i18n="form_opt_fin">Financing options</option>
-                  <option value="tradein" data-i18n="form_opt_trade">Trade-in my vehicle</option>
-                  <option value="selling" data-i18n="form_opt_sell">Selling my car</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message" data-i18n="form_message">Message (optional)</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us what you're looking for..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-full">
-                <i class="fas fa-paper-plane"></i>
-                <span data-i18n="form_submit">Send Message</span>
-              </button>
-
-              <p class="form-disclaimer" data-i18n="form_disclaimer">
-                We respect your privacy. No spam, ever.
-              </p>
-            </form>
-
-            <!-- Success Message (hidden by default) -->
-            <div class="form-success" id="form-success" style="display:none;" aria-live="polite">
-              <i class="fas fa-check-circle"></i>
-              <h4 data-i18n="form_success_title">Message Sent!</h4>
-              <p data-i18n="form_success_msg">We'll contact you within 24 hours. Check your WhatsApp!</p>
-            </div>
-          </div>
-
+          </article>
         </div>
       </div>
     </section>
 
-  </main>
-
-  <!-- =============================================
-       FOOTER
-  ============================================== -->
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="logo-jam">JAM</span><span class="logo-ros">ROS</span><span class="logo-dot">.co</span>
+    <section class="section inventory-section" id="inventario">
+      <div class="container">
+        <div class="inventory-toolbar reveal">
+          <div class="section-heading">
+            <div class="eyebrow" data-es="Catálogo premium" data-en="Premium catalog">Catálogo premium</div>
+            <h2 data-es="Inventario destacado con imágenes grandes." data-en="Featured inventory with large visuals.">
+              Inventario destacado con imágenes grandes.
+            </h2>
+            <p data-es="Cada unidad se presenta con fuerza visual, datos clave y CTA inmediato. El objetivo es simple: transmitir confianza y acelerar el contacto con el cliente." data-en="Each unit is presented with stronger visuals, key specs, and an immediate CTA. The goal is simple: build trust and accelerate the buyer's first contact.">
+              Cada unidad se presenta con fuerza visual, datos clave y CTA inmediato. El objetivo es simple: transmitir confianza y acelerar el contacto con el cliente.
+            </p>
           </div>
-          <p data-i18n="footer_tagline">Premium used cars in Saint Louis, MO. Fast. Verified. Trusted.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/13143767641" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+          <div class="inventory-badges">
+            <div class="inventory-badge" data-es="Títulos claros" data-en="Clear titles">Títulos claros</div>
+            <div class="inventory-badge" data-es="Atención rápida" data-en="Fast response">Atención rápida</div>
+            <div class="inventory-badge" data-es="Precios visibles" data-en="Visible pricing">Precios visibles</div>
           </div>
         </div>
 
-        <div class="footer-links-col">
-          <h5 data-i18n="footer_nav">Navigation</h5>
-          <ul>
-            <li><a href="#solution" data-i18n="nav_solution">Solution</a></li>
-            <li><a href="#market" data-i18n="nav_market">Market</a></li>
-            <li><a href="#inventory" data-i18n="nav_inventory">Inventory</a></li>
-            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-          </ul>
+        <div class="inventory-grid" id="inventoryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicios">
+      <div class="container">
+        <div class="section-heading light reveal">
+          <div class="eyebrow" data-es="Servicios clave" data-en="Core services">Servicios clave</div>
+          <h2 data-es="Lo que el cliente quiere resolver rápido." data-en="What buyers want resolved fast.">
+            Lo que el cliente quiere resolver rápido.
+          </h2>
+          <p data-es="La experiencia está diseñada para responder las tres preguntas más importantes del comprador: ¿me financian?, ¿reciben mi auto?, ¿puedo comprar o vender sin complicaciones?" data-en="The experience is designed around the three most important buyer questions: Can I get financing? Will you take my car? Can I buy or sell without hassle?">
+            La experiencia está diseñada para responder las tres preguntas más importantes del comprador: ¿me financian?, ¿reciben mi auto?, ¿puedo comprar o vender sin complicaciones?
+          </p>
         </div>
 
-        <div class="footer-links-col">
-          <h5 data-i18n="footer_services">Services</h5>
-          <ul>
-            <li><a href="#inventory" data-i18n="serv_1">Buy a Car</a></li>
-            <li><a href="#contact" data-i18n="serv_2">Get Financing</a></li>
-            <li><a href="#contact" data-i18n="serv_3">Trade-In</a></li>
-            <li><a href="#contact" data-i18n="serv_4">Sell Your Car</a></li>
-          </ul>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">💳</div>
+            <h3 data-es="Financiamiento / Financing" data-en="Financing / Financiamiento">Financiamiento / Financing</h3>
+            <p data-es="Opciones reales según el perfil del cliente, comunicación clara y acompañamiento para acelerar la aprobación." data-en="Real options based on the customer profile, clear communication, and guidance to speed up approval.">
+              Opciones reales según el perfil del cliente, comunicación clara y acompañamiento para acelerar la aprobación.
+            </p>
+            <a
+              class="service-link"
+              href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20informaci%C3%B3n%20sobre%20financiamiento."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-es="Más información"
+              data-en="More info"
+            >Más información</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">⇄</div>
+            <h3 data-es="Trade-in" data-en="Trade-in">Trade-in</h3>
+            <p data-es="Recibimos tu auto como parte de pago con evaluación rápida y enfoque transparente." data-en="We take your car as part of the payment with a fast evaluation and a transparent process.">
+              Recibimos tu auto como parte de pago con evaluación rápida y enfoque transparente.
+            </p>
+            <a
+              class="service-link"
+              href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20evaluar%20mi%20trade-in."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-es="Más información"
+              data-en="More info"
+            >Más información</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🤝</div>
+            <h3 data-es="Compra / Venta • Buy / Sell" data-en="Buy / Sell • Compra / Venta">Compra / Venta • Buy / Sell</h3>
+            <p data-es="Si quieres comprar o vender un vehículo, el proceso se presenta directo, visual y con respuesta rápida por WhatsApp." data-en="Whether you want to buy or sell a vehicle, the process is direct, visual, and built for quick WhatsApp response.">
+              Si quieres comprar o vender un vehículo, el proceso se presenta directo, visual y con respuesta rápida por WhatsApp.
+            </p>
+            <a
+              class="service-link"
+              href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20comprar%20o%20vender%20un%20veh%C3%ADculo."
+              target="_blank"
+              rel="noopener noreferrer"
+              data-es="Más información"
+              data-en="More info"
+            >Más información</a>
+          </article>
         </div>
 
-        <div class="footer-contact-col">
-          <h5 data-i18n="footer_contact">Contact</h5>
-          <ul>
-            <li><i class="fas fa-phone"></i> (314) 376-7641</li>
-            <li><i class="fab fa-whatsapp"></i> WhatsApp</li>
-            <li><i class="fas fa-envelope"></i> info@jamros.co</li>
-            <li><i class="fas fa-map-marker-alt"></i> Saint Louis, MO</li>
-          </ul>
+        <div class="benefits-strip">
+          <div class="benefit reveal">
+            <div>✓</div>
+            <div>
+              <strong data-es="Inventario verificado" data-en="Verified inventory">Inventario verificado</strong>
+              <p data-es="Autos presentados con información visible y enfoque de confianza." data-en="Vehicles presented with visible information and a trust-first approach.">
+                Autos presentados con información visible y enfoque de confianza.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit reveal">
+            <div>⚡</div>
+            <div>
+              <strong data-es="Respuesta rápida" data-en="Fast response">Respuesta rápida</strong>
+              <p data-es="CTA directo a WhatsApp para convertir visitas en conversaciones." data-en="Direct WhatsApp CTA to turn visits into conversations.">
+                CTA directo a WhatsApp para convertir visitas en conversaciones.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit reveal">
+            <div>🛡</div>
+            <div>
+              <strong data-es="Proceso claro" data-en="Clear process">Proceso claro</strong>
+              <p data-es="Diseño limpio que elimina ruido visual y facilita la decisión." data-en="Clean design that removes visual noise and simplifies the decision-making process.">
+                Diseño limpio que elimina ruido visual y facilita la decisión.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit reveal">
+            <div>🚗</div>
+            <div>
+              <strong data-es="Orientado a venta" data-en="Sales-oriented">Orientado a venta</strong>
+              <p data-es="Imágenes grandes y jerarquía visual pensadas para compra inmediata." data-en="Large visuals and visual hierarchy designed for immediate purchase intent.">
+                Imágenes grandes y jerarquía visual pensadas para compra inmediata.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="footer-bottom">
+    <section class="section contact" id="contacto">
       <div class="container">
-        <p>© 2024 Jamros.co — <span data-i18n="footer_rights">All rights reserved.</span> | Saint Louis, Missouri</p>
-        <div class="footer-bottom-links">
-          <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
-          <a href="#" data-i18n="footer_terms">Terms of Use</a>
+        <div class="contact-shell reveal">
+          <div class="contact-grid">
+            <div class="contact-copy">
+              <div class="eyebrow" data-es="Contacto directo" data-en="Direct contact">Contacto directo</div>
+              <h2 data-es="¿Listo para encontrar tu próximo auto?" data-en="Ready to find your next car?">
+                ¿Listo para encontrar tu próximo auto?
+              </h2>
+              <p data-es="Habla con JAMROS por WhatsApp y recibe atención rápida sobre inventario, financiamiento, trade-in o compra/venta. Una experiencia clara, moderna y enfocada en cerrar." data-en="Talk to JAMROS on WhatsApp for fast help with inventory, financing, trade-in, or buy/sell needs. A clearer, modern experience built to convert.">
+                Habla con JAMROS por WhatsApp y recibe atención rápida sobre inventario, financiamiento, trade-in o compra/venta. Una experiencia clara, moderna y enfocada en cerrar.
+              </p>
+
+              <div class="contact-points">
+                <div class="trust-pill" data-es="📍 Missouri" data-en="📍 Missouri">📍 Missouri</div>
+                <div class="trust-pill" data-es="🌐 Español / English" data-en="🌐 Spanish / English">🌐 Español / English</div>
+                <div class="trust-pill" data-es="💬 WhatsApp activo" data-en="💬 Active WhatsApp">💬 WhatsApp activo</div>
+              </div>
+
+              <div class="hero-actions" style="margin-top:22px;">
+                <a
+                  class="btn btn-primary"
+                  href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20hablar%20con%20ustedes%20sobre%20un%20veh%C3%ADculo."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-es="Hablar por WhatsApp"
+                  data-en="Chat on WhatsApp"
+                >Hablar por WhatsApp</a>
+
+                <a
+                  class="btn btn-secondary"
+                  href="tel:+13143767641"
+                  data-es="Llamar ahora"
+                  data-en="Call now"
+                >Llamar ahora</a>
+              </div>
+            </div>
+
+            <div class="contact-boxes">
+              <div class="contact-box">
+                <strong data-es="WhatsApp" data-en="WhatsApp">WhatsApp</strong>
+                <a href="https://wa.me/13143767641" target="_blank" rel="noopener noreferrer">+1 314-376-7641</a>
+              </div>
+
+              <div class="contact-box">
+                <strong data-es="Servicios" data-en="Services">Servicios</strong>
+                <span data-es="Financiamiento · Trade-in · Compra / Venta" data-en="Financing · Trade-in · Buy / Sell">
+                  Financiamiento · Trade-in · Compra / Venta
+                </span>
+              </div>
+
+              <div class="contact-box">
+                <strong data-es="Enfoque" data-en="Focus">Enfoque</strong>
+                <span data-es="Claridad, profesionalismo y visión de futuro para impulsar compra inmediata." data-en="Clarity, professionalism, and a future-forward look designed to trigger immediate buying action.">
+                  Claridad, profesionalismo y visión de futuro para impulsar compra inmediata.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img
+          class="footer-logo"
+          src="https://www.genspark.ai/api/files/s/q2hKPlWd"
+          alt="Logo JAMROS en el pie de página"
+          width="340"
+          height="120"
+          loading="lazy"
+          decoding="async"
+        />
+        <p data-es="JAMROS LLC — Inventario real, trato rápido y experiencia premium para compradores que quieren decidir con confianza." data-en="JAMROS LLC — Real inventory, fast response, and a premium experience for buyers ready to move with confidence.">
+          JAMROS LLC — Inventario real, trato rápido y experiencia premium para compradores que quieren decidir con confianza.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
+        <a href="#inventario" data-es="Inventario" data-en="Inventory">Inventario</a>
+        <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
       </div>
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/13143767641" class="float-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="float-wa-tooltip" data-i18n="wa_tooltip">Chat with us!</span>
-  </a>
+  <a
+    class="btn wa-float"
+    href="https://wa.me/13143767641?text=Hola%20JAMROS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+    data-es="WhatsApp"
+    data-en="WhatsApp"
+  >WhatsApp</a>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AutoDealer",
+    "name":"JAMROS LLC",
+    "image":"https://www.genspark.ai/api/files/s/q2hKPlWd",
+    "telephone":"+1-314-376-7641",
+    "areaServed":"Missouri",
+    "sameAs":["https://jamros.co"],
+    "url":"https://jamros.co",
+    "description":"Used car dealership with bilingual support, financing, trade-in, and buy/sell services."
+  }
+  </script>
 
-  <!-- Main JavaScript -->
-  <script src="main.js"></script>
+  <script>
+    const state = { lang: "es" };
+
+    const actualToyotaImage = "https://sspark.genspark.ai/cfimages?u1=rT1vEIenF47AGxiQVWlcr25%2BlA7BbdD5EdFpngJGP6FLgT1HmLYX4IiyatVK24%2F6QpE8mZofIz8NrEULOqiH7g1p4BYfDkMz0BZxdtXZxi5wd3EIGgkamQhbu8x%2BuSbjRcmXrnhvOReYpuspqFcjoX4%3D&u2=EgRayVIfiBICA%2B5f&width=1024";
+
+    const inventory = [
+      {
+        name: "2024 Toyota Corolla",
+        price: "$22,900",
+        miles: "8,200 mi",
+        mpg: "30/38 mpg",
+        transmission: "CVT Auto",
+        badge: { es: "🔥 DESTACADO", en: "🔥 HOT" },
+        accent: "#9ac7ff",
+        image: actualToyotaImage
+      },
+      {
+        name: "2023 Kia Forte",
+        price: "$17,500",
+        miles: "22,400 mi",
+        mpg: "29/39 mpg",
+        transmission: "6-Speed Auto",
+        badge: { es: "💰 MEJOR PRECIO", en: "💰 BEST DEAL" },
+        accent: "#70d6ff"
+      },
+      {
+        name: "2019 Nissan Sentra",
+        price: "$12,800",
+        miles: "54,100 mi",
+        mpg: "27/37 mpg",
+        transmission: "CVT Auto",
+        badge: { es: "💎 VALOR", en: "💎 VALUE" },
+        accent: "#ffd789"
+      },
+      {
+        name: "2022 Honda CR-V",
+        price: "$28,400",
+        miles: "31,200 mi",
+        mpg: "28/34 mpg",
+        transmission: "CVT AWD",
+        badge: { es: "🔥 DESTACADO", en: "🔥 HOT" },
+        accent: "#8effc2"
+      },
+      {
+        name: "2021 Hyundai Elantra",
+        price: "$16,200",
+        miles: "38,700 mi",
+        mpg: "31/41 mpg",
+        transmission: "IVT Auto",
+        badge: { es: "💰 MEJOR PRECIO", en: "💰 BEST DEAL" },
+        accent: "#cab4ff"
+      },
+      {
+        name: "2023 Chevrolet Malibu",
+        price: "$19,750",
+        miles: "18,900 mi",
+        mpg: "27/36 mpg",
+        transmission: "6-Speed Auto",
+        badge: { es: "🔥 DESTACADO", en: "🔥 HOT" },
+        accent: "#ffb7d2"
+      }
+    ];
+
+    const translations = {
+      es: {
+        miles: "Millaje",
+        mpg: "Consumo",
+        transmission: "Transmisión",
+        verified: "✓ Verificado",
+        finance: "✓ Financiamiento disponible",
+        whatsapp: "Solicitar por WhatsApp",
+        financeBtn: "Ver financiamiento",
+        askText: "Hola JAMROS, quiero información sobre",
+      },
+      en: {
+        miles: "Mileage",
+        mpg: "Efficiency",
+        transmission: "Transmission",
+        verified: "✓ Verified",
+        finance: "✓ Finance available",
+        whatsapp: "Ask on WhatsApp",
+        financeBtn: "View financing",
+        askText: "Hi JAMROS, I want information about",
+      }
+    };
+
+    function createVehicleArt(label, accent) {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="${label}">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#070b12"/>
+              <stop offset="55%" stop-color="#101926"/>
+              <stop offset="100%" stop-color="#05070b"/>
+            </linearGradient>
+            <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="30%" stop-color="#d6dee8"/>
+              <stop offset="60%" stop-color="${accent}"/>
+              <stop offset="100%" stop-color="#ffffff"/>
+            </linearGradient>
+            <filter id="blur"><feGaussianBlur stdDeviation="30"/></filter>
+          </defs>
+
+          <rect width="1600" height="900" fill="url(#bg)"/>
+          <circle cx="1280" cy="160" r="220" fill="${accent}" opacity=".22" filter="url(#blur)"/>
+          <circle cx="260" cy="200" r="180" fill="#ffffff" opacity=".06" filter="url(#blur)"/>
+
+          <rect x="0" y="710" width="1600" height="190" fill="#04070d"/>
+          <rect x="120" y="760" width="1360" height="4" rx="2" fill="${accent}" opacity=".28"/>
+          <rect x="180" y="792" width="1240" height="3" rx="2" fill="#ffffff" opacity=".10"/>
+
+          <path d="M350 570
+                   C410 490, 550 440, 760 430
+                   L1010 420
+                   C1085 418, 1150 445, 1200 505
+                   L1280 600
+                   L1320 610
+                   C1358 620, 1385 650, 1388 690
+                   L1325 690
+                   C1312 635, 1264 596, 1202 596
+                   C1140 596, 1090 635, 1078 690
+                   L552 690
+                   C540 635, 490 596, 428 596
+                   C366 596, 318 635, 306 690
+                   L220 690
+                   C228 636, 252 614, 314 600
+                   Z"
+                fill="rgba(8,14,24,.94)"
+                stroke="url(#metal)"
+                stroke-width="8"/>
+
+          <path d="M540 458
+                   L942 448
+                   C1008 447, 1066 470, 1104 515
+                   L1182 603
+                   L468 603
+                   L412 596
+                   C424 550, 462 502, 540 458 Z"
+                fill="rgba(231,239,248,.09)"
+                stroke="rgba(255,255,255,.18)"
+                stroke-width="3"/>
+
+          <path d="M624 470
+                   L904 462
+                   C948 461, 986 473, 1016 500
+                   L1073 560
+                   L586 560
+                   C588 522, 601 492, 624 470 Z"
+                fill="rgba(159,199,255,.18)"
+                stroke="rgba(255,255,255,.22)"
+                stroke-width="2"/>
+
+          <circle cx="430" cy="690" r="84" fill="#0a1019" stroke="url(#metal)" stroke-width="9"/>
+          <circle cx="430" cy="690" r="36" fill="#cfd8e4" opacity=".9"/>
+          <circle cx="1202" cy="690" r="84" fill="#0a1019" stroke="url(#metal)" stroke-width="9"/>
+          <circle cx="1202" cy="690" r="36" fill="#cfd8e4" opacity=".9"/>
+
+          <rect x="180" y="132" width="420" height="64" rx="32" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.12)"/>
+          <text x="214" y="174" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#eef2f7">JAMROS LLC</text>
+
+          <text x="180" y="270" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" fill="url(#metal)">${label}</text>
+          <text x="180" y="338" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="600" fill="#b8c3d1">Premium inventory • Diseño premium</text>
+        </svg>
+      `;
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    function getVehicleImage(item) {
+      return item.image || createVehicleArt(item.name, item.accent || "#9ac7ff");
+    }
+
+    function renderInventory() {
+      const grid = document.getElementById("inventoryGrid");
+      const t = translations[state.lang];
+
+      grid.innerHTML = inventory.map((item, index) => {
+        const message = encodeURIComponent(`${t.askText} ${item.name}.`);
+        const loading = index < 2 ? "eager" : "lazy";
+        return `
+          <article class="vehicle-card reveal">
+            <div class="vehicle-visual">
+              <img
+                src="${getVehicleImage(item)}"
+                alt="${item.name}"
+                loading="${loading}"
+                decoding="async"
+                width="1200"
+                height="760"
+              />
+              <div class="vehicle-overlay"></div>
+              <div class="vehicle-badge">${item.badge[state.lang]}</div>
+              <div class="vehicle-price">${item.price}</div>
+            </div>
+
+            <div class="vehicle-body">
+              <div class="vehicle-top">
+                <div>
+                  <h3 class="vehicle-title">${item.name}</h3>
+                  <p class="vehicle-sub">${state.lang === "es" ? "Listo para entrega • Atención rápida" : "Ready to drive • Fast response"}</p>
+                </div>
+              </div>
+
+              <div class="vehicle-specs">
+                <div class="spec">
+                  <span class="spec-label">${t.miles}</span>
+                  <span class="spec-value">${item.miles}</span>
+                </div>
+                <div class="spec">
+                  <span class="spec-label">${t.mpg}</span>
+                  <span class="spec-value">${item.mpg}</span>
+                </div>
+                <div class="spec">
+                  <span class="spec-label">${t.transmission}</span>
+                  <span class="spec-value">${item.transmission}</span>
+                </div>
+              </div>
+
+              <div class="vehicle-tags">
+                <span class="tag">${t.verified}</span>
+                <span class="tag">${t.finance}</span>
+              </div>
+
+              <div class="vehicle-actions">
+                <a
+                  class="btn btn-primary"
+                  href="https://wa.me/13143767641?text=${message}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >${t.whatsapp}</a>
+
+                <a
+                  class="btn btn-ghost"
+                  href="https://wa.me/13143767641?text=${encodeURIComponent((state.lang === "es" ? "Hola JAMROS, quiero conocer opciones de financiamiento para " : "Hi JAMROS, I want financing options for ") + item.name + ".")}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >${t.financeBtn}</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      initReveal();
+    }
+
+    function applyLanguage(lang) {
+      state.lang = lang;
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-es]").forEach((el) => {
+        const value = el.getAttribute(`data-${lang}`);
+        if (value) el.textContent = value;
+      });
+
+      document.querySelectorAll("[data-lang-btn]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.langBtn === lang);
+      });
+
+      renderInventory();
+    }
+
+    function initReveal() {
+      const items = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      items.forEach(item => {
+        if (!item.classList.contains("is-visible")) observer.observe(item);
+      });
+    }
+
+    document.querySelectorAll("[data-lang-btn]").forEach(btn => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.langBtn));
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const siteNav = document.getElementById("siteNav");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("is-open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.querySelectorAll('#siteNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('is-open');
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    renderInventory();
+    applyLanguage("es");
+  </script>
 </body>
 </html>
