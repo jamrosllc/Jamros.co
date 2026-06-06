@@ -275,14 +275,17 @@ button, input, select, textarea {
   gap: 2rem;
 }
 
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
-  flex-shrink: 0;
-  font-style: italic;
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
 
 .logo-jam { color: var(--clr-primary); }
 .logo-ros { color: var(--clr-text); }
