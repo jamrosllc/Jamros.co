@@ -2111,7 +2111,27 @@ button, input, select, textarea {
   .trust-badges { grid-template-columns: 1fr 1fr; }
   .investment-block { flex-direction: column; text-align: center; padding: 2rem; }
 }
+.language-switcher{
+    display:flex;
+    gap:8px;
+    margin-left:20px;
+}
 
+.lang-btn{
+    background:transparent;
+    color:white;
+    border:1px solid #ff6b00;
+    padding:8px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.lang-btn:hover,
+.lang-btn.active{
+    background:#ff6b00;
+    color:#000;
+}
 /* =============================================
    17. SCROLL ANIMATIONS
    ============================================= */
