@@ -55,6 +55,44 @@
         html {
             scroll-behavior: smooth;
         }
+        <script>
+const translations = {
+    es: {
+        heroTitle: "TU PRÓXIMO AUTO ESTÁ AQUÍ.",
+        heroText: "Autos usados verificados, financiamiento ultrarrápido, cero estrés.",
+        btnInventory: "Ver Inventario",
+        btnContact: "Hablar con Nosotros"
+    },
+    en: {
+        heroTitle: "YOUR NEXT CAR IS HERE.",
+        heroText: "Verified used cars, fast financing, zero stress.",
+        btnInventory: "View Inventory",
+        btnContact: "Contact Us"
+    }
+};
+
+document.getElementById("lang-es").addEventListener("click", () => {
+    changeLanguage("es");
+});
+
+document.getElementById("lang-en").addEventListener("click", () => {
+    changeLanguage("en");
+});
+
+function changeLanguage(lang){
+    document.querySelector(".hero h1").textContent =
+        translations[lang].heroTitle;
+
+    document.querySelector(".hero p").innerHTML =
+        translations[lang].heroText;
+
+    document.querySelector(".btn-primary").textContent =
+        translations[lang].btnInventory;
+
+    document.querySelector(".btn-secondary").textContent =
+        translations[lang].btnContact;
+}
+</script>
 
         body {
             font-family: 'Inter', sans-serif;
